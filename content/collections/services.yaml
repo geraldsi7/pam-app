@@ -1,0 +1,13 @@
+title: Services
+template: default
+layout: layout
+taxonomies:
+  - service_categories
+revisions: false
+route: /services
+sort_dir: asc
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

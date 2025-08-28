@@ -1,0 +1,39 @@
+title: Partners
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: Title
+      instructions: The title for the partners section
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      instructions: The main heading text
+  -
+    handle: partners
+    field:
+      type: grid
+      display: Partners
+      instructions: List of partner companies
+      fields:
+        -
+          handle: country
+          field:
+            type: text
+            display: Country
+            instructions: The country name
+        -
+          handle: website
+          field:
+            type: text
+            display: Website URL
+            instructions: The partner website URL
+        -
+          handle: website_text
+          field:
+            type: text
+            display: Website Display Text
+            instructions: The text to display for the website link

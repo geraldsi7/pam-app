@@ -1,0 +1,25 @@
+title: Details
+fields:
+  -
+    handle: name
+    field:
+      type: text
+      display: Name
+      width: 50
+  -
+    handle: icon
+    field:
+      type: icon
+      display: Icon
+      width: 50
+  -
+    handle: description
+    field:
+      type: textarea
+      display: Description
+  -
+    handle: media
+    field:
+      container: assets
+      type: assets
+      display: Media

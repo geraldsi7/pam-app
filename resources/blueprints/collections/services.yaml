@@ -1,0 +1,46 @@
+title: Services
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: Title
+      instructions: The title for the services section
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      instructions: The main heading text
+  -
+    handle: services
+    field:
+      type: grid
+      display: Services
+      instructions: List of services offered
+      fields:
+        -
+          handle: title
+          field:
+            type: text
+            display: Service Title
+            instructions: The name of the service
+        -
+          handle: description
+          field:
+            type: textarea
+            display: Description
+            instructions: Description of the service
+            character_limit: 300
+        -
+          handle: icon
+          field:
+            type: text
+            display: Icon Class
+            instructions: FontAwesome icon class (e.g., fa-solid fa-sitemap)
+        -
+          handle: featured
+          field:
+            type: toggle
+            display: Featured Service
+            instructions: Whether this service should be featured (larger card)

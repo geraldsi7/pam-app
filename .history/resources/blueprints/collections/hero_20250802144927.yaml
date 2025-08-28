@@ -1,0 +1,46 @@
+title: Hero
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: Title
+      instructions: The title for the hero section
+  -
+    handle: heading
+    field:
+      type: textarea
+      display: Heading
+      instructions: The main heading text
+      character_limit: 200
+  -
+    handle: description
+    field:
+      type: textarea
+      display: Description
+      instructions: The description text below the heading
+      character_limit: 500
+  -
+    handle: primary_button_text
+    field:
+      type: text
+      display: 'Primary Button Text'
+      instructions: 'Text for the primary call-to-action button'
+  -
+    handle: primary_button_link
+    field:
+      type: text
+      display: 'Primary Button Link'
+      instructions: 'Link for the primary button (e.g., #services)'
+  -
+    handle: secondary_button_text
+    field:
+      type: text
+      display: 'Secondary Button Text'
+      instructions: 'Text for the secondary call-to-action button'
+  -
+    handle: secondary_button_link
+    field:
+      type: text
+      display: 'Secondary Button Link'
+      instructions: 'Link for the secondary button (e.g., #contact)' 
