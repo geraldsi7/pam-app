@@ -1,0 +1,14 @@
+{{ if featured_image }}
+<img class=" h-auto object-cover rounded-xl" src="{{ featured_image:url }}" alt="{{ title }}">
+{{ /if }}
+
+{{ items }}
+<div class="cursor-pointer hover:bg-gray-100 rounded-xl"
+    style="display: flex; flex-direction: column; gap: 10px;border: 1px solid #000;padding: 10px;">
+    <a href="{{ url }}">
+        {{title}}
+    </a>
+    {{description}}
+    {{subtitle}}
+</div>
+{{ /items }}

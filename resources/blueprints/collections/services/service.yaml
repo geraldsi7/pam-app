@@ -14,6 +14,23 @@ tabs:
                 - required
           -
             import: details
+          -
+            handle: items
+            field:
+              collections:
+                - products
+              type: entries
+              display: Items
+          -
+            handle: featured_image
+            field:
+              container: public
+              folder: uploads
+              allow_uploads: false
+              type: assets
+              display: featured_image
+              max_files: 1
+              mode: grid
   sidebar:
     display: Sidebar
     sections:
@@ -26,11 +43,3 @@ tabs:
               localizable: true
               validate: 'max:200'
               show_regenerate: true
-          -
-            handle: service_categories
-            field:
-              type: terms
-              taxonomies:
-                - service_categories
-              display: 'Service Categories'
-              mode: select

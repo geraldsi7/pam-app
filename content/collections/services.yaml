@@ -1,11 +1,12 @@
 title: Services
-template: default
+template: services/show
 layout: layout
-taxonomies:
-  - service_categories
 revisions: false
-route: /services
+route: '/services/{slug}'
 sort_dir: asc
+date_behavior:
+  past: public
+  future: private
 preview_targets:
   -
     label: Entry
