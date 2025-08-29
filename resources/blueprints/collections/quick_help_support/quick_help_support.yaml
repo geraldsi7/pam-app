@@ -1,4 +1,4 @@
-title: Service
+title: 'Quick Help Support'
 tabs:
   main:
     display: Main
@@ -13,24 +13,12 @@ tabs:
               validate:
                 - required
           -
-            import: details
-          -
-            handle: items
+            handle: quick_help
             field:
               collections:
-                - products
+                - quick_help
               type: entries
-              display: Items
-          -
-            handle: featured_image
-            field:
-              container: assets
-              folder: uploads
-              allow_uploads: false
-              type: assets
-              display: featured_image
-              max_files: 1
-              mode: grid
+              display: 'Quick Help'
   sidebar:
     display: Sidebar
     sections:
@@ -42,4 +30,3 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
-              show_regenerate: true

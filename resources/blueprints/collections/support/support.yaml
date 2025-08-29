@@ -1,4 +1,4 @@
-title: Service
+title: Support
 tabs:
   main:
     display: Main
@@ -13,24 +13,21 @@ tabs:
               validate:
                 - required
           -
-            import: details
+            handle: content
+            field:
+              type: markdown
+              display: Content
+              localizable: true
           -
             handle: items
             field:
-              collections:
-                - products
-              type: entries
-              display: Items
+              type: list
+              display: items
           -
-            handle: featured_image
+            handle: icon
             field:
-              container: assets
-              folder: uploads
-              allow_uploads: false
-              type: assets
-              display: featured_image
-              max_files: 1
-              mode: grid
+              type: icon
+              display: icon
   sidebar:
     display: Sidebar
     sections:
@@ -42,4 +39,3 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
-              show_regenerate: true
