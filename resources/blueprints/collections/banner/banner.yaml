@@ -1,0 +1,41 @@
+title: Banner
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: description
+            field:
+              antlers: true
+              type: textarea
+              display: Description
+          -
+            handle: color
+            field:
+              type: text
+              display: Color
+          -
+            handle: icon
+            field:
+              type: text
+              display: Icon
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

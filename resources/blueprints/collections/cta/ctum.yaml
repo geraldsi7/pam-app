@@ -1,0 +1,45 @@
+title: CTA
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+          -
+            handle: subtitle
+            field:
+              type: text
+              validate:
+                - required
+              display: Subtitle
+          -
+            handle: heading
+            field:
+              type: text
+              display: Heading
+          -
+            handle: button_text
+            field:
+              type: text
+              display: 'Button Text'
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

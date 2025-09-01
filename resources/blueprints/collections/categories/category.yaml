@@ -1,4 +1,4 @@
-title: Service
+title: Category
 tabs:
   main:
     display: Main
@@ -13,29 +13,30 @@ tabs:
               validate:
                 - required
           -
-            import: details
-          -
-            handle: items
+            handle: content
             field:
-              collections:
-                - products
+              type: markdown
+              display: Content
+              localizable: true
+          -
+            handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              localizable: true
+              max_items: 1
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+              localizable: true
+          -
+            handle: entries_field
+            field:
               type: entries
-              display: Items
-          -
-            handle: featured_image
-            field:
-              container: assets
-              folder: uploads
-              allow_uploads: false
-              type: assets
-              display: featured_image
-              max_files: 1
-              mode: grid
-          -
-            handle: featured_categories
-            field:
-              type: entries
-              display: 'Featured Categories'
+              display: 'Entries Field'
   sidebar:
     display: Sidebar
     sections:
@@ -47,4 +48,3 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
-              show_regenerate: true

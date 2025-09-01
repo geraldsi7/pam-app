@@ -1,0 +1,38 @@
+<!-- CTA -->
+{{ collection:cta limit="1" }}
+<section class="py-16 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0"
+            style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 20px 20px;">
+        </div>
+    </div>
+
+    <div class="px-4 relative z-10">
+        <div class="p-8 lg:p-12">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <!-- Left Content -->
+                <div class="space-y-4">
+                    <p class="text-lg font-medium text-blue-700">
+                        {{ subtitle }}
+                    </p>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-blue-900 leading-tight">
+                        {{ heading }}
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        {{ description }}
+                    </p>
+                </div>
+
+                <!-- Right CTA Button -->
+                <div class="flex justify-center lg:justify-end">
+                    <a href="/services"
+                        class="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition-all duration-300 transform shadow">
+                        <span>{{ button_text }}</span>
+                        <i class="fas fa-arrow-right ml-3 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ /collection:cta }}
