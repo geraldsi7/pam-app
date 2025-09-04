@@ -51,17 +51,13 @@
                         <div class="p-3 border-b border-gray-100">
                             <h3 class="text-sm font-semibold text-blue-900">Our Global Partners</h3>
                         </div>
-                        {{ collection:partners limit="1" }}
+                        {{ collection:partners }}
                         {{ partners }}
                         <a href="{{ website }}" target="_blank"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors">
+                            <img src="{{ flag:url }}" alt="{{ country }} flag" class="w-6 h-6 object-cover">
                             <!-- Flag emoji based on country -->
-                            <span class="text-xl">
-                                {{ if country == "Canada" }}🇨🇦
-                                {{ elseif country == "India" }}🇮🇳
-                                {{ elseif country == "Ghana" }}🇬🇭
-                                {{ else }}🌍{{ /if }}
-                            </span>
+                            
                             <div class="flex-1">
                                 <div class="text-sm font-medium text-blue-900">{{ country }}</div>
                                 <div class="text-xs text-gray-500">{{ website_text }}</div>
@@ -110,9 +106,10 @@
             <div class="px-4 py-3 bg-gray-50">
                 <h3 class="text-sm font-semibold text-blue-900">Our Global Partners</h3>
             </div>
-            {{ collection:partners limit="1" }}
+            {{ collection:partners }}
             {{ partners }}
             <a href="{{ website }}" target="_blank" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-100">
+                <img src="{{ flag:url }}" alt="{{ country }} flag" class="w-7 h-7 object-cover">
                 <span class="text-lg">
                     {{ if country == "Canada" }}🇨🇦
                     {{ elseif country == "India" }}🇮🇳

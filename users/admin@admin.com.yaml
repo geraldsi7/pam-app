@@ -6,3 +6,5 @@ preferences:
   collections:
     categories:
       after_save: create_another
+    partners:
+      after_save: continue_editing

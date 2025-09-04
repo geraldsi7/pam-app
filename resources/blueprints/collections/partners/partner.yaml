@@ -1,0 +1,76 @@
+title: Partner
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              instructions: 'The title for the partners section'
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+          -
+            handle: partners
+            field:
+              type: grid
+              display: Partners
+              instructions: 'List of partner companies'
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: 'Company Name'
+                    instructions: 'The company name'
+                -
+                  handle: description
+                  field:
+                    type: textarea
+                    display: Description
+                    instructions: 'A brief description or quote about the partnership'
+                -
+                  handle: country
+                  field:
+                    type: text
+                    display: Country
+                    instructions: 'The country name'
+                -
+                  handle: flag
+                  field:
+                    max_files: 1
+                    container: assets
+                    type: assets
+                    display: Flag
+                    instructions: 'Country flag emoji or image filename'
+                -
+                  handle: website
+                  field:
+                    type: text
+                    display: 'Website URL'
+                    instructions: 'The partner website URL'
+                -
+                  handle: website_text
+                  field:
+                    type: text
+                    display: 'Website Text'
+                    instructions: 'The text to display for the website link'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

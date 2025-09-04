@@ -13,8 +13,6 @@ tabs:
               validate:
                 - required
           -
-            import: details
-          -
             handle: items
             field:
               collections:
@@ -25,17 +23,48 @@ tabs:
             handle: featured_image
             field:
               container: assets
-              folder: uploads
               allow_uploads: false
               type: assets
-              display: featured_image
+              display: 'Featured Image'
               max_files: 1
               mode: grid
           -
-            handle: featured_categories
+            handle: redirect_url
             field:
-              type: entries
-              display: 'Featured Categories'
+              type: text
+              display: 'Redirect URL'
+          -
+            handle: redirect_url_text
+            field:
+              type: text
+              display: 'Redirect URL Text'
+          -
+            handle: heading
+            field:
+              type: grid
+              display: Heading
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: Title
+                -
+                  handle: description
+                  field:
+                    type: textarea
+                    display: Description
+                -
+                  handle: featured_categories
+                  field:
+                    type: grid
+                    display: 'Featured Categories'
+                    fields:
+                      -
+                        handle: title
+                        field:
+                          type: text
+                          display: Title
   sidebar:
     display: Sidebar
     sections:
