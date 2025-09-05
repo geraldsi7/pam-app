@@ -4,7 +4,7 @@ blueprint: service
 title: 'Hardware Solution'
 description: 'Hello this is the hardware'
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1757021275
+updated_at: 1757077383
 media:
   - cctv.jpg
 featured_categories:
@@ -43,4 +43,5 @@ heading:
     id: mf5x313w
     title: 'Professional installation and technical support'
     description: 'Our expert technicians ensure seamless setup, configuration, and ongoing maintenance of all your hardware systems for optimal performance and reliability.'
+featured_image: fdd3b3fd-e72f-4d58-8390-32843d9c8b0c.png
 ---

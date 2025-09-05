@@ -8,3 +8,5 @@ preferences:
       after_save: create_another
     partners:
       after_save: continue_editing
+    trusted_businesses:
+      after_save: continue_editing

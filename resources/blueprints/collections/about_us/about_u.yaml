@@ -1,4 +1,4 @@
-title: Hero
+title: About
 tabs:
   main:
     display: Main
@@ -18,16 +18,17 @@ tabs:
               type: text
               display: Heading
           -
-            handle: media
-            field:
-              container: assets
-              type: assets
-              display: Media
-          -
             handle: description
             field:
               type: textarea
               display: Description
+          -
+            handle: featured_image
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: 'Featured Image'
   sidebar:
     display: Sidebar
     sections:

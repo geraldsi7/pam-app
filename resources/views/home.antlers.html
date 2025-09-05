@@ -1,85 +1,6 @@
-<!-- Header -->
-
 <main>
-
     {{ partial:banner }}
-    {{ partial:hero }}
-
-    <section class="bg-gradient-to-br from-blue-50 to-red-50 py-16 lg:py-24 relative overflow-hidden">
-        <!-- Top light blue strip -->
-        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-300 to-red-300"></div>
-
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-                <!-- Left Column - Content -->
-                <div class="space-y-8 fade-in-up">
-                    <div class="space-y-6">
-                        <h2 class="text-4xl lg:text-5xl font-bold text-blue-900 leading-tight">
-                            Whatever you're into,<br>
-                            <span class="ml-8">it's here</span>
-                        </h2>
-                        <p class="text-xl text-blue-700 leading-relaxed">
-                            Turn a wrench, get a tech upgrade, and find everything you love.
-                        </p>
-
-                        <!-- Call to Action Button -->
-                        <div class="pt-4">
-                            <a href="#services"
-                                class="inline-flex items-center px-8 py-4 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors group shadow-lg">
-                                Do your thing
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column - Product Categories -->
-                <div class="grid grid-cols-3 gap-6 fade-in-up">
-                    <!-- Category 1: Motors -->
-                    <div class="text-center group cursor-pointer">
-                        <div class="bg-white rounded-xl p-6 mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
-                            <div
-                                class="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-car text-3xl text-blue-600"></i>
-                            </div>
-                        </div>
-                        <a href="#motors"
-                            class="text-blue-900 font-semibold text-lg hover:text-blue-700 transition-colors">
-                            Motors >
-                        </a>
-                    </div>
-
-                    <!-- Category 2: Electronics -->
-                    <div class="text-center group cursor-pointer">
-                        <div class="bg-white rounded-xl p-6 mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
-                            <div
-                                class="w-20 h-20 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-headphones text-3xl text-red-600"></i>
-                            </div>
-                        </div>
-                        <a href="#electronics"
-                            class="text-red-900 font-semibold text-lg hover:text-red-700 transition-colors">
-                            Electronics >
-                        </a>
-                    </div>
-
-                    <!-- Category 3: Collectibles and Art -->
-                    <div class="text-center group cursor-pointer">
-                        <div class="bg-white rounded-xl p-6 mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
-                            <div
-                                class="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-palette text-3xl text-blue-600"></i>
-                            </div>
-                        </div>
-                        <a href="#collectibles"
-                            class="text-blue-900 font-semibold text-lg hover:text-blue-700 transition-colors">
-                            Collectibles and Art >
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{ partial:hero/home }}
 
     <!-- Software -->
     {{ partial:services/software }}
@@ -87,8 +8,11 @@
     <!-- Hardware -->
     {{ partial:services/hardware }}
 
+    <!-- Trusted Businesses -->
+    {{ partial:trusted-businesses }}
+
     <!-- Partners -->
-    {{ partial:partners }}=
+    {{ partial:partners }}
 
     <!-- CTA -->
     {{ partial:cta }}
