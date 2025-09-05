@@ -1,0 +1,71 @@
+<!-- Contact Hero Section -->
+{{ collection:hero title:is="Contact Hero" }}
+<section id="contact-hero" class="bg-gradient-to-br from-blue-50 to-white pt-20 pb-16 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <svg class="w-full h-full" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- Contact Icons Pattern -->
+            <g fill="#1e40af">
+                <!-- Phone Icons -->
+                <circle cx="200" cy="150" r="8" opacity="0.3"/>
+                <path d="M 200 150 L 210 160 L 220 150 L 210 140 Z" opacity="0.3"/>
+                
+                <circle cx="1000" cy="200" r="8" opacity="0.3"/>
+                <path d="M 1000 200 L 1010 210 L 1020 200 L 1010 190 Z" opacity="0.3"/>
+                
+                <!-- Email Icons -->
+                <rect x="150" y="400" width="20" height="15" rx="2" opacity="0.3"/>
+                <path d="M 150 400 L 160 410 L 170 400" stroke="#1e40af" stroke-width="2" fill="none" opacity="0.3"/>
+                
+                <rect x="950" y="450" width="20" height="15" rx="2" opacity="0.3"/>
+                <path d="M 950 450 L 960 460 L 970 450" stroke="#1e40af" stroke-width="2" fill="none" opacity="0.3"/>
+                
+                <!-- Location Icons -->
+                <circle cx="300" cy="300" r="10" opacity="0.3"/>
+                <path d="M 300 300 L 300 320 L 310 320 L 310 300 Z" opacity="0.3"/>
+                
+                <circle cx="900" cy="350" r="10" opacity="0.3"/>
+                <path d="M 900 350 L 900 370 L 910 370 L 910 350 Z" opacity="0.3"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-blue-900 mb-6 fade-in-up">
+                {{ heading }}
+            </h1>
+            <p class="text-xl leading-relaxed text-gray-600 mb-8 fade-in-up" style="transition-delay: 150ms;">
+                {{ description }}
+            </p>
+            
+            <!-- Contact Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 fade-in-up" style="transition-delay: 300ms;">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-blue-900 mb-2">24/7 Support</h3>
+                    <p class="text-gray-600">Round-the-clock assistance for your business needs</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-blue-900 mb-2">Expert Team</h3>
+                    <p class="text-gray-600">Certified professionals with years of experience</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-rocket text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-blue-900 mb-2">Fast Response</h3>
+                    <p class="text-gray-600">Quick turnaround times for all inquiries</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ /collection:hero }}
