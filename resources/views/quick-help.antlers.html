@@ -1,6 +1,15 @@
 <main>
     <!-- Hero Section -->
-    {{ partial:hero/quick_help }}
+    <section class="bg-gradient-to-br from-blue-50 to-red-50 py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center fade-in-up">
+                <h1 class="text-4xl md:text-6xl font-bold text-blue-900 mb-6">Corporate Support Services</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    {{ description }}
+                </p>
+            </div>
+        </div>
+    </section>
 
     <!-- Services Grid -->
     <section class="py-12 bg-white">
@@ -8,34 +17,103 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
 
                 <!-- Software System Support -->
-                {{ collection:quick_help }}
+                {{ collection:quick_help_support title:is="featured" }}
+                {{ quick_help}}
                 <div
-                    class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden fade-in-up transition-all duration-300 flex flex-col h-full">
-                    <div class="p-8 flex flex-col h-full">
+                    class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden fade-in-up transition-all duration-300">
+                    <div class="p-8">
                         <!-- Icon Section -->
                         <div class="flex justify-center mb-8">
-                            <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center">
-                                <i class="fas fa-{{ icon }} text-3xl text-gray-600"></i>
+                            <div class="bg-{{ color }}-100 w-20 h-20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-cogs text-3xl text-{{color}}-600"></i>
                             </div>
                         </div>
 
                         <!-- Content Section -->
-                        <div class="text-center flex flex-col h-full">
-                            <h2 class="text-xl font-semibold text-gray-900 mb-4">{{ title }}</h2>
-                            <p class="text-gray-700 leading-relaxed mb-6 flex-grow">
+                        <div class="text-center">
+                            <h2 class="text-2xl font-bold text-{{ color }}-900 mb-4">{{ title }}</h2>
+                            <p class="text-gray-700 leading-relaxed mb-6">
                                 {{ description }}
                             </p>
-                            <div class="flex flex-wrap justify-center gap-2 mt-auto">
-                                {{ featured_grid }}
-                                <span class="px-4 py-2 bg-gray-600 text-white text-sm font-medium rounded-full">
-                                    {{ title }}
+                            <div class="flex flex-wrap justify-center gap-2">
+                                {{ features }}
+                                <span class="px-4 py-2 bg-{{ color }}-600 text-white text-sm font-medium rounded-full">
+                                    {{ value }}
                                 </span>
-                                {{ /featured_grid }}
+                                {{ /features }}
                             </div>
                         </div>
                     </div>
                 </div>
-                {{ /collection:quick_help }}
+                {{ /quick_help }}
+                {{ /collection:quick_help_support }}
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl p-8 fade-in-up">
+                    <div class="text-center mb-8">
+                        <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-headset text-3xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-blue-900 mb-4">Need Immediate Assistance?</h3>
+                        <p class="text-lg text-gray-600">
+                            Our expert team is available 24/7 to help you with any technical issues or questions.
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="tel:+1234567890"
+                            class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                            <i class="fas fa-phone mr-2"></i>
+                            Call Now
+                        </a>
+                        <a href="mailto:support@mrican.com"
+                            class="px-8 py-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Email Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Why Choose Our Support Services?</h2>
+                <p class="text-lg text-gray-600">Built on 34+ years of experience in corporate solutions</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="fade-in-up">
+                    <div
+                        class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white text-center h-full">
+                        <i class="fas fa-clock text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">24/7 Availability</h3>
+                        <p class="text-blue-100">Round-the-clock support to ensure your business never stops</p>
+                    </div>
+                </div>
+                <div class="fade-in-up">
+                    <div
+                        class="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-6 text-white text-center h-full">
+                        <i class="fas fa-users text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Expert Team</h3>
+                        <p class="text-red-100">Certified professionals with deep industry knowledge</p>
+                    </div>
+                </div>
+                <div class="fade-in-up">
+                    <div
+                        class="bg-gradient-to-br from-blue-500 to-red-500 rounded-xl p-6 text-white text-center h-full">
+                        <i class="fas fa-shield-alt text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Secure Solutions</h3>
+                        <p class="text-blue-100">Enterprise-grade security for your business data</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

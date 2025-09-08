@@ -13,15 +13,5 @@ features:
   - 'Custom ERP Setup'
 sort_order: 4
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1757113882
-featured_grid:
-  -
-    id: mf7g7lyi
-    title: 'Corporate Consultancy'
-  -
-    id: mf7g7qch
-    title: 'Process Optimization'
-  -
-    id: mf7g83dk
-    title: 'Custom ERP Setup'
+updated_at: 1756486062
 ---
