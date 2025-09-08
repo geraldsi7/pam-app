@@ -1,0 +1,18 @@
+title: Why Choose
+tabs:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          display: Title
+          validate: required
+      -
+        handle: order
+        field:
+          type: integer
+          display: Order
+          validate: required
+          default: 1

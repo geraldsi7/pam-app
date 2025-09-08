@@ -1,0 +1,31 @@
+title: Core Strengths
+tabs:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          display: Title
+          validate: required
+      -
+        handle: order
+        field:
+          type: integer
+          display: Order
+          validate: required
+          default: 1
+      -
+        handle: icon
+        field:
+          type: text
+          display: Icon Class
+          validate: required
+          default: fas fa-star
+      -
+        handle: description
+        field:
+          type: textarea
+          display: Description
+          validate: required

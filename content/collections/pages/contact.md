@@ -4,5 +4,6 @@ blueprint: page
 title: Contact
 author: a741ee50-bd31-4221-9866-0662ad5e23f1
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
+template: contact
 updated_at: 1756417313
 ---

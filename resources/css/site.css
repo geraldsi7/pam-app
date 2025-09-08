@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 /* Custom styles for animations */
+.home-hero {
+    /* background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%); */
+    background-image: url('/assets/');
+    /* background-color: #dc2626; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);

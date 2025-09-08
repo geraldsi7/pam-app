@@ -6,7 +6,8 @@ template: home
 author: a741ee50-bd31-4221-9866-0662ad5e23f1
 description: 'A new description'
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1756464886
+updated_at: 1757352696
+backdrop: true
 ---
 ## Welcome to your brand new Statamic site!
 
