@@ -1,4 +1,4 @@
-title: CTA
+title: Support
 tabs:
   main:
     display: Main
@@ -13,25 +13,26 @@ tabs:
               validate:
                 - required
           -
-            handle: subtitle
-            field:
-              type: text
-              display: Subtitle
-          -
-            handle: heading
-            field:
-              type: text
-              display: Heading
-          -
             handle: description
             field:
               type: textarea
               display: Description
           -
-            handle: button_text
+            handle: icon
             field:
               type: text
-              display: 'Button Text'
+              display: Icon
+          -
+            handle: featured_grid
+            field:
+              type: grid
+              display: 'Featured Grid'
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: Title
   sidebar:
     display: Sidebar
     sections:
@@ -43,3 +44,12 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - quick_help
+              max_items: 1
+              listable: false
+              localizable: true

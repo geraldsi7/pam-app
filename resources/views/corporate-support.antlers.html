@@ -1,0 +1,43 @@
+<main>
+    <!-- Hero Section -->
+    {{ partial:hero/support }}
+
+    <!-- Services Grid -->
+    <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+
+                <!-- Software System Support -->
+                {{ collection:supports }}
+                <div
+                    class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden fade-in-up transition-all duration-300 flex flex-col h-full">
+                    <div class="p-8 flex flex-col h-full">
+                        <!-- Icon Section -->
+                        <div class="flex justify-center mb-8">
+                            <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-{{ icon }} text-3xl text-gray-600"></i>
+                            </div>
+                        </div>
+
+                        <!-- Content Section -->
+                        <div class="text-center flex flex-col h-full">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-4">{{ title }}</h2>
+                            <p class="text-gray-700 leading-relaxed mb-6 flex-grow">
+                                {{ description }}
+                            </p>
+                            <div class="flex flex-wrap justify-center gap-2 mt-auto">
+                                {{ featured_grid }}
+                                <span class="px-4 py-2 bg-gray-600 text-white text-sm font-medium rounded-full">
+                                    {{ title }}
+                                </span>
+                                {{ /featured_grid }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ /collection:supports }}
+            </div>
+        </div>
+    </section>
+    
+</main>

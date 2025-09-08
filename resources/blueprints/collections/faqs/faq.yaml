@@ -1,4 +1,4 @@
-title: CTA
+title: FAQ
 tabs:
   main:
     display: Main
@@ -13,25 +13,11 @@ tabs:
               validate:
                 - required
           -
-            handle: subtitle
+            handle: content
             field:
-              type: text
-              display: Subtitle
-          -
-            handle: heading
-            field:
-              type: text
-              display: Heading
-          -
-            handle: description
-            field:
-              type: textarea
-              display: Description
-          -
-            handle: button_text
-            field:
-              type: text
-              display: 'Button Text'
+              type: markdown
+              display: Answer
+              localizable: true
   sidebar:
     display: Sidebar
     sections:
