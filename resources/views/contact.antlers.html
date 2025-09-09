@@ -1,5 +1,7 @@
 <main>
-    {{ partial:hero/contact }}
+    {{ collection:hero title:is="Contact Hero" limit="1" }}
+    {{ partial:hero }}
+    {{ /collection:hero }}
     {{ partial:contact/faq }}
     {{ partial:contact/contact-form }}
     {{ partial:cta }}

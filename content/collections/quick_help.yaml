@@ -1,8 +1,0 @@
-title: Quick Help
-blueprint: quick_help
-route: null
-revisions: false
-date_behavior:
-  past: public
-  future: private
-sort_dir: asc

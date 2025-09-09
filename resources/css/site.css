@@ -3,14 +3,33 @@
 @tailwind utilities;
 
 /* Custom styles for animations */
-.home-hero {
-    /* background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%); */
-    background-image: url('/assets/');
-    /* background-color: #dc2626; */
+
+.main-hero {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    padding: 80px 0 60px 0;
+    display: flex;
+    align-items: center;
+    background: url('../../public/assets/hero-bg.png') top center no-repeat;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
+
+.hero-section {
+    color: #444444;
+    background-color: #ffffff;
+    padding: 60px 0;
+    scroll-margin-top: 98px;
+    overflow: clip;
+}
+
+@media (max-width: 1199px) {
+    .hero-section {
+        scroll-margin-top: 56px;
+    }
+}
+
+
 
 .fade-in-up {
     opacity: 0;
@@ -68,7 +87,7 @@
     .erp-dashboard-mockup {
         transform: none;
     }
-    
+
     .fade-in-up {
         transform: translateY(20px);
     }
@@ -127,6 +146,7 @@
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -174,9 +194,24 @@
         transform: translateX(100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
+    }
+}
+
+/* Animated image up and down motion */
+.animated {
+    animation: floatUpDown 4.8s ease-in-out infinite alternate-reverse both;
+}
+
+@keyframes floatUpDown {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
     }
 }
 
@@ -186,11 +221,11 @@
         margin: 1rem;
         padding: 1.5rem;
     }
-    
+
     .contact-info-card {
         margin-bottom: 1rem;
     }
-    
+
     .map-container {
         height: 300px;
     }

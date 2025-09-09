@@ -1,6 +1,8 @@
 <main>
     <!-- Hero Section -->
-    {{ partial:hero/support }}
+    {{ collection:hero title:is="Support Hero" limit="1" }}
+    {{ partial:hero }}
+    {{ /collection:hero }}
 
     <!-- Services Grid -->
     <section class="py-12 bg-white">

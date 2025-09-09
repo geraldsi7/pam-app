@@ -8,6 +8,10 @@ export default {
     "./content/**/*.md",
     "./content/**/*.yaml",
   ],
+  safelist: [
+    'bg-red-600',
+    'border-red-500',
+  ],
   theme: {
     extend: {
       fontFamily: {

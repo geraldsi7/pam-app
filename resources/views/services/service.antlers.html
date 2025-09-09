@@ -1,0 +1,180 @@
+{{ partial:partials/header }}
+
+<main class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r {{ title == 'Software' ? 'from-blue-900 to-blue-700' : 'from-green-900 to-green-700' }} text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">{{ title }}</h1>
+                <p class="text-xl md:text-2xl {{ title == 'Software' ? 'text-blue-100' : 'text-green-100' }} mb-8">
+                    {{ title == 'Software' ? 'Transform your business with our comprehensive software solutions' : 'Complete hardware infrastructure solutions for your business' }}
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    {{ if title == 'Software' }}
+                    <span class="bg-blue-800 px-4 py-2 rounded-full text-sm">ERP Systems</span>
+                    <span class="bg-blue-800 px-4 py-2 rounded-full text-sm">Financial Management</span>
+                    <span class="bg-blue-800 px-4 py-2 rounded-full text-sm">Business Intelligence</span>
+                    {{ else }}
+                    <span class="bg-green-800 px-4 py-2 rounded-full text-sm">CCTV Systems</span>
+                    <span class="bg-green-800 px-4 py-2 rounded-full text-sm">Computers & Laptops</span>
+                    <span class="bg-green-800 px-4 py-2 rounded-full text-sm">Networking Equipment</span>
+                    {{ /if }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our {{ title }} Products</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    {{ title == 'Software' ? 'Discover our range of software solutions designed to streamline your business operations' : 'Discover our range of hardware solutions designed to meet your business infrastructure needs' }}
+                </p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {{ if title == 'Software' }}
+                {{ collection:products where="service_type:4a8d4c06-b824-4951-a338-de0b97be17fc" }}
+                {{ else }}
+                {{ collection:products where="service_type:46f37f37-12cd-4284-962b-f7fa1a6da2bd" }}
+                {{ /if }}
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    {{ if media }}
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="{{ media:0:url }}" alt="{{ title }}" class="w-full h-full object-cover">
+                    </div>
+                    {{ /if }}
+                    
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="{{ title == 'Software' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800' }} text-xs font-semibold px-2.5 py-0.5 rounded">{{ subtitle }}</span>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">{{ title }}</h3>
+                        
+                        {{ if description }}
+                        <p class="text-gray-600 mb-4 line-clamp-3">{{ description }}</p>
+                        {{ /if }}
+                        
+                        <div class="flex items-center justify-between">
+                            <a href="{{ url }}" class="inline-flex items-center {{ title == 'Software' ? 'text-blue-600 hover:text-blue-800' : 'text-green-600 hover:text-green-800' }} font-medium">
+                                Learn More
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{ /collection:products }}
+            </div>
+
+            <!-- Empty State -->
+            {{ if title == 'Software' }}
+            {{ if !collection:products where="service_type:4a8d4c06-b824-4951-a338-de0b97be17fc" }}
+            {{ else }}
+            {{ if !collection:products where="service_type:46f37f37-12cd-4284-962b-f7fa1a6da2bd" }}
+            {{ /if }}
+            {{ /if }}
+            <div class="text-center py-12">
+                <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                    {{ if title == 'Software' }}
+                    <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    {{ else }}
+                    <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                    </svg>
+                    {{ /if }}
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">No {{ title }} Products Available</h3>
+                <p class="text-gray-600">Check back soon for our latest {{ title|lower }} solutions.</p>
+            </div>
+            {{ /if }}
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Our {{ title }} Solutions?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    {{ title == 'Software' ? 'Our software is designed with your business needs in mind' : 'Quality hardware backed by professional installation and support' }}
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {{ if title == 'Software' }}
+                <!-- Software Features -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Fast Implementation</h3>
+                    <p class="text-gray-600">Get up and running quickly with our streamlined deployment process</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Reliable Support</h3>
+                    <p class="text-gray-600">24/7 technical support to keep your systems running smoothly</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Scalable Solutions</h3>
+                    <p class="text-gray-600">Grow with confidence knowing our software scales with your business</p>
+                </div>
+                {{ else }}
+                <!-- Hardware Features -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Quality Assurance</h3>
+                    <p class="text-gray-600">All hardware is tested and certified for optimal performance and reliability</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Professional Installation</h3>
+                    <p class="text-gray-600">Expert technicians ensure proper setup and configuration of all equipment</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Ongoing Support</h3>
+                    <p class="text-gray-600">Comprehensive maintenance and support services to keep your systems running</p>
+                </div>
+                {{ /if }}
+            </div>
+        </div>
+    </section>
+</main>
+
+{{ partial:partials/footer }}

@@ -1,0 +1,183 @@
+{{ partial:partials/header }}
+
+<main class="min-h-screen bg-gray-50">
+    <!-- Breadcrumb -->
+    <section class="bg-white border-b">
+        <div class="container mx-auto px-4 py-4">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <a href="/services" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2">Services</a>
+                        </div>
+                    </li>
+                    {{ if service_type }}
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <a href="{{ service_type:url }}" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2">{{ service_type:title }}</a>
+                        </div>
+                    </li>
+                    {{ /if }}
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">{{ title }}</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Hero Section -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Product Image -->
+                    <div class="order-2 lg:order-1">
+                        {{ if media }}
+                        <div class="aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+                            <img src="{{ media:0:url }}" alt="{{ title }}" class="w-full h-full object-cover">
+                        </div>
+                        {{ else }}
+                        <div class="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center">
+                            <svg class="w-24 h-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        {{ /if }}
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="order-1 lg:order-2">
+                        {{ if service_type }}
+                        <div class="mb-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ service_type:title == 'Software Solution' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800' }}">
+                                {{ service_type:title }}
+                            </span>
+                        </div>
+                        {{ /if }}
+
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{{ title }}</h1>
+                        
+                        {{ if subtitle }}
+                        <p class="text-xl text-gray-600 mb-6">{{ subtitle }}</p>
+                        {{ /if }}
+
+                        {{ if description }}
+                        <div class="prose prose-lg max-w-none mb-8">
+                            <p class="text-gray-700 leading-relaxed">{{ description }}</p>
+                        </div>
+                        {{ /if }}
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white {{ service_type:title == 'Software Solution' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700' }} transition-colors duration-200">
+                                Get Quote
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                            <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Section -->
+    {{ if content }}
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Product Details</h2>
+                    <div class="prose prose-lg max-w-none">
+                        {{ content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{ /if }}
+
+    <!-- Related Products Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Related Products</h2>
+                <p class="text-lg text-gray-600">Explore more solutions in this category</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {{ collection:products where="service_type:{service_type:id}" limit="3" }}
+                {{ if id != current:id }}
+                <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    {{ if media }}
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="{{ media:0:url }}" alt="{{ title }}" class="w-full h-full object-cover">
+                    </div>
+                    {{ /if }}
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">{{ title }}</h3>
+                        
+                        {{ if description }}
+                        <p class="text-gray-600 mb-4 line-clamp-3">{{ description }}</p>
+                        {{ /if }}
+                        
+                        <a href="{{ url }}" class="inline-flex items-center {{ service_type:title == 'Software Solution' ? 'text-blue-600 hover:text-blue-800' : 'text-green-600 hover:text-green-800' }} font-medium">
+                            Learn More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                {{ /if }}
+                {{ /collection:products }}
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-16 {{ service_type:title == 'Software Solution' ? 'bg-blue-600' : 'bg-green-600' }} text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
+                <p class="text-xl mb-8 opacity-90">
+                    Contact us today to learn more about {{ title }} and how it can benefit your business.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-gray-900 transition-colors duration-200">
+                        Contact Us
+                    </a>
+                    <a href="tel:+1234567890" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-gray-900 transition-colors duration-200">
+                        Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{{ partial:partials/footer }}

@@ -1,5 +1,13 @@
 title: Products
+template: products/show
+layout: layout
 revisions: false
+route: '/products/{slug}'
 date_behavior:
   past: public
   future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
