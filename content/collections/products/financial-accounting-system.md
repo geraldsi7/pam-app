@@ -9,7 +9,8 @@ media:
 subtitle: FIN
 service_type: 4a8d4c06-b824-4951-a338-de0b97be17fc
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1756404024
+updated_at: 1757517392
+featured_image: web-app-library-categories-providers-screenshots-001-344-685-pub-oracle-erp-screenshot-1704464028.jpg
 ---
 - general ledger
 - accounts receivable

@@ -29,15 +29,10 @@ tabs:
               max_files: 1
               mode: grid
           -
-            handle: redirect_url
+            handle: button_text
             field:
               type: text
-              display: 'Redirect URL'
-          -
-            handle: redirect_url_text
-            field:
-              type: text
-              display: 'Redirect URL Text'
+              display: 'Button Text'
           -
             handle: heading
             field:
@@ -65,6 +60,11 @@ tabs:
                         field:
                           type: text
                           display: Title
+          -
+            handle: button_url
+            field:
+              type: link
+              display: 'Button URL'
   sidebar:
     display: Sidebar
     sections:
@@ -77,3 +77,12 @@ tabs:
               localizable: true
               validate: 'max:200'
               show_regenerate: true
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - services
+              max_items: 1
+              listable: false
+              localizable: true

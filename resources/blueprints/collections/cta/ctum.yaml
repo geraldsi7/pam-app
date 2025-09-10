@@ -32,6 +32,11 @@ tabs:
             field:
               type: text
               display: 'Button Text'
+          -
+            handle: button_url
+            field:
+              type: link
+              display: 'Button URL'
   sidebar:
     display: Sidebar
     sections:

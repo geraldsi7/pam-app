@@ -42,6 +42,13 @@ tabs:
             field:
               type: textarea
               display: Description
+          -
+            handle: products
+            field:
+              collections:
+                - products
+              type: entries
+              display: 'Products'
   sidebar:
     display: Sidebar
     sections:

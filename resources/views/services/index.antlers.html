@@ -1,69 +1,26 @@
-{{ partial:partials/header }}
-
 <main class="min-h-screen bg-gray-50">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">{{ title }}</h1>
-                <p class="text-xl md:text-2xl text-blue-100 mb-8">
-                    Comprehensive solutions for your business needs
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Overview Section -->
+    <!-- Products Grid Section -->
     <section class="py-16">
-        <div class="container mx-auto px-4">
+        <div>
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Service Categories</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ heading }}</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Choose from our comprehensive range of software and hardware solutions
+                    {{ description }}
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- Software Solutions -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-64 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <h3 class="text-2xl font-bold mb-2">Software Solutions</h3>
-                            <p class="text-blue-100">Transform your business with our ERP systems</p>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Software Solutions</h3>
-                        <p class="text-gray-600 mb-6">
-                            Comprehensive software solutions including Financial Accounting Systems, Management Information Systems, and more.
-                        </p>
-                        <a href="/services/software" class="inline-flex items-center justify-center w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200">
-                            Explore Software Solutions
-                        </a>
-                    </div>
-                </div>
+            <!-- Products -->
+            {{ if products|length > 0 }}
+            {{ products }}
+            {{ partial:featured-products order="{{ index % 2 == 0 ? 'image-first' : 'text-first' }}" }}
+            {{ /products }}
 
-                <!-- Hardware Solutions -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-64 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <h3 class="text-2xl font-bold mb-2">Hardware Solutions</h3>
-                            <p class="text-green-100">Complete infrastructure for your business</p>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Hardware Solutions</h3>
-                        <p class="text-gray-600 mb-6">
-                            Reliable hardware infrastructure including CCTV systems, computers, networking equipment, and more.
-                        </p>
-                        <a href="/services/hardware" class="inline-flex items-center justify-center w-full px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors duration-200">
-                            Explore Hardware Solutions
-                        </a>
-                    </div>
-                </div>
+            {{ else }}
+            <div class="text-center py-12">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">No {{ title }} Products Available</h3>
+                <p class="text-gray-600">Check back soon for our latest {{ title|lower }} solutions.</p>
             </div>
+            {{ /if }}
         </div>
     </section>
 </main>
-
-{{ partial:partials/footer }}

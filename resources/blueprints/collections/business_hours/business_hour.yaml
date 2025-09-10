@@ -1,4 +1,4 @@
-title: Product
+title: 'Business Hour'
 tabs:
   main:
     display: Main
@@ -19,23 +19,15 @@ tabs:
               display: Content
               localizable: true
           -
-            handle: template
+            handle: day
             field:
-              type: template
-              display: Template
-              localizable: true
+              type: text
+              display: Day
           -
-            handle: description
+            handle: schedule
             field:
-              type: textarea
-              display: Description
-          -
-            handle: featured_image
-            field:
-              max_files: 1
-              container: assets
-              type: assets
-              display: 'Featured Image'
+              type: text
+              display: Schedule
   sidebar:
     display: Sidebar
     sections:

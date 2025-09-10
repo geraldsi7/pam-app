@@ -11,8 +11,8 @@ featured_categories:
   - 952d3494-3063-41b6-87d8-854ee7126591
   - 3237b83d-df0f-4f0a-aaf5-d57d9d3550a9
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1757077215
-redirect_url_text: 'Explore our ERP solutions'
+updated_at: 1757520651
+button_text: 'Explore our ERP solutions'
 heading:
   -
     id: mf5wnvc9
@@ -33,4 +33,5 @@ heading:
     title: 'Experience phenomenal business performance'
     description: 'Our intelligent ERP system automatically optimizes workflows and processes, ensuring the highest operational efficiency and productivity gains in the market.'
 featured_image: 'chatgpt-image-sep-4,-2025,-10_19_02-pm_a.png'
+button_url: 'entry::29378d5b-7b47-489b-8808-9cfa271c2342'
 ---

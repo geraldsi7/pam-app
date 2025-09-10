@@ -10,3 +10,5 @@ preferences:
       after_save: continue_editing
     trusted_businesses:
       after_save: continue_editing
+    business_hours:
+      after_save: create_another

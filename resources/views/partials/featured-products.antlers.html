@@ -1,5 +1,5 @@
 
-<section class="{{ index % 2 == 0 ? 'bg-white' : 'bg-gray-50' }} py-16 lg:py-24">
+<section class="{{ index % 2 == 0 ? 'bg-white' : 'bg-gray-50' }} py-10">
     <div class="container mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -14,8 +14,6 @@
             <!-- Right Column - Content -->
             <div class="space-y-8 fade-in-up {{ order == 'image-first' ? 'order-2' : 'order-1' }}">
                 <!-- Section 1: Seamless ERP Experience -->
-                 
-                {{ heading }}
                 <div class="space-y-4">
                     <h2 class="text-3xl lg:text-4xl font-bold text-blue-900 leading-tight">
                         {{ title }}
@@ -23,27 +21,13 @@
                     <p class="text-lg text-gray-600 leading-relaxed">
                         {{ description }}
                     </p>
-
-                    <!-- ERP Modules List -->
-                    <div class="grid grid-cols-1 {{ featured_categories | length > 3 ? 'md:grid-cols-2' : '' }} gap-3 mt-6">                        
-                            {{ featured_categories }}
-                            <div class="flex items-center gap-3">
-                                <div class="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-check text-white text-xs"></i>
-                                </div>
-                                <span class="text-gray-700 font-medium">{{ title }}</span>
-                            </div>
-                            {{ /featured_categories }}
-                        
-                    </div>
                 </div>
-                {{ /heading }}
 
                 <!-- Call to Action -->
                 <div>
-                    <a href="{{ button_url }}"
+                    <a href="{{ url }}"
                         class="inline-flex items-center gap-2 text-red-600 font-semibold hover:text-red-700 transition-colors group">
-                        <span>{{ button_text }}</span>
+                        <span>View Product</span>
                         <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>

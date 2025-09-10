@@ -1,0 +1,11 @@
+<main>
+    <!-- services -->
+    {{ collection:services }}
+    {{ partial:featured-services order="{{ index % 2 == 0 ? 'image-first' : 'text-first' }}" }}
+    {{ /collection:services }}
+
+    <!-- CTA -->
+    {{ collection:cta title:is="Explore Services" }}
+    {{ partial:cta }}
+    {{ /collection:cta }}
+</main>
