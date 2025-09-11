@@ -72,26 +72,6 @@
     transform: translateY(0);
 }
 
-/* ERP Solutions Page Specific Styles */
-.erp-dashboard-mockup {
-    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-    transition: transform 0.3s ease;
-}
-
-.erp-dashboard-mockup:hover {
-    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-    .erp-dashboard-mockup {
-        transform: none;
-    }
-
-    .fade-in-up {
-        transform: translateY(20px);
-    }
-}
 
 /* Enhanced hover effects */
 .feature-card {
