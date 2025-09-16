@@ -1,0 +1,41 @@
+title: Contact Information
+tabs:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          display: Title
+          validate:
+            - required
+      -
+        handle: location
+        field:
+          type: text
+          display: Location
+          validate:
+            - required
+      -
+        handle: email
+        field:
+          type: text
+          display: Email
+          validate:
+            - required
+            - email
+      -
+        handle: phone
+        field:
+          type: text
+          display: Phone
+          validate:
+            - required
+      -
+        handle: mobile
+        field:
+          type: text
+          display: Mobile
+          validate:
+            - required

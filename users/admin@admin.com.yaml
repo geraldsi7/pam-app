@@ -12,3 +12,5 @@ preferences:
       after_save: continue_editing
     business_hours:
       after_save: create_another
+    contact_info:
+      after_save: create_another

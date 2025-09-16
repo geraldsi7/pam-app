@@ -4,7 +4,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-12 items-start">
                 <!-- Contact Information -->
-                <div class="space-y-8 fade-in-up">
+                <div class="space-y-8 fade-in-up order-2 md:order-1">
                     <div>
                         <h2 class="text-3xl font-bold text-blue-900 mb-4">Get in Touch</h2>
                         <p class="text-lg text-gray-600 leading-relaxed">
@@ -24,8 +24,9 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-blue-900 mb-1">Phone</h3>
-                                <p class="text-gray-600">+1-302-918-4741</p>
-                                <p class="text-gray-600">+1-416-276-2085</p>
+                                {{ collection:contact_info title:in="Phone|Mobile" }}
+                                    <p class="text-gray-600">{{ content }}</p>
+                                {{ /collection:contact_info }}
                             </div>
                         </div>
 
@@ -38,7 +39,9 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-blue-900 mb-1">Email</h3>
-                                <p class="text-gray-600">mrican@sympatico.ca</p>
+                                {{ collection:contact_info title:is="Email" }}
+                                    <p class="text-gray-600">{{ content }}</p>
+                                {{ /collection:contact_info }}
                             </div>
                         </div>
 
@@ -50,8 +53,10 @@
                                 <i class="fas fa-map-marker-alt text-white"></i>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-blue-900 mb-1">Office</h3>
-                                <p class="text-gray-600">Toronto, Ontario, Canada</p>
+                                <h3 class="font-semibold text-blue-900 mb-1">Location</h3>
+                                {{ collection:contact_info title:is="Location" }}
+                                    <p class="text-gray-600">{{ content }}</p>
+                                {{ /collection:contact_info }}
                             </div>
                         </div>
                     </div>
@@ -74,7 +79,7 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="fade-in-up" style="transition-delay: 150ms;">
+                <div class="fade-in-up order-1 md:order-2" style="transition-delay: 150ms;">
                     <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
                         <h3 class="text-2xl font-bold text-blue-900 mb-6">Send us a Message</h3>
 
