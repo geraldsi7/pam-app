@@ -13,11 +13,100 @@ tabs:
               validate:
                 - required
           -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+              instructions: 'Brief description for listings and meta tags'
+              validate: 'max:160'
+          -
             handle: content
             field:
-              type: markdown
+              type: bard
               display: Content
-              localizable: true
+              instructions: 'Page content with rich formatting'
+              container: assets
+              save_html: false
+              toolbar_mode: floating
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              always_show_set_button: false
+              sets:
+                hero:
+                  display: Hero
+                  fields:
+                    -
+                      handle: title
+                      field:
+                        type: text
+                        display: Title
+                    -
+                      handle: subtitle
+                      field:
+                        type: textarea
+                        display: Subtitle
+                    -
+                      handle: background_image
+                      field:
+                        container: assets
+                        type: assets
+                        display: 'Background Image'
+                        max_files: 1
+                        mode: grid
+                    -
+                      handle: cta_text
+                      field:
+                        type: text
+                        display: 'CTA Text'
+                    -
+                      handle: cta_link
+                      field:
+                        type: link
+                        display: 'CTA Link'
+                section:
+                  display: Section
+                  fields:
+                    -
+                      handle: title
+                      field:
+                        type: text
+                        display: Title
+                    -
+                      handle: content
+                      field:
+                        type: bard
+                        display: Content
+                        container: assets
+                        save_html: false
+                        toolbar_mode: floating
+                    -
+                      handle: layout
+                      field:
+                        type: select
+                        display: Layout
+                        options:
+                          full: Full Width
+                          grid: Grid
+                          columns: Columns
+                        default: full
+                contact_form:
+                  display: 'Contact Form'
+                  fields:
+                    -
+                      handle: title
+                      field:
+                        type: text
+                        display: Title
+                    -
+                      handle: description
+                      field:
+                        type: textarea
+                        display: Description
           -
             handle: author
             field:
@@ -33,15 +122,52 @@ tabs:
               display: Template
               localizable: true
           -
-            handle: heading
+            handle: page_type
+            field:
+              type: select
+              display: 'Page Type'
+              options:
+                standard: Standard
+                landing: Landing Page
+                service: Service Page
+                about: About Page
+                contact: Contact Page
+              clearable: true
+              searchable: true
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: meta_title
             field:
               type: text
-              display: Heading
+              display: 'Meta Title'
+              instructions: 'Recommended: 50-60 characters'
+              validate: 'max:60'
           -
-            handle: description
+            handle: meta_description
             field:
               type: textarea
-              display: Description
+              display: 'Meta Description'
+              instructions: 'Recommended: 150-160 characters'
+              validate: 'max:160'
+          -
+            handle: og_image
+            field:
+              container: assets
+              type: assets
+              display: 'Open Graph Image'
+              instructions: 'Recommended: 1200x630px'
+              max_files: 1
+              mode: grid
+          -
+            handle: keywords
+            field:
+              type: text
+              display: Keywords
+              instructions: 'Comma-separated keywords for SEO'
   sidebar:
     display: Sidebar
     sections:
@@ -53,12 +179,3 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
-          -
-            handle: parent
-            field:
-              type: entries
-              collections:
-                - pages
-              max_items: 1
-              listable: false
-              localizable: true

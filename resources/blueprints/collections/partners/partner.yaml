@@ -18,6 +18,25 @@ tabs:
             field:
               type: textarea
               display: Description
+              instructions: 'Brief description for listings and meta tags'
+              validate: 'max:160'
+          -
+            handle: content
+            field:
+              type: bard
+              display: Content
+              instructions: 'Detailed partnership information'
+              container: assets
+              save_html: false
+              toolbar_mode: floating
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              always_show_set_button: false
           -
             handle: partners
             field:
@@ -31,38 +50,98 @@ tabs:
                     type: text
                     display: 'Company Name'
                     instructions: 'The company name'
+                    required: true
+                -
+                  handle: logo
+                  field:
+                    container: assets
+                    type: assets
+                    display: Logo
+                    max_files: 1
+                    mode: grid
+                    instructions: 'Company logo (PNG/SVG preferred)'
                 -
                   handle: description
                   field:
                     type: textarea
                     display: Description
-                    instructions: 'A brief description or quote about the partnership'
+                    instructions: 'Brief description of partnership or company'
+                -
+                  handle: partnership_type
+                  field:
+                    type: select
+                    display: 'Partnership Type'
+                    options:
+                      strategic: Strategic
+                      supplier: Supplier
+                      client: Client
+                      certification: Certification
+                      association: Industry Association
+                    clearable: true
+                    searchable: true
+                -
+                  handle: industry
+                  field:
+                    type: select
+                    display: Industry
+                    options:
+                      mining: Mining
+                      commodities: Commodities
+                      construction: Construction
+                      renewable: Renewable Energy
+                      government: Government
+                      manufacturing: Manufacturing
+                      logistics: Logistics
+                    clearable: true
+                    searchable: true
                 -
                   handle: country
                   field:
                     type: text
                     display: Country
-                    instructions: 'The country name'
-                -
-                  handle: flag
-                  field:
-                    max_files: 1
-                    container: assets
-                    type: assets
-                    display: Flag
-                    instructions: 'Country flag emoji or image filename'
+                    instructions: 'Country of operation'
                 -
                   handle: website
                   field:
                     type: text
                     display: 'Website URL'
-                    instructions: 'The partner website URL'
+                    input_type: url
+                    instructions: 'Partner website URL'
                 -
-                  handle: website_text
+                  handle: featured
                   field:
-                    type: text
-                    display: 'Website Text'
-                    instructions: 'The text to display for the website link'
+                    type: toggle
+                    display: Featured
+                    instructions: 'Highlight this partner prominently'
+                    default: false
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: meta_title
+            field:
+              type: text
+              display: 'Meta Title'
+              instructions: 'Recommended: 50-60 characters'
+              validate: 'max:60'
+          -
+            handle: meta_description
+            field:
+              type: textarea
+              display: 'Meta Description'
+              instructions: 'Recommended: 150-160 characters'
+              validate: 'max:160'
+          -
+            handle: og_image
+            field:
+              container: assets
+              type: assets
+              display: 'Open Graph Image'
+              instructions: 'Recommended: 1200x630px'
+              max_files: 1
+              mode: grid
   sidebar:
     display: Sidebar
     sections:

@@ -5,12 +5,14 @@ title: 'Backed by strong global partners'
 partners:
   -
     id: mf5vdxuu
-    title: 'Mrican Canada'
+    title: 'Chuanrun New Energy'
     description: 'Leading ERP solutions provider in North America, specializing in enterprise resource planning and business process optimization for Canadian businesses.'
-    country: Canada
+    country: China
     flag: canada_555473.png
     website: 'http://www.mrican.ca'
     website_text: mrican.ca
+    logo: picture.png
+    featured: true
   -
     id: mf5vwo4y
     title: 'Newel Solutions'
@@ -19,6 +21,7 @@ partners:
     flag: india_206606.png
     website: 'http://www.newelsolutions.com'
     website_text: newelsolutions.com
+    featured: false
   -
     id: mf5w1hzq
     title: 'SoftCor Ghana'
@@ -27,7 +30,8 @@ partners:
     flag: ghana_555424.png
     website: 'http://www.softcorghana.com'
     website_text: softcorghana.com
+    featured: false
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1757023258
-description: 'Mrican ERP is backed by strong global partners, ensuring you get the best possible service and support.'
+updated_at: 1771108695
+description: 'Backed by trusted international partners, we deliver consistent quality, efficient supply, and seamless project support.'
 ---

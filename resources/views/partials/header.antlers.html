@@ -1,12 +1,12 @@
 <!-- Top Banner -->
-<header id="main-header" class="bg-white sticky top-0 left-0 w-full z-50 transition-shadow duration-300">
-    <div class="container mx-auto px-4">
+<header id="main-header" class="bg-white sticky top-0 left-0 z-50 transition-shadow duration-300">
+    <div class="max-w-7xl mx-auto p-4">
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->
              {{ collection:pages title:is="Home" }}
             <a href="{{ url }}" class="flex items-center gap-3 text-xl font-bold text-blue-900">
                 {{ collection:logos limit="1"}}
-                <img src="{{ featured_image }}" alt="Logo" class="w-auto h-12 object-cover">
+                <img src="{{ featured_image }}" alt="Logo" class="h-10 lg:h-12 w-auto">
                 {{ /collection:logos }}
             </a>
             {{ /collection:pages }}
@@ -39,41 +39,6 @@
                 {{ /if }}
                 {{ /nav:collection:pages }}
             </nav>
-
-            <!-- Partners Dropdown -->
-            <div class="hidden md:flex items-center gap-4">
-                <!-- Partners Dropdown -->
-                <div class="relative group">
-                    <button class="text-blue-900 hover:text-red-600 transition-colors flex items-center gap-2">
-                        <i class="fas fa-globe text-lg"></i>
-                        <span class="text-sm font-medium">Partners</span>
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
-                    <!-- Partners Dropdown Menu -->
-                    <div
-                        class="absolute top-full right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 dropdown-menu">
-                        <div class="p-3 border-b border-gray-100">
-                            <h3 class="text-sm font-semibold text-blue-900">Our Global Partners</h3>
-                        </div>
-                        {{ collection:partners }}
-                        {{ partners }}
-                        <a href="{{ website }}" target="_blank"
-                            class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors">
-                            <img src="{{ flag:url }}" alt="{{ country }} flag" class="w-6 h-6 object-cover">
-                            <!-- Flag emoji based on country -->
-
-                            <div class="flex-1">
-                                <div class="text-sm font-medium text-blue-900">{{ country }}</div>
-                                <div class="text-xs text-gray-500">{{ website_text }}</div>
-                            </div>
-                            <i class="fas fa-external-link-alt text-xs text-gray-400"></i>
-                        </a>
-                        {{ /partners }}
-                        {{ /collection:partners }}
-                    </div>
-                </div>
-            </div>
-
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden text-2xl text-blue-900">
                 <i class="fa-solid fa-bars"></i>

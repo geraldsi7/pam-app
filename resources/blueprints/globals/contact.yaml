@@ -1,0 +1,97 @@
+title: 'Corporate Contact'
+tabs:
+  contact:
+    display: Contact Details
+    sections:
+      -
+        fields:
+          -
+            handle: primary_email
+            field:
+              type: text
+              display: 'Primary Email'
+              input_type: email
+              required: true
+          -
+            handle: sales_email
+            field:
+              type: text
+              display: 'Sales Email'
+              input_type: email
+          -
+            handle: support_email
+            field:
+              type: text
+              display: 'Support Email'
+              input_type: email
+          -
+            handle: primary_phone
+            field:
+              type: text
+              display: 'Primary Phone'
+              required: true
+          -
+            handle: secondary_phone
+            field:
+              type: text
+              display: 'Secondary Phone'
+          -
+            handle: fax
+            field:
+              type: text
+              display: Fax
+          -
+            handle: emergency_contact
+            field:
+              type: text
+              display: 'Emergency Contact'
+  address:
+    display: Address
+    sections:
+      -
+        fields:
+          -
+            handle: address_line_1
+            field:
+              type: text
+              display: 'Address Line 1'
+              required: true
+          -
+            handle: address_line_2
+            field:
+              type: text
+              display: 'Address Line 2'
+          -
+            handle: city
+            field:
+              type: text
+              display: City
+              required: true
+          -
+            handle: state_province
+            field:
+              type: text
+              display: 'State/Province'
+          -
+            handle: postal_code
+            field:
+              type: text
+              display: 'Postal Code'
+              required: true
+          -
+            handle: country
+            field:
+              type: text
+              display: Country
+              required: true
+  business:
+    display: Business Hours
+    sections:
+      -
+        fields:
+          -
+            handle: business_hours_note
+            field:
+              type: text
+              display: 'Business Hours Note'
+              instructions: 'Display text for business hours'

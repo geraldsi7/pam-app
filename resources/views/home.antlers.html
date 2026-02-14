@@ -3,6 +3,12 @@
     {{ collection:hero title:is="Home Hero" limit="1" }}
     {{ partial:hero main="true" }}
     {{ /collection:hero }}
+
+    <!-- Mission Section -->
+    {{ collection:articles }}
+    {{ partial:article  order="{{ index % 2 == 0 ? 'image-first' : 'text-first' }}"}}
+    {{ /collection:articles }}
+
     <!-- services -->
     {{ collection:services }}
     {{ partial:featured-services order="{{ index % 2 == 0 ? 'image-first' : 'text-first' }}" }}
@@ -17,7 +23,7 @@
     {{ partial:partners }}
 
     <!-- CTA -->
-     {{ collection:cta title:is="Explore Services" }}
+    {{ collection:cta title:is="Explore Services" }}
     {{ partial:cta }}
     {{ /collection:cta }}
 </main>

@@ -6,12 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ vite src="resources/js/site.js|resources/css/site.css" }}
 
-    <title>{{ title ?? site:name ?? 'Mrican Technologies'}} </title>
+    <title>{{ meta_title ?? title ?? site:name ?? 'Plus Alliance Meridian Ltd (PAM)' }}</title>
+
+    {{# SEO Meta Tags #}}
+    {{ if meta_description }}
+    <meta name="description" content="{{ meta_description }}">
+    {{ else }}
+    <meta name="description"
+        content="{{ description ?? 'Leading industrial trading company specializing in minerals & mining, commodity trading, construction & development, and renewable energy solutions worldwide.' }}">
+    {{ /if }}
+
+    {{# Open Graph Tags #}}
+    <meta property="og:title" content="{{ meta_title ?? title ?? site:name ?? 'Plus Alliance Meridian Ltd (PAM)' }}">
+    <meta property="og:description"
+        content="{{ meta_description ?? description ?? 'Leading industrial trading company specializing in minerals & mining, commodity trading, construction & development, and renewable energy solutions worldwide.' }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ current_url }}">
+    {{ if og_image }}
+    <meta property="og:image" content="{{ og_image:url }}">
+    {{ else }}
+    <meta property="og:image" content="{{ site:logo ?? '/images/pam-og-image.jpg' }}">
+    {{ /if }}
+    <meta property="og:site_name" content="{{ site:name ?? 'Plus Alliance Meridian Ltd (PAM)' }}">
+
+    {{# Twitter Card Tags #}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ meta_title ?? title ?? site:name ?? 'Plus Alliance Meridian Ltd (PAM)' }}">
+    <meta name="twitter:description"
+        content="{{ meta_description ?? description ?? 'Leading industrial trading company specializing in minerals & mining, commodity trading, construction & development, and renewable energy solutions worldwide.' }}">
+    {{ if og_image }}
+    <meta name="twitter:image" content="{{ og_image:url }}">
+    {{ else }}
+    <meta name="twitter:image" content="{{ site:logo ?? '/images/pam-twitter-image.jpg' }}">
+    {{ /if }}
+
+    {{# Additional SEO Tags #}}
+    <meta name="author" content="Plus Alliance Meridian Ltd (PAM)">
+    <meta name="keywords"
+        content="{{ keywords ?? 'industrial trading, minerals mining, commodity trading, construction development, renewable energy, solar farms, international procurement' }}">
+    <link rel="canonical" href="{{ canonical_url ?? current_url }}">
+
+    {{# Favicon and App Icons #}}
+    {{ if site:favicon }}
+    <link rel="icon" type="image/x-icon" href="{{ site:favicon:url }}">
+    {{ else }}
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    {{ /if }}
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800,900&display=swap" rel="stylesheet" />
 
-        <!-- Font Awesome for Icons -->
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />

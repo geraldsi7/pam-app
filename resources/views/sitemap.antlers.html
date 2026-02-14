@@ -1,0 +1,113 @@
+{{# XML Sitemap Template for PAM Corporate Website #}}
+{{# Dynamic XML sitemap for SEO #}}
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    {{# Homepage #}}
+    <url>
+        <loc>{{ site:url }}</loc>
+        <lastmod>{{ now format="Y-m-d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    {{# Static Pages #}}
+    {{ collection:pages }}
+    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ updated_at format="Y-m-d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {{ /collection:pages }}
+
+    {{# Services #}}
+    {{ collection:services }}
+    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ updated_at format="Y-m-d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    {{ /collection:services }}
+
+    {{# Products #}}
+    {{ collection:products }}
+    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ updated_at format="Y-m-d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    {{ /collection:products }}
+
+    {{# Projects #}}
+    {{ collection:projects }}
+    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ updated_at format="Y-m-d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {{ /collection:projects }}
+
+    {{# News Articles #}}
+    {{ collection:news }}
+    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ publish_date format="Y-m-d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    {{ /collection:news }}
+
+    {{# Team Members #}}
+    {{ collection:team }}
+    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ updated_at format="Y-m-d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    {{ /collection:team }}
+
+    {{# Partners #}}
+    {{ collection:partners }}
+    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ updated_at format="Y-m-d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    {{ /collection:partners }}
+
+    {{# Downloads #}}
+    {{ collection:downloads }}
+    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ updated_at format="Y-m-d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    {{ /collection:downloads }}
+
+    {{# Additional Static URLs #}}
+    <url>
+        <loc>{{ site:url }}/downloads</loc>
+        <lastmod>{{ now format="Y-m-d" }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>{{ site:url }}/request-quote</loc>
+        <lastmod>{{ now format="Y-m-d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>

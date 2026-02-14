@@ -1,0 +1,183 @@
+title: News Article
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: excerpt
+            field:
+              type: textarea
+              display: Excerpt
+              instructions: 'Brief summary for listings and meta tags'
+              validate: 'max:160'
+          -
+            handle: content
+            field:
+              type: bard
+              display: Content
+              instructions: 'Full article content'
+              container: assets
+              save_html: false
+              toolbar_mode: floating
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              reading_time: true
+              word_count: true
+              fullscreen: true
+              allow_source: true
+              always_show_set_button: false
+              sets:
+                quote:
+                  display: Quote
+                  fields:
+                    -
+                      handle: quote
+                      field:
+                        type: textarea
+                        display: Quote
+                    -
+                      handle: author
+                      field:
+                        type: text
+                        display: Author
+                        instructions: 'Quote attribution'
+                image:
+                  display: Image
+                  fields:
+                    -
+                      handle: image
+                      field:
+                        container: assets
+                        type: assets
+                        display: Image
+                        max_files: 1
+                        mode: grid
+                    -
+                      handle: caption
+                      field:
+                        type: text
+                        display: Caption
+          -
+            handle: featured_image
+            field:
+              container: assets
+              type: assets
+              display: 'Featured Image'
+              max_files: 1
+              mode: grid
+              validate:
+                - required
+          -
+            handle: publish_date
+            field:
+              type: date
+              display: 'Publish Date'
+              time_enabled: false
+              time_required: false
+              earliest_date: '2000-01-01'
+              full_width: false
+              inline: false
+              columns: 1
+              mode: single
+              default: now
+              required: true
+          -
+            handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              max_items: 1
+          -
+            handle: category
+            field:
+              type: select
+              display: Category
+              options:
+                company: 'Company News'
+                industry: 'Industry Updates'
+                projects: 'Project Updates'
+                partnerships: 'Partnerships'
+                awards: 'Awards & Recognition'
+                insights: 'Market Insights'
+              clearable: true
+              searchable: true
+          -
+            handle: tags
+            field:
+              type: select
+              display: Tags
+              options:
+                mining: Mining
+                commodities: Commodities
+                renewable: Renewable Energy
+                construction: Construction
+                procurement: Procurement
+                sustainability: Sustainability
+                innovation: Innovation
+              multiple: true
+              clearable: true
+              searchable: true
+              create: true
+          -
+            handle: external_link
+            field:
+              type: link
+              display: 'External Link'
+              instructions: 'Optional: Link to external news source'
+          -
+            handle: featured
+            field:
+              type: toggle
+              display: Featured
+              instructions: 'Feature this article on the homepage'
+              default: false
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: meta_title
+            field:
+              type: text
+              display: 'Meta Title'
+              instructions: 'Recommended: 50-60 characters'
+              validate: 'max:60'
+          -
+            handle: meta_description
+            field:
+              type: textarea
+              display: 'Meta Description'
+              instructions: 'Recommended: 150-160 characters'
+              validate: 'max:160'
+          -
+            handle: og_image
+            field:
+              container: assets
+              type: assets
+              display: 'Open Graph Image'
+              instructions: 'Recommended: 1200x630px'
+              max_files: 1
+              mode: grid
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

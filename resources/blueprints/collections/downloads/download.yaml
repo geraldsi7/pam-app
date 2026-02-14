@@ -1,0 +1,150 @@
+title: Download
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+              instructions: 'Brief description for listings'
+              validate: 'max:160'
+          -
+            handle: content
+            field:
+              type: textarea
+              display: Content
+              instructions: 'Additional details about the download'
+          -
+            handle: file
+            field:
+              container: assets
+              type: assets
+              display: File
+              max_files: 1
+              mode: grid
+              validate:
+                - required
+              instructions: 'Upload the file to be downloaded (PDF, DOC, etc.)'
+          -
+            handle: preview_image
+            field:
+              container: assets
+              type: assets
+              display: 'Preview Image'
+              max_files: 1
+              mode: grid
+              instructions: 'Optional: Thumbnail or preview image'
+          -
+            handle: download_type
+            field:
+              type: select
+              display: 'Download Type'
+              options:
+                brochure: Brochure
+                profile: 'Company Profile'
+                presentation: Presentation
+                report: Report
+                case_study: 'Case Study'
+                technical: 'Technical Document'
+                catalog: Catalog
+                whitepaper: Whitepaper
+              clearable: true
+              searchable: true
+          -
+            handle: category
+            field:
+              type: select
+              display: Category
+              options:
+                corporate: Corporate
+                services: Services
+                products: Products
+                projects: Projects
+                sustainability: Sustainability
+                careers: Careers
+              clearable: true
+              searchable: true
+          -
+            handle: language
+            field:
+              type: select
+              display: Language
+              options:
+                en: English
+                es: Spanish
+                fr: French
+                de: German
+                zh: Chinese
+                ar: Arabic
+              clearable: true
+              searchable: true
+              default: en
+          -
+            handle: file_size
+            field:
+              type: text
+              display: 'File Size'
+              instructions: 'e.g., 2.5 MB'
+          -
+            handle: download_count
+            field:
+              type: integer
+              display: 'Download Count'
+              instructions: 'Track number of downloads'
+              default: 0
+              read_only: true
+          -
+            handle: featured
+            field:
+              type: toggle
+              display: Featured
+              instructions: 'Feature this download prominently'
+              default: false
+          -
+            handle: published
+            field:
+              type: toggle
+              display: Published
+              instructions: 'Make this download available'
+              default: true
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: meta_title
+            field:
+              type: text
+              display: 'Meta Title'
+              instructions: 'Recommended: 50-60 characters'
+              validate: 'max:60'
+          -
+            handle: meta_description
+            field:
+              type: textarea
+              display: 'Meta Description'
+              instructions: 'Recommended: 150-160 characters'
+              validate: 'max:160'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

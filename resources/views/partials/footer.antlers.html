@@ -1,35 +1,92 @@
-<footer id="contact" class="bg-gray-900 text-gray-300 py-16">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
-            <div class="footer-col" id="about">
-                <h3 class="text-xl font-bold text-white mb-4">About Mrican Tech</h3>
-                {{ collection:about_us title:is="Company Profile" }}
-                <p>{{ description }}</p>
-                {{ /collection:about_us title:is="Company Profile" }}
+<footer id="contact" class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <!-- Logo and Mission -->
+            <div class="lg:col-span-1">
+                {{ collection:pages title:is="Home" }}
+                <a href="{{ url }}">
+                    {{ collection:logos limit="1" }}
+                    <img src="{{ featured_image }}" alt="Plus Alliance Meridian Logo"
+                        class="h-20 lg:h-28 object-contain">
+                </a>
+                {{ /collection:logos }}
+                {{ /collection:pages }}
             </div>
-            <div class="footer-col" id="support">
-                <h3 class="text-xl font-bold text-white mb-4">Contact Us</h3>
-                <div class="flex flex-col gap-2">
+            <!-- Company Profile -->
+            <div class="lg:col-span-2" id="about">
+                <div class="text-2xl font-bold mb-4">Plus Alliance Meridian</div>
+                {{ collection:about_us title:is="Company Profile" }}
+                <p class="text-opacity-90 mb-6 max-w-md">{{ description }}</p>
+                {{ /collection:about_us title:is="Company Profile" }}
 
-                    {{ collection:contact_info }}
-                    {{ if featured_url }}
-                        <a href="{{ featured_url }}">{{ title }}: 
+                <div class="space-y-2">
+                    {{ collection:contact_info title:is="Location" }}
+                    <p><strong>Headquarters:</strong> {{ content }}</p>
+                    {{ /collection:contact_info }}
+
+                    {{ collection:contact_info title:in="Email|Phone|Mobile" }}
+                    <p class="text-opacity-80">
+                        <strong>{{ title }}:</strong>
+                        {{ if featured_url }}
+                        <a href="{{ featured_url }}">
                             <span class="hover:text-white transition-colors">{{ content }}</span></a>
                         {{ else }}
-                        <p>{{ content }}</p>
-                        {{ /if }}
-                    {{ /collection:contact_info }}                    
+                    <p>{{ content }}</p>
+                    {{ /if }}
+                    </p>
+                    {{ /collection:contact_info }}
                 </div>
             </div>
-            <div class="footer-col">
-                <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
-                {{ nav:footer_nav }}
-                <a href="{{ url }}" class="block mb-2 hover:text-white transition-colors">{{ title }}</a>
-                {{ /nav:footer_nav }}
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="font-bold mb-4">Quick Links</h3>
+                <nav class="space-y-2">
+                    {{ nav:footer_nav }}
+                    <a href="{{ url }}"
+                        class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">{{ title
+                        }}</a>
+                    {{ /nav:footer_nav }}
+                </nav>
             </div>
         </div>
-        <div class="border-t border-gray-700 mt-12 pt-8 text-center">
-            <p>&copy; 2025 Mrican Technologies Inc. All Rights Reserved.</p>
+
+        <!-- Copyright -->
+        <div class="py-6 border-t border-white border-opacity-20">
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
+                <p class="text-sm text-white text-opacity-80">&copy; {{ now format="Y" }} Plus Alliance Meridian Ltd.
+                    All rights reserved.</p>
+            </div>
         </div>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop"
+        class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 opacity-0 pointer-events-none z-20">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 </footer>
+
+<script>
+    // Scroll to top functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', function () {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                scrollToTopBtn.classList.add('opacity-100');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                scrollToTopBtn.classList.remove('opacity-100');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
