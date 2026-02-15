@@ -116,23 +116,26 @@ tabs:
               options:
                 mineral: Mineral
                 commodity: Commodity
-                equipment: Equipment
-                service: Service
               clearable: true
               searchable: true
+              required: true
           -
             handle: category
             field:
               type: select
               display: Category
               options:
-                mining: Mining
-                agriculture: Agriculture
-                energy: Energy
-                industrial: Industrial
-                construction: Construction
+                gold: Gold
+                lithium: Lithium
+                diamonds: Diamonds
+                copper: Copper
+                cocoa: Cocoa
+                coffee: Coffee
+                sugar: Sugar
+                cotton: Cotton
               clearable: true
               searchable: true
+              required: true
           -
             handle: availability
             field:

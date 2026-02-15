@@ -1,21 +1,33 @@
 ---
 id: home
 blueprint: pages
-title: Home
+title: 'Plus Alliance Meridian Ltd - Leading West African Industrial Solutions'
 template: home
-author: a741ee50-bd31-4221-9866-0662ad5e23f1
-description: 'A new description'
-updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1757352696
-backdrop: true
+description: 'PAM is a leading B2B industrial trading company specializing in minerals, commodities, construction, and renewable energy across West Africa.'
+content: |
+  ## Driving West Africa's Industrial Growth
+
+  Plus Alliance Meridian Ltd (PAM) is a premier B2B industrial solutions provider, connecting global markets with West Africa's rich resources and development opportunities.
+
+  ### Our Core Business Pillars
+
+  **Minerals & Mining**
+  Strategic partnerships in gold, lithium, and industrial minerals with sustainable extraction practices.
+
+  **Commodity Trading**
+  Global trade network for premium cocoa, coffee, sugar, and cotton from West African cooperatives.
+
+  **Construction & Development**
+  End-to-end construction services and real estate development across infrastructure and commercial projects.
+
+  **Renewable Energy**
+  Leading solar farm development and clean energy solutions for industrial and community applications.
+
+  ### Global Reach, Local Expertise
+
+  With operations across West Africa and partnerships worldwide, PAM delivers reliable, high-quality industrial solutions that create lasting value for our partners and communities.
+seo:
+  meta_title: 'Plus Alliance Meridian Ltd - Leading West African Industrial Solutions'
+  meta_description: 'PAM is a premier B2B industrial trading company specializing in minerals, commodities, construction, and renewable energy across West Africa.'
+  og_image: pam-hero-image.jpg
 ---
-## Welcome to your brand new Statamic site!
-
-Not sure what to do next? Here are a few ideas, but feel free to explore in your own way, in your own time.
-
-- [Jump into the Control Panel](/cp) and edit this page or begin setting up your own collections and blueprints.
-- [Head to the docs](https://statamic.dev) and learn how Statamic works.
-- [Watch some Statamic videos](https://youtube.com/statamic) on YouTube.
-- [Join our Discord chat](https://statamic.com/discord) and meet thousands of other Statamic developers.
-- [Start a discussion](https://github.com/statamic/cms/discussions) and get answers to your questions.
-- [Star Statamic on Github](https://github.com/statamic/cms) if you enjoy using it!

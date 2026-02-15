@@ -9,9 +9,9 @@ primary_button_link: '#services'
 secondary_button_text: 'Get a Free Consultation'
 secondary_button_link: '#contact'
 media:
-  - undraw_business-deal_nx2n.png
+  - undraw_handshake-deal_nwk6.png
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
 updated_at: 1757436561
-featured_image: undraw_business-deal_nx2n.png
+featured_image: undraw_handshake-deal_nwk6.png
 ---
 MRICAN delivers hardware, biometrics, security, and ERP solutions that power modern enterprises.

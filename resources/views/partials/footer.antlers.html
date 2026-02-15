@@ -38,15 +38,27 @@
                 </div>
             </div>
 
+            <!-- Services -->
+            <div>
+                <h3 class="font-bold mb-4">Services</h3>
+                <nav class="space-y-2">
+                    <a href="/services" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">All Services</a>
+                    {{ collection:services limit="4" }}
+                    <a href="{{ url }}" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">{{ title }}</a>
+                    {{ /collection:services }}
+                </nav>
+            </div>
+
             <!-- Quick Links -->
             <div>
                 <h3 class="font-bold mb-4">Quick Links</h3>
                 <nav class="space-y-2">
-                    {{ nav:footer_nav }}
-                    <a href="{{ url }}"
-                        class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">{{ title
-                        }}</a>
-                    {{ /nav:footer_nav }}
+                    <a href="/about-us" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">About PAM</a>
+                    <a href="/team" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Our Team</a>
+                    <a href="/news" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">News & Insights</a>
+                    <a href="/partners" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Partners</a>
+                    <a href="/downloads" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Downloads</a>
+                    <a href="/contact" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Contact Us</a>
                 </nav>
             </div>
         </div>

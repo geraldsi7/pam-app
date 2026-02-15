@@ -1,37 +1,52 @@
 ---
 id: 16980148-b548-4ea0-bf3a-516de007e965
 blueprint: partner
-title: 'Backed by strong global partners'
+title: 'Strategic Global Partnerships'
 partners:
   -
-    id: mf5vdxuu
-    title: 'Chuanrun New Energy'
-    description: 'Leading ERP solutions provider in North America, specializing in enterprise resource planning and business process optimization for Canadian businesses.'
-    country: China
-    flag: canada_555473.png
-    website: 'http://www.mrican.ca'
-    website_text: mrican.ca
-    logo: picture.png
+    id: pam-partner-001
+    title: 'AngloGold Ashanti'
+    description: 'Leading global gold mining company with extensive operations in Africa. Strategic partner in sustainable mining practices and mineral resource development.'
+    partnership_type: strategic
+    industry: mining
+    country: South Africa
+    website: 'https://www.anglogoldashanti.com'
     featured: true
   -
-    id: mf5vwo4y
-    title: 'Newel Solutions'
-    description: 'Innovative technology partner in India, delivering cutting-edge software solutions and digital transformation services across the Asian market.'
-    country: India
-    flag: india_206606.png
-    website: 'http://www.newelsolutions.com'
-    website_text: newelsolutions.com
+    id: pam-partner-002
+    title: 'Cargill International'
+    description: 'Global leader in commodity trading and agricultural supply chains. Key partner in cocoa, coffee, and sugar trading operations.'
+    partnership_type: strategic
+    industry: commodities
+    country: USA
+    website: 'https://www.cargill.com'
+    featured: true
+  -
+    id: pam-partner-003
+    title: 'Ghana Investment Promotion Centre'
+    description: 'Government agency promoting foreign investment in Ghana. Official partner for mining and industrial development projects.'
+    partnership_type: certification
+    industry: government
+    country: Ghana
+    website: 'https://www.gipcghana.com'
+    featured: true
+  -
+    id: pam-partner-004
+    title: 'Siemens Energy'
+    description: 'Global energy technology company. Partner in renewable energy projects and solar farm development across West Africa.'
+    partnership_type: supplier
+    industry: renewable
+    country: Germany
+    website: 'https://www.siemens-energy.com'
     featured: false
   -
-    id: mf5w1hzq
-    title: 'SoftCor Ghana'
-    description: 'Premier software development and IT consulting firm in West Africa, empowering businesses with modern technology solutions and local expertise.'
-    country: Ghana
-    flag: ghana_555424.png
-    website: 'http://www.softcorghana.com'
-    website_text: softcorghana.com
+    id: pam-partner-005
+    title: 'African Development Bank'
+    description: 'Multilateral development finance institution. Partner in infrastructure and renewable energy financing for sustainable development.'
+    partnership_type: association
+    industry: government
+    country: Côte d'Ivoire
+    website: 'https://www.afdb.org'
     featured: false
-updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1771108695
-description: 'Backed by trusted international partners, we deliver consistent quality, efficient supply, and seamless project support.'
+description: 'PAM collaborates with world-class partners across mining, commodities, construction, and renewable energy sectors to deliver exceptional results.'
 ---
