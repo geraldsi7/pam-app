@@ -10,6 +10,39 @@
                 {{ /collection:logos }}
             </a>
             {{ /collection:pages }}
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 items-center" id="main-nav">
+                {{ nav:collection:pages include_home="true" }}
+                {{ if children }}
+                <!-- Parent page with children - Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="font-medium hover:text-red-600 transition-colors flex items-center gap-1">
+                        {{ title }}
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div
+                        class="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div class="py-2">
+                        {{ children }}
+                        <a href="{{ url }}"
+                            class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-blue-900 transition-colors text-sm">
+                            {{ title }}
+                        </a>
+                        {{ /children }}
+                    </div>
+                    </div>
+                </div>
+                {{ else }}
+                <!-- Regular page without children -->
+                <a href="{{ url }}" class=" font-medium hover:text-red-600 transition-colors">{{ title
+                    }}</a>
+                {{ /if }}
+                {{ /nav:collection:pages }}
+            </nav>
+
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-6 items-center" id="main-nav">
                 <!-- Home -->

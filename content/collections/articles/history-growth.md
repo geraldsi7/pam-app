@@ -7,7 +7,7 @@ eyebrow: 'About Us'
 excerpt: 'From a small team founded in 2021 in China, PAM expanded into a Ghana-based parent company with over 20 direct and 100+ indirect staff.'
 featured_image: cctv.jpg
 button_url: /services
-button_text: 'See Our Services'
+button_text: 'Read More'
 updated_by: 4fdb1efb-df45-4412-ac15-91bcc1bd2dd1
 updated_at: 1771200000
 ---
