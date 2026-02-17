@@ -2,7 +2,7 @@
 id: 2f3g4h5i-6j7k-8l9m-0n1o-2p3q4r5s6t7u8v9w
 blueprint: service
 title: 'Minerals & Mining'
-description: 'Comprehensive mining operations and mineral extraction services, including exploration, development, processing, and export of precious metals and industrial minerals.'
+description: 'Trading and supply of iron ore, lead ore, copper ore and concentrates, fluorite, mica, gold ore, gemstones, lithium, and aluminium with mining investments.'
 featured_image: placeholder-image.jpg
 service_type: mining
 industry_focus:

@@ -20,3 +20,7 @@ preferences:
     hero:
       view: list
       after_save: continue_editing
+    news:
+      view: tree
+    pages:
+      view: tree

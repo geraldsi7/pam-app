@@ -4,169 +4,53 @@
     {{ partial:hero main="true" }}
     {{ /collection:hero }}
 
-    <!-- Business Pillars / At a Glance -->
-    <section class="py-16 lg:py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Business Pillars</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Comprehensive industrial solutions across four core business areas</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Minerals & Mining</h3>
-                    <p class="text-gray-600">Sustainable extraction and trading of precious metals and industrial minerals.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Commodity Trading</h3>
-                    <p class="text-gray-600">Global trade network for agricultural commodities and raw materials.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Construction</h3>
-                    <p class="text-gray-600">Infrastructure development and commercial construction projects.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V7l-7-5z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Renewable Energy</h3>
-                    <p class="text-gray-600">Solar farm development and clean energy infrastructure solutions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Company Overview -->
+    {{ collection:articles slug:is="company-overview" limit="1" }}
+    {{ partial:image-text-section image_position="right" eyebrow="Company Overview" }}
+    {{ /collection:articles }}
 
-    <!-- Key Statistics -->
+    <!-- History & Growth -->
+    {{ collection:articles slug:is="history-growth" limit="1" }}
+    {{ partial:image-text-section image_position="left" eyebrow="About Us" }}
+    {{ /collection:articles }}
+
+    <!-- Core Business Areas -->
     <section class="py-16 lg:py-24 bg-blue-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4">PAM at a Glance</h2>
-                <p class="text-xl text-blue-100 max-w-3xl mx-auto">Driving West Africa's industrial transformation with proven results</p>
+            <div class="mb-12">
+                <p class="text-xs uppercase tracking-[0.18em] text-blue-200 mb-3">What we do</p>
+                <h2 class="text-3xl lg:text-5xl font-bold">Our Core Business Areas</h2>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="text-4xl lg:text-5xl font-bold mb-2">15+</div>
-                    <div class="text-blue-100">Years of Excellence</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl lg:text-5xl font-bold mb-2">5000+</div>
-                    <div class="text-blue-100">Jobs Created</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl lg:text-5xl font-bold mb-2">$2.5B+</div>
-                    <div class="text-blue-100">Annual Revenue</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl lg:text-5xl font-bold mb-2">25+</div>
-                    <div class="text-blue-100">Countries Served</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Featured Services -->
-    <section class="py-16 lg:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Comprehensive industrial solutions tailored to meet the unique demands of West Africa's development</p>
-            </div>
-            {{ collection:services limit="3" }}
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
-                        {{ if featured_image }}
-                        <img src="{{ glide:featured_image width='400' height='225' fit='crop' }}" alt="{{ title }}" class="w-full h-full object-cover">
-                        {{ else }}
-                        <div class="w-full h-full bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
-                            <span class="text-white text-lg font-semibold">{{ service_type | title }}</span>
-                        </div>
-                        {{ /if }}
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ title }}</h3>
-                        <p class="text-gray-600 mb-4">{{ description | truncate:120 }}</p>
-                        <a href="{{ url }}" class="inline-flex items-center text-blue-900 hover:text-blue-700 font-medium">
-                            Learn More
-                            <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {{ /collection:services }}
-            <div class="text-center">
-                <a href="/services" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition-colors">
-                    View All Services
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Latest News -->
-    <section class="py-16 lg:py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Latest News & Insights</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Stay informed about our latest projects, partnerships, and industry developments</p>
-            </div>
-            {{ collection:news limit="3" sort="publish_date:desc" }}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                <article class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
-                        {{ if featured_image }}
-                        <img src="{{ glide:featured_image width='400' height='225' fit='crop' }}" alt="{{ title }}" class="w-full h-full object-cover">
-                        {{ else }}
-                        <div class="w-full h-full bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
-                            <span class="text-white text-sm font-medium">{{ category | title }}</span>
-                        </div>
-                        {{ /if }}
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-2">
-                            <time datetime="{{ publish_date format='Y-m-d' }}">{{ publish_date format='M j, Y' }}</time>
-                            <span class="mx-2">•</span>
-                            <span>{{ category | title }}</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ title }}</h3>
-                        <p class="text-gray-600 mb-4">{{ excerpt | truncate:100 }}</p>
-                        <a href="{{ url }}" class="inline-flex items-center text-blue-900 hover:text-blue-700 font-medium text-sm">
-                            Read More
-                            <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </a>
-                    </div>
+            <div class="space-y-0">
+                {{ collection:services
+                slug:in="mining-and-investments|supply-of-commodities|construction-and-construction-consultancy|renewable-energy|procurement-services"
+                }}
+                <article
+                    class="grid grid-cols-1 md:grid-cols-[80px_1.2fr_1fr] gap-6 py-8 {{ last ? '' : 'border-b border-white/15' }}">
+                    <div class="text-blue-200 text-sm tracking-[0.2em] uppercase">{{ if count < 10 }}0{{ /if }}{{ count
+                            }}</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold leading-snug">{{ title }}</h3>
+                            </div>
+                            <div class="space-y-4">
+                                <p class="text-blue-100 leading-relaxed">{{ description }}</p>
+                                <a href="{{ url }}"
+                                    class="inline-flex items-center text-white font-semibold hover:text-blue-200 transition-colors">
+                                    Learn More
+                                </a>
+                            </div>
                 </article>
-            </div>
-            {{ /collection:news }}
-            <div class="text-center">
-                <a href="/news" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors">
-                    View All News
-                </a>
+                {{ /collection:services }}
             </div>
         </div>
     </section>
 
-    <!-- Partners -->
+    <!-- Our Global Partners -->
     {{ partial:partners }}
+
+    <!-- Latest Blog Posts Section -->
+    {{ partial:blog }}
 
     <!-- CTA -->
     {{ collection:cta title:is="Explore Services" }}

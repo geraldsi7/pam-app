@@ -9,9 +9,10 @@ partners:
     description: 'Leading global gold mining company with extensive operations in Africa. Strategic partner in sustainable mining practices and mineral resource development.'
     partnership_type: strategic
     industry: mining
-    country: South Africa
+    country: 'South Africa'
     website: 'https://www.anglogoldashanti.com'
     featured: true
+    logo: picture.png
   -
     id: pam-partner-002
     title: 'Cargill International'
@@ -45,8 +46,10 @@ partners:
     description: 'Multilateral development finance institution. Partner in infrastructure and renewable energy financing for sustainable development.'
     partnership_type: association
     industry: government
-    country: Côte d'Ivoire
+    country: "Côte d'Ivoire"
     website: 'https://www.afdb.org'
     featured: false
 description: 'PAM collaborates with world-class partners across mining, commodities, construction, and renewable energy sectors to deliver exceptional results.'
+updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
+updated_at: 1771284458
 ---

@@ -1,6 +1,6 @@
 <!-- Partners Section -->
 {{ collection:partners limit="1" }}
-<section class="py-16 lg:py-24 bg-gray-50 relative overflow-hidden">
+<section class="py-16 lg:py-24 bg-white relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0"
@@ -24,13 +24,20 @@
         </div>
 
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {{ partners }}
-            <div class="duration-300 fade-in-up w-full">
-                <!-- Logo/Company Name -->
-                <img src="{{ logo:url }}" alt="{{ title }} logo" class="w-auto h-12">
+        <!-- Partners Slider -->
+        <div class="relative overflow-hidden">
+            <div class="partners-slider flex">
+
+                {{ loop :times="2" }}
+                <!-- First set of partners -->
+                {{ partners | where('featured', true) }}
+                <div
+                    class="flex-shrink-0 duration-300 fade-in-up w-32 sm:w-40 md:w-48 mx-4 sm:mx-6 md:mx-8 flex items-center justify-center">
+                    <img src="{{ logo:url }}" alt="{{ title }} logo" class="w-auto h-8 sm:h-10 md:h-12 object-contain">
+                </div>
+                {{ /partners }}
+                {{ /loop }}
             </div>
-            {{ /partners }}
         </div>
 
     </div>

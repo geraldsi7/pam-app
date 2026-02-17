@@ -1,15 +1,15 @@
 ---
 id: 5c6d7e8f-9g0h-1i2j-3k4l-5m6n7o8p9q0r1s2t
 blueprint: service
-title: 'Commodity Trading'
-description: 'Global commodity trading and supply chain management specializing in agricultural commodities, connecting producers with international markets.'
+title: 'Commodities & General Goods Supply'
+description: 'Supply and trade of cocoa beans, coffee, sugar, and other general goods for domestic and international markets.'
 featured_image: placeholder-image.jpg
 service_type: commodities
 industry_focus:
   - agriculture
   - manufacturing
 content: |
-  ## Commodity Trading Services
+  ## Commodities & General Goods Supply
 
   PAM serves as a strategic partner in global commodity markets, specializing in the trade and distribution of high-quality agricultural commodities. Our extensive network connects West African producers with international buyers worldwide.
 

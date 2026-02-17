@@ -1,8 +1,8 @@
 ---
 id: 3e4f5g6h-7i8j-9k0l-1m2n-3o4p5q6r7s8t9u0v
 blueprint: service
-title: 'International Procurement & Trade Services'
-description: 'Global procurement and trade facilitation services connecting international suppliers with African markets across multiple industries.'
+title: 'Procurement & Trade Services'
+description: 'Procurement of industrial raw materials and engineering equipment, with cross-border trade support and financial instruments.'
 featured_image: placeholder-image.jpg
 service_type: procurement
 industry_focus:

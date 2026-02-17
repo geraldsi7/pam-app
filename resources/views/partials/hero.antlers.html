@@ -1,24 +1,41 @@
 <section id="hero">
     {{ if main}}
-    <div class="main-hero hero-section">
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="order-2 lg:order-1 flex flex-col justify-center">
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 mb-6 fade-in-up">
-                        {{ heading }}
-                    </h1>
-                    <p class="text-lg leading-relaxed text-gray-600 mb-8 fade-in-up" style="transition-delay: 150ms;">
-                        {{ description }}
-                    </p>
-                </div>
+    <section id="hero" class="relative overflow-hidden min-h-screen flex items-center justify-center">
+        <!-- Background Video/Image -->
+        <div class="hero-video-container absolute inset-0 z-0">
+            <!-- Fallback to background image since no video file exists -->
+            <!-- <div class="w-full h-full bg-cover bg-center bg-no-repeat" style="background-image: url('{{ featured_image:url }}')"></div> -->
+            <iframe src="https://player.vimeo.com/video/386523330?background=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="true" aria-label="Homepage hero video"></iframe>
+            <!-- Video will be enabled once video file is added to /assets/hero-video.mp4 -->
+            <!-- <video autoplay muted loop playsinline class="w-full h-full object-cover" poster="{{ featured_image:url }}">
+                <source src="/assets/hero-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> -->
 
-                <div class="order-1 lg:order-2 hero-img">
-                    <img src="{{ featured_image:url }}" alt="hero" class="max-w-full h-auto object-cover animated">
-                </div>
-            </div>
-
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-blue-900/85 z-10"></div>
         </div>
-    </div>
+
+        <!-- Content -->
+        <div class="relative z-20 md:max-w-2xl lg:max-w-7xl mx-auto px-8 md:px-4 lg:text-center">
+            <h1 class="text-3xl md:text-6xl font-bold md:font-extrabold text-white mb-6 fade-in-up">
+                {{ heading }}
+            </h1>
+            <p class="md:text-lg leading-relaxed text-blue-50 mb-10 max-w-3xl lg:max-w-4xl mx-auto fade-in-up" style="transition-delay: 150ms;">
+                {{ description }}
+            </p>
+            <div class="flex flex-col sm:flex-row justify-start lg:justify-center gap-4 fade-in-up" style="transition-delay: 300ms;">
+                <a href="{{ primary_button_link }}" class="px-8 py-4 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors shadow-lg">
+                    {{ primary_button_text }}
+                </a>
+                {{ if secondary_button_text }}
+                <a href="{{ secondary_button_link }}" class="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/30">
+                    {{ secondary_button_text }}
+                </a>
+                {{ /if }}
+            </div>
+        </div>
+    </section>
     {{ else }}
     <div class="bg-gradient-to-br from-blue-50 to-red-50 py-20">
         <div class="mx-auto px-4">

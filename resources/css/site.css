@@ -181,9 +181,76 @@
     }
 }
 
+/* Hero background styles (supports both video and image fallback) */
+.hero-video-container {
+    bottom: 0;
+    display: block;
+    height: 100%;
+    left: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.hero-video-container video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.hero-video-container iframe {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 56.25vw;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 177.77777778vh;
+}
+
+/* Background image fallback */
+.hero-video-container > div {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 /* Animated image up and down motion */
 .animated {
     animation: floatUpDown 4.8s ease-in-out infinite alternate-reverse both;
+}
+
+/* Company profile image overlays */
+.company-profile-diamond {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background: rgba(59, 130, 246, 0.28);
+    transform: rotate(45deg);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.company-profile-diamond-top {
+    top: -56px;
+    right: -48px;
+}
+
+.company-profile-diamond-bottom {
+    bottom: -56px;
+    left: -48px;
 }
 
 @keyframes floatUpDown {
@@ -195,8 +262,48 @@
     }
 }
 
+/* Partners slider animation */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.partners-slider {
+    animation: scrollLeft 30s linear infinite;
+}
+
+.partners-slider:hover {
+    animation-play-state: paused;
+}
+
+/* Responsive adjustments for partners slider */
+@media (max-width: 768px) {
+    .partners-slider {
+        animation-duration: 20s;
+    }
+}
+
 /* Mobile optimizations for contact page */
 @media (max-width: 768px) {
+    .company-profile-diamond {
+        width: 140px;
+        height: 140px;
+    }
+
+    .company-profile-diamond-top {
+        top: -35px;
+        right: -28px;
+    }
+
+    .company-profile-diamond-bottom {
+        bottom: -35px;
+        left: -28px;
+    }
+
     .contact-form-container {
         margin: 1rem;
         padding: 1.5rem;
