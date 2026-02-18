@@ -5,6 +5,7 @@ email:
     to: geraldowusuansah2@gmail.com
     from: noreply@mrican.com
     subject: 'New Contact Form Submission'
-    html: 'emails.contact_form'
-    text: 'emails.contact_form_text'
+    html: emails.contact_form
+    text: emails.contact_form_text
     attachments: true
+    mailer: smtp

@@ -71,13 +71,13 @@
                         {{# Project Type Badge #}}
                         {{ if project_type }}
                         <div class="absolute top-4 left-4 px-3 py-1 bg-{{ project_type == 'mining' ? 'amber' : project_type == 'solar' ? 'green' : project_type == 'construction' ? 'emerald' : 'blue' }}-500 text-slate-900 font-semibold rounded-full text-sm">
-                            {{ project_type|title_case }}
+                            {{ project_type|title }}
                         </div>
                         {{ /if }}
                         {{# Status Badge #}}
                         {{ if status }}
                         <div class="absolute top-4 right-4 px-3 py-1 {{ status == 'completed' ? 'bg-green-500' : status == 'ongoing' ? 'bg-blue-500' : 'bg-slate-500' }} text-white font-semibold rounded-full text-sm">
-                            {{ status|title_case }}
+                            {{ status|title }}
                         </div>
                         {{ /if }}
                     </div>
@@ -87,12 +87,12 @@
                         {{# Badges for projects without images #}}
                         {{ if project_type }}
                         <div class="absolute top-4 left-4 px-3 py-1 bg-{{ project_type == 'mining' ? 'amber' : project_type == 'solar' ? 'green' : project_type == 'construction' ? 'emerald' : 'blue' }}-500 text-slate-900 font-semibold rounded-full text-sm">
-                            {{ project_type|title_case }}
+                            {{ project_type|title }}
                         </div>
                         {{ /if }}
                         {{ if status }}
                         <div class="absolute top-4 right-4 px-3 py-1 {{ status == 'completed' ? 'bg-green-500' : status == 'ongoing' ? 'bg-blue-500' : 'bg-slate-500' }} text-white font-semibold rounded-full text-sm">
-                            {{ status|title_case }}
+                            {{ status|title }}
                         </div>
                         {{ /if }}
                     </div>

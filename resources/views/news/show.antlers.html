@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto px-4 py-12">
+<div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
     <div class="max-w-5xl mx-auto">
         <!-- Blog Meta -->
         <div class="mb-8">
@@ -9,7 +9,7 @@
             <!-- Info -->
             <div class="flex flex-wrap items-center gap-6 text-gray-500">
                 {{ if date }}
-                <div class="flex items-center">
+                <div class="flex items-center text-sm">
                     <i class="fas fa-calendar-alt mr-2"></i>
                     <time datetime="{{ date format='Y-m-d' }}">{{ date format='j F, Y' }}</time>
                 </div>
@@ -22,7 +22,6 @@
             {{ partial:social-share }}
         </div>
     </div>
-</div>
 
 <!-- Blog Content -->
 <article class="py-12 bg-white">
@@ -44,8 +43,8 @@
                     {{ /if }}
 
                     <!-- Body -->
-                    <div class="prose prose-blue">
-                        {{ content }}
+                    <div class="prose max-w-none">
+                        {{ content | markdown }}
                     </div>
 
                     <!-- Social Share -->
@@ -56,7 +55,7 @@
 
                 <!-- Sidebar -->
                 <div class="lg:col-span-2">
-                    <div class="sticky top-8 space-y-8">
+                    <div class="sticky top-12 space-y-8">
                         <!-- Other Posts -->
                         <div class="bg-gray-50 rounded-2xl p-6">
                             <h3 class="text-lg font-semibold text-gray-900 mb-4">Other Stories</h3>
@@ -114,7 +113,7 @@
         </div>
     </div>
 </article>
-
+</div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     var buttons = document.querySelectorAll('.js-copy-link');

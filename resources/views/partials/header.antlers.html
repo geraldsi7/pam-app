@@ -1,5 +1,5 @@
 <!-- Top Banner -->
-<header id="main-header" class="sticky top-0 left-0 w-full z-50 transition-shadow duration-300 ease-in-out text-white">
+<header id="main-header" class="{{ current_template == 'news/show' ? 'sticky bg-white text-blue-900' : 'fixed text-white' }} top-0 left-0 w-full z-[200] transition-shadow duration-300 ease-in-out">
     <div class="max-w-7xl mx-auto px-4 py-2">
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->
@@ -17,25 +17,8 @@
                 {{ partial:nav/nav_item }}
                 {{ /nav:collection:pages }}
             </nav>
-
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex space-x-6 items-center" id="main-nav">
-               
-                <!-- News & Insights -->
-                <a href="/news" class="font-medium hover:text-red-600 transition-colors">News & Insights</a>
-
-                <!-- Partners -->
-                <a href="/partners" class="font-medium hover:text-red-600 transition-colors">Partners</a>
-
-                <!-- Downloads -->
-                <a href="/downloads"
-                    class="text-blue-900 font-medium hover:text-red-600 transition-colors">Downloads</a>
-
-                <!-- Contact -->
-                <a href="/contact" class="text-blue-900 font-medium hover:text-red-600 transition-colors">Contact</a>
-            </nav>
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-2xl text-blue-900">
+            <button id="mobile-menu-button" class="md:hidden text-2xl">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>

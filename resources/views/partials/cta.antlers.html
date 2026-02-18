@@ -28,11 +28,7 @@
 
                 <!-- Right CTA Button -->
                 <div class="flex justify-center lg:justify-end">
-                    <a href="{{ button_url }}"
-                        class="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition-all duration-300 transform shadow">
-                        <span>{{ button_text }}</span>
-                        <i class="fas fa-arrow-right ml-3 text-sm"></i>
-                    </a>
+                    {{ partial:link-button url="{{ button_url }}" text="{{ button_text }}" }}
                 </div>
             </div>
         </div>

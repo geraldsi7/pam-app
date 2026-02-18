@@ -1,0 +1,4 @@
+default:
+  name: Plis
+  url: /
+  locale: '{{ config:app:locale }}'

@@ -24,15 +24,15 @@
                         class="w-full h-full object-cover" loading="eager">
                     {{ else }}
                     <div
-                        class="w-full h-full bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
-                        <i class="fas fa-newspaper text-white"></i>
+                        class="w-full h-full aspect-[16/9] bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+                        <i class="fas fa-newspaper text-white text-2xl"></i>
                     </div>
                     {{ /if }}
                 </div>
                 <div class="p-6">
                     <p class="text-sm text-gray-500 mb-2">{{ publish_date format='M j, Y' }}</p>
                     <h3 class="text-lg font-semibold text-blue-900 mb-2">{{ title }}</h3>
-                    <p class="text-gray-600 mb-4">{{ excerpt | truncate(100, '...') }}</p>
+                    <p class="text-gray-600 mb-4">{{ excerpt }}</p>
                     <a href="{{ url }}"
                         class="inline-flex items-center text-blue-900 hover:text-blue-700 font-medium text-sm">
                         Read More

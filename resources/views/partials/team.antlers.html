@@ -18,10 +18,15 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {{ collection:team }}
             <article class="bg-transparent rounded-lg transition-shadow overflow-hidden">
-                <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                <div class="aspect-square bg-gray-200">
                     {{ if photo }}
                     <img src="{{ glide:photo width='400' height='400' fit='crop' }}" alt="{{ title }}"
-                        class="w-full h-full object-cover">
+                        class="w-full h-full object-cover" loading="eager">
+                    {{ else }}
+                    <div 
+                        class="w-full h-full bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+                        <i class="fas fa-user text-white text-2xl"></i>
+                    </div>
                     {{ /if }}
                 </div>
                 <div class="my-2 space-y-1">

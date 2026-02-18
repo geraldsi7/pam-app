@@ -18,7 +18,7 @@ tabs:
               type: textarea
               display: Description
               instructions: 'Brief description for listings and meta tags'
-              validate: 'max:160'
+              validate: 'max:255'
           -
             handle: content
             field:

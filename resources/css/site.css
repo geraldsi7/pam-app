@@ -42,12 +42,6 @@
     transform: translateY(0);
 }
 
-/* Active nav link style */
-.nav-link-active {
-    color: #dc2626;
-    border-bottom-color: #dc2626;
-}
-
 /* Dropdown menu styles */
 .group:hover .group-hover\:opacity-100 {
     opacity: 1;

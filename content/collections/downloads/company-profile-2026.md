@@ -4,7 +4,8 @@ blueprint: download
 title: 'PAM Company Profile 2026'
 description: 'Comprehensive overview of Plus Alliance Meridian Ltd operations, services, and strategic partnerships across mining, commodities, construction, and renewable energy sectors.'
 content: 'This detailed company profile provides an in-depth look at PAM''s operations, including our business model, key achievements, industry expertise, and strategic vision for West African industrial development.'
-file: pam-company-profile-2026.pdf
+file_type: url
+file_url: 'https://nhrec.gov.ng/wp-content/uploads/2024/09/DUMMY-PDF-TEST-FILE.pdf'
 preview_image: placeholder-profile-preview.jpg
 download_type: profile
 category: corporate

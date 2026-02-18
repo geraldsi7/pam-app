@@ -26,16 +26,38 @@ tabs:
               display: Content
               instructions: 'Additional details about the download'
           -
+            handle: file_type
+            field:
+              type: select
+              display: 'File Source'
+              options:
+                upload: 'Upload File'
+                url: 'External URL'
+              default: upload
+              instructions: 'Choose whether to upload a file or link to an external URL'
+          -
             handle: file
             field:
               container: assets
               type: assets
-              display: File
+              display: 'Upload File'
               max_files: 1
               mode: grid
               validate:
                 - required
               instructions: 'Upload the file to be downloaded (PDF, DOC, etc.)'
+              if:
+                file_type: equals upload
+          -
+            handle: file_url
+            field:
+              type: text
+              display: 'External URL'
+              validate:
+                - required
+              instructions: 'Enter the external URL to the downloadable file'
+              if:
+                file_type: equals url
           -
             handle: preview_image
             field:

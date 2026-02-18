@@ -23,14 +23,14 @@
                 {{ if project_type }}
                 <div class="inline-flex items-center px-4 py-2 bg-{{ project_type == 'mining' ? 'amber' : project_type == 'solar' ? 'green' : project_type == 'construction' ? 'emerald' : 'blue' }}-500 text-slate-900 font-semibold rounded-full text-sm mb-6">
                     <i class="fas fa-{{ project_type == 'mining' ? 'hard-hat' : project_type == 'solar' ? 'solar-panel' : project_type == 'construction' ? 'building' : 'project-diagram' }} mr-2"></i>
-                    {{ project_type|title_case }}
+                    {{ project_type|title }}
                 </div>
                 {{ /if }}
 
                 {{# Status Badge #}}
                 {{ if status }}
                 <div class="inline-flex items-center px-3 py-1 {{ status == 'completed' ? 'bg-green-500' : status == 'ongoing' ? 'bg-blue-500' : 'bg-slate-500' }} text-white font-semibold rounded-full text-sm mb-6 ml-4">
-                    {{ status|title_case }}
+                    {{ status|title }}
                 </div>
                 {{ /if }}
 

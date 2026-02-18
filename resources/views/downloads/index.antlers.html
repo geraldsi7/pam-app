@@ -174,7 +174,7 @@
                         <div class="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
                             <div class="text-center">
                                 <i class="fas fa-file-{{ download_type == 'brochure' ? 'pdf' : download_type == 'presentation' ? 'powerpoint' : download_type == 'report' ? 'chart-bar' : 'file' }} text-4xl text-slate-400 mb-2"></i>
-                                <div class="text-sm text-slate-500 uppercase tracking-wide">{{ download_type|title_case }}</div>
+                                <div class="text-sm text-slate-500 uppercase tracking-wide">{{ download_type|title }}</div>
                             </div>
                         </div>
                         {{ /if }}
@@ -194,7 +194,7 @@
                                 <div class="flex items-center space-x-4">
                                     <span class="flex items-center">
                                         <i class="fas fa-file-{{ download_type == 'brochure' ? 'pdf' : download_type == 'presentation' ? 'powerpoint' : download_type == 'report' ? 'chart-bar' : 'file' }} mr-1"></i>
-                                        {{ download_type|title_case }}
+                                        {{ download_type|title }}
                                     </span>
                                     {{ if file_size }}
                                     <span>{{ file_size }}</span>
@@ -206,11 +206,11 @@
                                 <div class="text-sm text-slate-500">
                                     {{ if category }}
                                     <span class="inline-flex items-center px-2 py-1 bg-slate-100 rounded text-xs">
-                                        {{ category|title_case }}
+                                        {{ category|title }}
                                     </span>
                                     {{ /if }}
                                 </div>
-                                <a href="{{ file:url }}" target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-lg transition-colors duration-200 text-sm">
+                                <a href="{{ file_type == 'upload' ? file:url : file_url }}" target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-lg transition-colors duration-200 text-sm">
                                     <i class="fas fa-download mr-2"></i>
                                     Download
                                 </a>
