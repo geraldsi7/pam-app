@@ -1,4 +1,4 @@
-<section class="py-16 lg:py-24 bg-gray-50 relative overflow-hidden">
+<section class="py-16 lg:py-24 bg-gray-50 relative overflow-hidden fade-in-up">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
         <div class="absolute inset-0"
@@ -15,24 +15,24 @@
             </h2>
         </div>
 
-        {{ collection:news sort="publish_date:desc" limit="4" }}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {{ collection:news sort="publish_date:desc" limit="4" }}
             <article class="bg-white rounded-lg shadow-sm transition-shadow overflow-hidden">
                 <div class="aspect-w-16 aspect-h-9 bg-gray-200">
                     {{ if featured_image }}
                     <img src="{{ glide:featured_image width='400' height='225' fit='crop' }}" alt="{{ title }}"
-                        class="w-full h-full object-cover">
+                        class="w-full h-full object-cover" loading="eager">
                     {{ else }}
                     <div
-                        class="w-full h-full bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
-                        <span class="text-white text-sm font-medium">{{ category | title }}</span>
+                        class="w-full h-full bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+                        <i class="fas fa-newspaper text-white"></i>
                     </div>
                     {{ /if }}
                 </div>
                 <div class="p-6">
-                        <p class="text-sm text-gray-500 mb-2">{{ publish_date format='M j, Y' }}</p>
+                    <p class="text-sm text-gray-500 mb-2">{{ publish_date format='M j, Y' }}</p>
                     <h3 class="text-lg font-semibold text-blue-900 mb-2">{{ title }}</h3>
-                    <p class="text-gray-600 mb-4">{{ excerpt | truncate:100 }}...</p>
+                    <p class="text-gray-600 mb-4">{{ excerpt | truncate(100, '...') }}</p>
                     <a href="{{ url }}"
                         class="inline-flex items-center text-blue-900 hover:text-blue-700 font-medium text-sm">
                         Read More
@@ -44,21 +44,21 @@
                     </a>
                 </div>
             </article>
-        </div>
-        {{ no_results }}
-        <!-- No Blog Available -->
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center">
-                <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-800">
-                    No news available at the moment
-                </h3>
-                <p class="opacity-80 text-gray-600">
-                    Check back soon for the latest news and insights.
+            {{ no_results }}
+            <!-- No Blog Available -->
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-800">
+                        No news available at the moment
+                    </h3>
+                    <p class="opacity-80 text-gray-600">
+                        Check back soon for the latest news and insights.
 
-                </p>
+                    </p>
+                </div>
             </div>
+            {{ /no_results }}
+            {{ /collection:news }}
         </div>
-        {{ /no_results }}
-        {{ /collection:news }}
     </div>
 </section>

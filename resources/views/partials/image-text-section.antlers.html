@@ -1,12 +1,12 @@
 <section class="py-16 lg:py-24 {{ index % 2 == 0 ? 'bg-white' : 'bg-gray-50' }}">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div class="relative fade-in-up {{ image_position == 'left' ? 'order-1' : 'order-2' }}">
                 <div>
                        <img src="{{ glide:featured_image width='900' height='620' fit='crop' }}"
                         alt="{{ title }}"
                         class="w-full h-80 lg:h-[28rem] object-cover"
-                        loading="lazy"
+                        loading="eager"
                     >
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 </h2>
 
                 <div class="text-gray-600 leading-relaxed space-y-4 text-base lg:text-lg">
-                    {{ content | markdown }}
+                    {{ content ?? excerpt ?? description | markdown }}
                 </div>
 
                 {{ if button_url && button_text }}

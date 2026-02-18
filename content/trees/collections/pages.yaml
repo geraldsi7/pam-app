@@ -10,11 +10,6 @@ tree:
         entry: 9081b2ad-ccf4-4e14-822b-88902b6c860f
   -
     entry: cd6d1975-e977-4c1e-bdbf-0de888bec484
-    children:
-      -
-        entry: 29378d5b-7b47-489b-8808-9cfa271c2342
-      -
-        entry: 8a408d91-9532-44d5-9706-1875c480600f
   -
     entry: fccd5fd4-8e1a-4ee9-917a-7ec33c25535f
     children:
@@ -22,3 +17,7 @@ tree:
         entry: corporate-support
       -
         entry: 523ac8e8-61c4-4f28-9ae2-31a4a52d6dde
+  -
+    entry: privacy
+  -
+    entry: d0f2bdec-2dda-41e7-897f-0e9fdd9b6894

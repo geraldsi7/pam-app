@@ -6,32 +6,10 @@
 
     <!-- About Us Collection Items -->
     {{ collection:about_us }}
-    <section class="py-20 {{ index % 2 == 0 ? 'bg-white' : 'bg-gray-50' }}">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row gap-12 items-start">
-                <!-- Even items: Text Left, Image Right -->
-                <div class="fade-in-up {{ index % 2 == 0 ? 'md:order-1' : 'md:order-2' }} flex-1">
-                    <h2 class="text-3xl font-bold text-blue-900 mb-6">{{ heading }}</h2>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        {{ description }}
-                    </p>
-                </div>
-                <div class="fade-in-up {{ index % 2 == 0 ? 'md:order-2' : 'md:order-1' }} flex-1">
-                    <img src="{{ featured_image:url }}" alt="{{ featured_image:alt }}"
-                        class="w-full h-full object-cover rounded-lg">
-                </div>
-            </div>
-        </div>
-    </section>
+    {{ partial:image-text-section image_position="{{ index % 2 == 0 ? 'right' : 'left' }}" }}
     {{ /collection:about_us }}
 
-    <!-- Features Section -->
-    {{ collection:grids title:is="Technical Excellence" }}
-     {{ partial:grids }}
-    {{ /collection:grids }}
-
-    <!-- Our Strength Section -->
-    {{ partial:core-strengths }}
+    {{ partial:partners }}
 
     <!-- Call to Action -->
     {{ collection:cta title:is="Explore Services" }}

@@ -23,9 +23,7 @@
             </div>
 
             <div class="space-y-0">
-                {{ collection:services
-                slug:in="mining-and-investments|supply-of-commodities|construction-and-construction-consultancy|renewable-energy|procurement-services"
-                }}
+                {{ collection:services }}
                 <article
                     class="grid grid-cols-1 md:grid-cols-[80px_1.2fr_1fr] gap-6 py-8 {{ last ? '' : 'border-b border-white/15' }}">
                     <div class="text-blue-200 text-sm tracking-[0.2em] uppercase">{{ if count < 10 }}0{{ /if }}{{ count

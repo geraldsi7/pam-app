@@ -6,6 +6,7 @@ preferences:
   collections:
     categories:
       after_save: create_another
+      view: list
     partners:
       after_save: continue_editing
       view: list
@@ -23,4 +24,10 @@ preferences:
     news:
       view: tree
     pages:
+      view: tree
+    team:
+      view: tree
+    services:
+      view: tree
+    supports:
       view: tree

@@ -5,7 +5,8 @@
         <div class="hero-video-container absolute inset-0 z-0">
             <!-- Fallback to background image since no video file exists -->
             <!-- <div class="w-full h-full bg-cover bg-center bg-no-repeat" style="background-image: url('{{ featured_image:url }}')"></div> -->
-            <iframe src="https://player.vimeo.com/video/386523330?background=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="true" aria-label="Homepage hero video"></iframe>
+            <iframe src="https://player.vimeo.com/video/386523330?background=1" frameborder="0"
+                allow="autoplay; fullscreen" allowfullscreen="true" aria-label="Homepage hero video" loading="eager"></iframe>
             <!-- Video will be enabled once video file is added to /assets/hero-video.mp4 -->
             <!-- <video autoplay muted loop playsinline class="w-full h-full object-cover" poster="{{ featured_image:url }}">
                 <source src="/assets/hero-video.mp4" type="video/mp4">
@@ -21,15 +22,19 @@
             <h1 class="text-3xl md:text-6xl font-bold md:font-extrabold text-white mb-6 fade-in-up">
                 {{ heading }}
             </h1>
-            <p class="md:text-lg leading-relaxed text-blue-50 mb-10 max-w-3xl lg:max-w-4xl mx-auto fade-in-up" style="transition-delay: 150ms;">
+            <p class="md:text-lg leading-relaxed text-blue-50 mb-10 max-w-3xl lg:max-w-4xl mx-auto fade-in-up"
+                style="transition-delay: 150ms;">
                 {{ description }}
             </p>
-            <div class="flex flex-col sm:flex-row justify-start lg:justify-center gap-4 fade-in-up" style="transition-delay: 300ms;">
-                <a href="{{ primary_button_link }}" class="px-8 py-4 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors shadow-lg">
+            <div class="flex flex-col sm:flex-row justify-start lg:justify-center gap-4 fade-in-up"
+                style="transition-delay: 300ms;">
+                <a href="{{ primary_button_link }}"
+                    class="px-8 py-4 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors shadow-lg">
                     {{ primary_button_text }}
                 </a>
                 {{ if secondary_button_text }}
-                <a href="{{ secondary_button_link }}" class="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/30">
+                <a href="{{ secondary_button_link }}"
+                    class="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/30">
                     {{ secondary_button_text }}
                 </a>
                 {{ /if }}
@@ -37,15 +42,26 @@
         </div>
     </section>
     {{ else }}
-    <div class="bg-gradient-to-br from-blue-50 to-red-50 py-20">
-        <div class="mx-auto px-4">
-            <div class="text-center fade-in-up">
-                <h1 class="text-4xl md:text-6xl font-bold text-blue-900 mb-6">{{ heading }}</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    {{ description}}
-                </p>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-blue-900 to-blue-800 text-white py-24 lg:py-32">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div class="relative md:max-w-2xl lg:max-w-7xl mx-auto px-8 md:px-4">
+            <div class="max-w-3xl fade-in-up">
+                <h1 class="text-3xl md:text-6xl font-bold md:font-extrabold text-white mb-6">{{ heading ?? title }}</h1>
+                <p class="md:text-lg leading-relaxed text-blue-50 mb-10 max-w-3xl lg:max-w-4xl mx-auto fade-in-up"
+                style="transition-delay: 150ms;">
+                {{ description }}
+            </p>
+                <div class="flex flex-wrap gap-2">
+                    {{ industry_focus }}
+                    <span
+                        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-800 text-blue-100">
+                        {{ value | title }}
+                    </span>
+                    {{ /industry_focus }}
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     {{ /if }}
 </section>

@@ -1,0 +1,145 @@
+<div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="max-w-5xl mx-auto">
+        <!-- Blog Meta -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                {{ title }}
+            </h1>
+
+            <!-- Info -->
+            <div class="flex flex-wrap items-center gap-6 text-gray-500">
+                {{ if date }}
+                <div class="flex items-center">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    <time datetime="{{ date format='Y-m-d' }}">{{ date format='j F, Y' }}</time>
+                </div>
+                {{ /if }}
+            </div>
+        </div>
+
+        <!-- Social Share -->
+        <div class="pt-8 border-t border-gray-200">
+            {{ partial:social-share }}
+        </div>
+    </div>
+</div>
+
+<!-- Blog Content -->
+<article class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-6 gap-12">
+                <!-- Main Content -->
+                <div class="lg:col-span-4">
+                    <!-- Featured Image -->
+                    {{ if featured_image }}
+                    <div class="mb-12">
+                        <img 
+                            src="{{ glide:featured_image }}" 
+                            alt="{{ title }}" 
+                            class="w-full h-96 object-cover rounded"
+                            loading="eager"
+                        >
+                    </div>
+                    {{ /if }}
+
+                    <!-- Body -->
+                    <div class="prose prose-blue">
+                        {{ content }}
+                    </div>
+
+                    <!-- Social Share -->
+                    <div class="mt-12 pt-8 border-t border-gray-200">
+                        {{ partial:social-share }}
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-2">
+                    <div class="sticky top-8 space-y-8">
+                        <!-- Other Posts -->
+                        <div class="bg-gray-50 rounded-2xl p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Other Stories</h3>
+                            <div class="space-y-4">
+                                {{ collection:news limit="5" :id:not="id" }}
+                                <a href="{{ url }}" class="block group">
+                                    <div class="flex space-x-3">
+                                        {{ if featured_image }}
+                                        <img 
+                                            src="{{ glide:featured_image width='400' height='225' fit='crop' }}" 
+                                            alt="{{ title }}" 
+                                            class="w-16 h-16 object-cover rounded-lg flex-shrink-0"
+                                        >
+                                        {{ else }}
+                                        <div class="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-newspaper text-white"></i>
+                                        </div>
+                                        {{ /if }}
+                                        <div class="flex-1 min-w-0">
+                                            <h4 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
+                                                {{ title }}
+                                            </h4>
+                                            {{ if date }}
+                                            <p class="text-xs text-gray-500 mt-1">
+                                                {{ date format='j M, Y' }}
+                                            </p>
+                                            {{ /if }}
+                                        </div>
+                                    </div>
+                                </a>
+                                {{ /collection:news }}
+                            </div>
+                        </div>
+
+                        <!-- Newsletter Signup -->
+                        <!-- <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 text-white">
+                            <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
+                            <p class="text-blue-100 text-sm mb-4">
+                                Get the latest updates delivered to your inbox.
+                            </p>
+                            <div class="space-y-3">
+                                <input 
+                                    type="email" 
+                                    placeholder="Your email address" 
+                                    class="w-full px-4 py-2 rounded-lg border-0 bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+                                >
+                                <button class="w-full px-4 py-2 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var buttons = document.querySelectorAll('.js-copy-link');
+    if (!buttons) return;
+    buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var url = btn.getAttribute('data-url') || window.location.href;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(function () {
+                    btn.classList.add('bg-green-600');
+                    btn.classList.remove('bg-gray-700');
+                    setTimeout(function(){
+                        btn.classList.remove('bg-green-600');
+                        btn.classList.add('bg-gray-700');
+                    }, 1200);
+                });
+            } else {
+                var textarea = document.createElement('textarea');
+                textarea.value = url;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(textarea);
+            }
+        });
+    });
+});
+</script>

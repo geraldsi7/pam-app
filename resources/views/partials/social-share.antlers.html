@@ -1,0 +1,42 @@
+<h3 class="text-lg font-semibold text-gray-900 mb-4">Share this post</h3>
+<div class="flex flex-wrap items-center gap-3">
+    <button type="button"
+        class="js-copy-link w-10 h-10 bg-gray-700 text-white rounded-full hover:bg-gray-800 transition-colors flex items-center justify-center"
+        data-url="{{ permalink }}" aria-label="Copy link" title="Copy link">
+        <i class="fas fa-link"></i>
+    </button>
+    <a href="mailto:?subject={{ title | urlencode }}&body={{ permalink | urlencode }}"
+        class="w-10 h-10 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors flex items-center justify-center"
+        aria-label="Email" title="Email">
+        <i class="fas fa-envelope"></i>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ permalink | urlencode }}" target="_blank" rel="noopener"
+        class="w-10 h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors flex items-center justify-center"
+        aria-label="Facebook" title="Facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url={{ permalink | urlencode }}&text={{ title | urlencode }}"
+        target="_blank" rel="noopener"
+        class="w-10 h-10 bg-gray-800 text-white rounded-full hover:bg-black transition-colors flex items-center justify-center"
+        aria-label="Post on X" title="Post on X">
+        <i class="fab fa-x-twitter"></i>
+    </a>
+    <a href="https://api.whatsapp.com/send?text={{ title | urlencode }}%20{{ permalink | urlencode }}" target="_blank"
+        rel="noopener"
+        class="w-10 h-10 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors flex items-center justify-center"
+        aria-label="WhatsApp" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://t.me/share/url?url={{ permalink | urlencode }}&text={{ title | urlencode }}" target="_blank"
+        rel="noopener"
+        class="w-10 h-10 bg-cyan-600 text-white rounded-full hover:bg-cyan-700 transition-colors flex items-center justify-center"
+        aria-label="Telegram" title="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ permalink | urlencode }}&title={{ title | urlencode }}"
+        target="_blank" rel="noopener"
+        class="w-10 h-10 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-colors flex items-center justify-center"
+        aria-label="LinkedIn" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+</div>

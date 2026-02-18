@@ -1,12 +1,14 @@
 title: Services
+icon: collections
 template: services/show
 layout: layout
+mount: cd6d1975-e977-4c1e-bdbf-0de888bec484
 revisions: false
 route: '/services/{slug}'
 sort_dir: asc
 date_behavior:
-  past: public
-  future: private
+  past: null
+  future: null
 preview_targets:
   -
     label: Entry
