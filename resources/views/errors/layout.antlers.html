@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="{{ site:short_locale }}" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ vite src="resources/js/site.js|resources/css/site.css" }}
+
+    <link rel="canonical" href="{{ canonical_url ?? current_url }}">
+
+    {{# Favicon and App Icons #}}
+    {{ if site:favicon }}
+    <link rel="icon" type="image/x-icon" href="{{ site:favicon:url }}">
+    {{ else }}
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    {{ /if }}
+
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800,900&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/80bed6d9a8.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body class="bg-white font-sans text-gray-800 antialiased" data-template="{{ template }}">
+    {{ template_content }}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.getElementById('main-header');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Get the current template from the body data attribute or Statamic variable
+            const currentTemplate = '{{ current_template }}';
+
+            // Define header states for different scenarios
+            const headerStates = {
+                scrolled: {
+                    headerClasses: ['bg-white', 'shadow-sm', 'text-blue-900'],
+                    headerRemove: ['bg-transparent', 'text-white'],
+                    mobileButtonClasses: ['text-blue-900'],
+                    mobileButtonRemove: ['text-white']
+                },
+                newsPage: {
+                    headerClasses: ['bg-white', 'text-blue-900'],
+                    headerRemove: ['bg-transparent', 'text-white'],
+                    mobileButtonClasses: ['text-blue-900'],
+                    mobileButtonRemove: ['text-white']
+                },
+                default: {
+                    headerClasses: ['bg-transparent', 'text-white'],
+                    headerRemove: ['bg-white', 'shadow-sm', 'text-blue-900'],
+                    mobileButtonClasses: ['text-white'],
+                    mobileButtonRemove: ['text-blue-900']
+                }
+            };
+
+            // Helper function to apply header state
+            function applyHeaderState(state) {
+                // Handle header classes
+                state.headerRemove.forEach(cls => header.classList.remove(cls));
+                state.headerClasses.forEach(cls => header.classList.add(cls));
+
+                // Handle mobile menu button classes
+                if (mobileMenuButton) {
+                    state.mobileButtonRemove.forEach(cls => mobileMenuButton.classList.remove(cls));
+                    state.mobileButtonClasses.forEach(cls => mobileMenuButton.classList.add(cls));
+                }
+            }
+
+            // Check if current page is news/show
+            const isNewsPage = currentTemplate === 'news/show';
+
+            // --- 1. Sticky Header & Scroll Behavior ---
+            function handleScroll() {
+                const scrolled = window.scrollY > 50 || window.pageYOffset > 50;
+
+                if (scrolled) {
+                    // When scrolled, always apply the scrolled state
+                    applyHeaderState(headerStates.scrolled);
+                } else {
+                    // When at top, apply appropriate state based on page type
+                    if (isNewsPage) {
+                        applyHeaderState(headerStates.newsPage);
+                    } else {
+                        applyHeaderState(headerStates.default);
+                    }
+                }
+            }
+
+            // Initial check and scroll event listener
+            handleScroll(); // Check initial state
+            window.addEventListener('scroll', handleScroll);
+
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- 2. Fade-in Animation on Scroll ---
+            const animatedElements = document.querySelectorAll('.fade-in-up');
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            animatedElements.forEach(el => { observer.observe(el); });
+
+            // --- 3. Active Nav Link on Scroll ---
+            const navLinks = document.querySelectorAll('#main-nav a');
+            const sections = document.querySelectorAll('section, footer');
+            const headerHeight = 104; // 40px banner + 64px header
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= (sectionTop - headerHeight - 1)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('nav-link-active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('nav-link-active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
