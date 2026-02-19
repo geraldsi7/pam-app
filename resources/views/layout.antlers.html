@@ -17,7 +17,7 @@
     {{ /if }}
 
     {{# Open Graph Tags #}}
-    <meta property="og:title" content="{{ meta_title ?? title ?? site:name ?? 'Plus Alliance Meridian Ltd (PAM)' }} | {{ site:name }}">
+    <meta property="og:title" content="{{ meta_title ?? title ?? site:site_name ?? 'Plus Alliance Meridian Ltd (PAM)' }} | {{ site:site_name }}">
     <meta property="og:description"
         content="{{ meta_description ?? description ?? 'Leading industrial trading company specializing in minerals & mining, commodity trading, construction & development, and renewable energy solutions worldwide.' }}">
     <meta property="og:type" content="website">
@@ -25,19 +25,19 @@
     {{ if og_image }}
     <meta property="og:image" content="{{ og_image:url }}">
     {{ else }}
-    <meta property="og:image" content="{{ site:logo ?? '/images/pam-og-image.jpg' }}">
+    <meta property="og:image" content="{{ site:logo ?? '/assets/images/logo.png' }}">
     {{ /if }}
-    <meta property="og:site_name" content="{{ site:name ?? 'Plus Alliance Meridian Ltd (PAM)' }}">
+    <meta property="og:site_name" content="{{ site:site_name ?? 'Plus Alliance Meridian Ltd (PAM)' }}">
 
     {{# Twitter Card Tags #}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ meta_title ?? title ?? site:name ?? 'Plus Alliance Meridian Ltd (PAM)' }} | {{ site:name }}">
+    <meta name="twitter:title" content="{{ meta_title ?? title ?? site:site_name ?? 'Plus Alliance Meridian Ltd (PAM)' }} | {{ site:site_name }}">
     <meta name="twitter:description"
         content="{{ meta_description ?? description ?? 'Leading industrial trading company specializing in minerals & mining, commodity trading, construction & development, and renewable energy solutions worldwide.' }}">
     {{ if og_image }}
     <meta name="twitter:image" content="{{ og_image:url }}">
     {{ else }}
-    <meta name="twitter:image" content="{{ site:logo ?? '/images/pam-twitter-image.jpg' }}">
+    <meta name="twitter:image" content="{{ site:logo ?? '/assets/images/logo.png' }}">
     {{ /if }}
 
     {{# Additional SEO Tags #}}
@@ -50,7 +50,7 @@
     {{ if site:favicon }}
     <link rel="icon" type="image/x-icon" href="{{ site:favicon:url }}">
     {{ else }}
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
     {{ /if }}
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -58,7 +58,6 @@
 
     <!-- Font Awesome for Icons -->
     <script src="https://kit.fontawesome.com/80bed6d9a8.js" crossorigin="anonymous"></script>
-
 
 </head>
 

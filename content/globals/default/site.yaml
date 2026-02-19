@@ -1,4 +1,5 @@
 site_name: 'Plus Alliance Meridian Ltd'
+favicon: ghana_555424.png
 primary_color: '#1e40af'
 secondary_color: '#f59e0b'
 accent_color: '#059669'
@@ -9,3 +10,4 @@ business_hours_thursday: '09:00 - 18:00'
 business_hours_friday: '09:00 - 18:00'
 business_hours_saturday: Closed
 business_hours_sunday: Closed
+copyright_text: '© 2026 Plus Alliance Meridian Ltd. All rights reserved.'

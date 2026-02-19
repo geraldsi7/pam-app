@@ -1,4 +1,4 @@
 default:
-  name: Plis
+  name: '{{ config:app:name }}'
   url: /
   locale: '{{ config:app:locale }}'
