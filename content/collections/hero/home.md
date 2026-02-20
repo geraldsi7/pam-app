@@ -2,10 +2,10 @@
 id: 0240c85c-4be3-4bcc-883a-eeb71301ead2
 blueprint: hero
 title: 'Home Hero'
-heading: 'Connecting markets, delivering resources, shaping the future.'
-description: Supplying minerals, commodities, and enterprise technology solutions to governments and large organizations across Africa.'
-primary_button_text: 'Explore Our Services'
-primary_button_link: '#services'
+heading: 'Investing In Africa.'
+description: 'Connecting Capital and Opportunities.'
+primary_button_text: 'Register Now'
+primary_button_link: '/register'
 secondary_button_text: 'Get a Free Consultation'
 secondary_button_link: '#contact'
 media:

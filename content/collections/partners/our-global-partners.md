@@ -1,7 +1,7 @@
 ---
 id: 16980148-b548-4ea0-bf3a-516de007e965
 blueprint: partner
-title: 'Strategic Global Partnerships'
+title: 'Backed by Strong Global Partners'
 partners:
   -
     id: pam-partner-001
