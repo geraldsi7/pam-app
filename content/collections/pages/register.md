@@ -1,9 +1,8 @@
 ---
-id: fccd5fd4-8e1a-4ee9-917a-7ec33c25535f
-published: false
+id: 6351615e-e82c-47f3-ab49-1c51447a896f
 blueprint: page
-title: Support
+title: Register
 author: a741ee50-bd31-4221-9866-0662ad5e23f1
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1771405703
+updated_at: 1772280446
 ---

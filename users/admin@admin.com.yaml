@@ -25,9 +25,19 @@ preferences:
       view: tree
     pages:
       view: tree
+      after_save: listing
     team:
       view: tree
     services:
       view: tree
     supports:
+      view: tree
+    about_us:
+      view: list
+    articles:
+      view: list
+    grids:
+      view: list
+    sponsorship_packages:
+      after_save: create_another
       view: tree

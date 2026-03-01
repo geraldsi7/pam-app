@@ -1,0 +1,15 @@
+<main>
+    <!-- Hero Section -->
+    {{ collection:hero title:is="Benefits Hero" limit="1" }}
+    {{ partial:hero heading="The Benefits: {{ page:title }}" }}
+    {{ /collection:hero }}
+
+    {{ collection:articles slug:is="{{ page:slug }}" limit="1" }}
+    {{ partial:image-text-section image_position="right" }}
+    {{ /collection:articles }}
+
+    <!-- CTA -->
+    {{ collection:cta title:is="Explore Services" }}
+    {{ partial:cta }}
+    {{ /collection:cta }}
+</main>

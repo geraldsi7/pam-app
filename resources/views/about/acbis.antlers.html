@@ -1,29 +1,27 @@
 <main>
     <!-- Hero Section -->
-    {{ collection:hero title:is="Home Hero" limit="1" }}
-    {{ partial:hero main="true" }}
+    {{ collection:hero title:is="About Us Hero" limit="1" }}
+    {{ partial:hero }}
     {{ /collection:hero }}
 
-    <!-- Company Overview -->
+    <!-- About Us Collection Items -->
+
     {{ collection:articles slug:is="initiative" limit="1" }}
     {{ partial:image-text-section image_position="right" eyebrow="{{ title }}" }}
     {{ /collection:articles }}
-
-    <!-- History & Growth -->
-    {{ collection:articles slug:is="organized-by" limit="1" }}
-    {{ partial:image-text-section image_position="left" bg_color="bg-gray-50" }}
+    
+    {{ collection:articles slug:is="the-economic-relevance" limit="1" }}
+    {{ partial:image-text-section image_position="left" eyebrow="The Relevance" bg_color="bg-gray-50" }}
     {{ /collection:articles }}
 
-    <!-- Our Global Partners -->
+    {{ collection:articles slug:is="organized-by" limit="1" }}
+    {{ partial:image-text-section image_position="right" }}
+    {{ /collection:articles }}
+    
     {{ partial:partners }}
 
-    <!-- Latest Blog Posts Section -->
-    {{ partial:blog }}
-
-    <!-- CTA -->
+    <!-- Call to Action -->
     {{ collection:cta title:is="Explore Services" }}
     {{ partial:cta }}
     {{ /collection:cta }}
-
-    {{ partial:contact/contact-form }}
 </main>

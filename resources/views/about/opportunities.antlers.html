@@ -1,15 +1,14 @@
 <main>
     <!-- Hero Section -->
-    {{ collection:hero title:is="About Us Hero" limit="1" }}
+    {{ collection:hero title:is="Opportunity Hero" limit="1" }}
     {{ partial:hero }}
     {{ /collection:hero }}
 
     <!-- About Us Collection Items -->
-    {{ collection:about_us }}
-    {{ partial:image-text-section image_position="{{ index % 2 == 0 ? 'right' : 'left' }}" }}
-    {{ /collection:about_us }}
-
-    {{ partial:partners }}
+    
+    {{ collection:articles slug:is="the-opportunities" limit="1" }}
+    {{ partial:image-text-section image_position="left" }}
+    {{ /collection:articles }}
 
     <!-- Call to Action -->
     {{ collection:cta title:is="Explore Services" }}

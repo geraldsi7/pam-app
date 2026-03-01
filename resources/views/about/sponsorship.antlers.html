@@ -1,0 +1,16 @@
+<main>
+    <!-- Hero Section -->
+    {{ collection:hero title:is="Sponsorship Hero" limit="1" }}
+    {{ partial:hero }}
+    {{ /collection:hero }}
+
+    {{ partial:sponsorship-package }}
+    
+    {{ collection:articles slug:is="expo-booth" limit="1" }}
+    {{ partial:image-text-section image_position="right" }}
+    {{ /collection:articles }}
+
+    <!-- Our Global Partners -->
+    {{ partial:partners }}
+    {{ partial:contact/contact-form }}
+</main>

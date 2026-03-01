@@ -9,7 +9,7 @@ seo:
   meta_description: 'Learn about PAM - leading B2B industrial trading company in West Africa specializing in minerals, commodities, construction, and renewable energy.'
 author: a741ee50-bd31-4221-9866-0662ad5e23f1
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1771288021
+updated_at: 1772299865
 content:
   -
     type: paragraph

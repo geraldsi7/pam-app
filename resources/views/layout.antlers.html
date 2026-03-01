@@ -81,19 +81,25 @@
                     headerClasses: ['bg-white', 'shadow-sm', 'text-blue-900'],
                     headerRemove: ['bg-transparent', 'text-white'],
                     mobileButtonClasses: ['text-blue-900'],
-                    mobileButtonRemove: ['text-white']
+                    mobileButtonRemove: ['text-white'],
+                    ctaClasses: ['bg-blue-900', 'text-white', 'hover:bg-blue-700'],
+                    ctaRemove: ['bg-white', 'text-blue-900', 'hover:bg-gray-100']
                 },
                 newsPage: {
                     headerClasses: ['bg-white', 'text-blue-900'],
                     headerRemove: ['bg-transparent', 'text-white'],
                     mobileButtonClasses: ['text-blue-900'],
-                    mobileButtonRemove: ['text-white']
+                    mobileButtonRemove: ['text-white'],
+                    ctaClasses: ['bg-blue-900', 'text-white', 'hover:bg-blue-700'],
+                    ctaRemove: ['bg-white', 'text-blue-900', 'hover:bg-gray-100']
                 },
                 default: {
                     headerClasses: ['bg-transparent', 'text-white'],
                     headerRemove: ['bg-white', 'shadow-sm', 'text-blue-900'],
                     mobileButtonClasses: ['text-white'],
-                    mobileButtonRemove: ['text-blue-900']
+                    mobileButtonRemove: ['text-blue-900'],
+                    ctaClasses: ['bg-white', 'text-blue-900', 'hover:bg-gray-100'],
+                    ctaRemove: ['bg-blue-900', 'text-white', 'hover:bg-blue-700']
                 }
             };
 
@@ -108,6 +114,13 @@
                     state.mobileButtonRemove.forEach(cls => mobileMenuButton.classList.remove(cls));
                     state.mobileButtonClasses.forEach(cls => mobileMenuButton.classList.add(cls));
                 }
+
+                // Keep Register CTA contrasting with the header state.
+                const registerCta = document.querySelectorAll('#main-nav .register-cta');
+                registerCta.forEach(cta => {
+                    state.ctaRemove.forEach(cls => cta.classList.remove(cls));
+                    state.ctaClasses.forEach(cls => cta.classList.add(cls));
+                });
             }
 
             // Check if current page is news/show

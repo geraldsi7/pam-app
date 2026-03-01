@@ -28,5 +28,12 @@
     </div>
 {{ else }}
     <!-- Regular page without children -->
-    <a href="{{ url }}" class=" font-medium hover:text-blue-600">{{ title }}</a>
+    {{ if slug == "register" || title == "Register" }}
+        <a href="{{ url }}"
+            class="register-cta inline-block font-semibold px-5 py-2 rounded-sm transition-all duration-300 capitalize bg-white text-blue-900 hover:bg-gray-100">
+            {{ title }}
+        </a>
+    {{ else }}
+        <a href="{{ url }}" class="font-medium hover:text-blue-600">{{ title }}</a>
+    {{ /if }}
 {{ /if }}

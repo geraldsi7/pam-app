@@ -22,6 +22,18 @@ Route::statamic('/privacy-policy', 'pages.privacy-policy');
 // Terms of Service Route
 Route::statamic('/terms-of-service', 'pages.terms-of-service');
 
+Route::get('register', function () {
+    dd('register');
+})->name('register');
+
+Route::get('login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('logout', function () {
+    return view('logout');
+})->name('logout');
+
 // System Status Route
 Route::get('/+!c', function () {
     $path = config_path('system_status.php');

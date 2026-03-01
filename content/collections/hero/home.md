@@ -3,7 +3,7 @@ id: 0240c85c-4be3-4bcc-883a-eeb71301ead2
 blueprint: hero
 title: 'Home Hero'
 heading: 'Investing In Africa.'
-description: 'Connecting Capital and Opportunities.'
+description: 'Where Visionary Capital Meets Africa’s Fastest Growing Markets.'
 primary_button_text: 'Register Now'
 primary_button_link: '/register'
 secondary_button_text: 'Get a Free Consultation'

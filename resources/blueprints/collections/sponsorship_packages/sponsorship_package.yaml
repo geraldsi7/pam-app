@@ -1,4 +1,4 @@
-title: Hero
+title: 'Sponsorship Package'
 tabs:
   main:
     display: Main
@@ -13,22 +13,16 @@ tabs:
               validate:
                 - required
           -
-            handle: heading
+            handle: amount
             field:
               type: text
-              display: Heading
+              display: Amount
           -
-            handle: description
+            handle: content
             field:
-              type: textarea
-              display: Description
-          -
-            handle: featured_image
-            field:
-              max_files: 1
-              container: assets
-              type: assets
-              display: 'Featured Image'
+              type: markdown
+              display: Content
+              localizable: true
   sidebar:
     display: Sidebar
     sections:
@@ -39,6 +33,4 @@ tabs:
             field:
               type: slug
               localizable: true
-              validate:
-                - 'max:200'
-              show_regenerate: true
+              validate: 'max:200'
