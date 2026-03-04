@@ -7,16 +7,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class Registration extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasUuids;
 
-    protected $keyType = 'string';
-    public $incrementing = false;
-
-    protected $fillable = [
-        'id',
+        protected $fillable = [
         'reference_code',
         'email',
         'personal_info',

@@ -23,7 +23,6 @@ class RegistrationService
     public function createRegistration(array $personalInfo): Registration
     {
         $registration = Registration::create([
-            'id' => Str::uuid(),
             'reference_code' => $this->generateReferenceCode(),
             'email' => $personalInfo['email'],
             'personal_info' => $personalInfo,
