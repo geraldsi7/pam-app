@@ -22,9 +22,8 @@ Route::statamic('/privacy-policy', 'pages.privacy-policy');
 // Terms of Service Route
 Route::statamic('/terms-of-service', 'pages.terms-of-service');
 
-Route::get('register', function () {
-    dd('register');
-})->name('register');
+require __DIR__.'/registration.php';
+require __DIR__.'/payment.php';
 
 Route::get('login', function () {
     return view('login');
