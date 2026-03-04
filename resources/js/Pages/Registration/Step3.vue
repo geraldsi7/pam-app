@@ -55,7 +55,7 @@
             <!-- Attendee Forms -->
             <div v-if="form.ticket_type" class="space-y-6">
               <div
-                v-for="(attendee, index) in attendees"
+                v-for="(attendee, index) in form.attendees"
                 :key="index"
                 class="border border-gray-200 rounded-lg p-4"
               >

@@ -1,21 +1,20 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/site.css', 'resources/js/site.js'],
+            input: 'resources/js/app.js',
             refresh: true,
         }),
+        vue({
+            template: {
+                transformAssetUrls: {
+                    base: null,
+                    includeAbsolute: false,
+                },
+            },
+        }),
     ],
-    css: {
-        postcss: {
-            plugins: [
-                tailwindcss,
-                autoprefixer,
-            ],
-        },
-    },
 });

@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('registration_id')->constrained()->cascadeOnDelete();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('registration_id')->constrained()->cascadeOnDelete();
             $table->string('method'); // paystack, bank_deposit
             $table->string('status')->default('pending'); // pending, success, failed
             $table->decimal('amount', 12, 2);
             $table->string('transaction_reference')->unique()->nullable();
             $table->json('payment_details')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

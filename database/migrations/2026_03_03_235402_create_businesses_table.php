@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('businesses', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('registration_id')->constrained()->cascadeOnDelete();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('registration_id')->constrained()->cascadeOnDelete();
             $table->string('company_name');
             $table->string('origin'); // China, Outside, Online
             $table->string('ticket_type')->nullable(); // 1*, 3*
             $table->json('business_details')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attendees', function (Blueprint $table) {
+        Schema::create('agents', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('business_id')->constrained()->cascadeOnDelete();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('phone')->nullable();
-            $table->json('additional_details')->nullable();
+            $table->string('name');
+            $table->string('referral_code')->unique();
+            $table->decimal('commission_rate', 5, 2)->default(0.00);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attendees');
+        Schema::dropIfExists('agents');
     }
 };
