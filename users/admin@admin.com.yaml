@@ -14,8 +14,10 @@ preferences:
       after_save: continue_editing
     business_hours:
       after_save: create_another
+      view: list
     contact_info:
       after_save: create_another
+      view: tree
     banner:
       view: list
     hero:
@@ -31,3 +33,7 @@ preferences:
       view: tree
     supports:
       view: tree
+    articles:
+      view: list
+    about_us:
+      view: list

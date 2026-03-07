@@ -1,9 +1,9 @@
 ---
-id: f16975b7-2173-46cf-8575-bd67bbbbf799
+id: a69c5439-4ad4-44d8-8716-5ab716383bf6
 blueprint: service
-title: 'Construction & Construction Consultancy'
+title: 'Real Estate Development'
 description: 'Real estate development, office and public building construction, consultancy, and pre-fabricated steel structures and housing.'
-featured_image: placeholder-image.jpg
+featured_image: bg-about.jpg
 service_type: construction
 industry_focus:
   - construction
