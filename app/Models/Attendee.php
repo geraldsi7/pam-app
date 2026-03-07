@@ -14,7 +14,10 @@ class Attendee extends Model
     protected $fillable = [
         'business_id',
         'first_name',
+        'middle_name',
         'last_name',
+        'id_number',
+        'nationality',
         'email',
         'phone',
         'additional_details',

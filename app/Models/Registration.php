@@ -23,6 +23,7 @@ class Registration extends Model
         'referral_code',
         'agent_id',
         'addon_expo',
+        'payment_method',
     ];
 
     protected $casts = [

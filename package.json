@@ -11,10 +11,11 @@
     },
     "dependencies": {
         "@inertiajs/vue3": "^1.0.0",
-        "vue": "^3.4.0",
-        "ziggy": "^2.0",
+        "@lbgm/phone-number-input": "^1.1.6",
+        "@statamic/cms": "file:./vendor/statamic/cms/resources/dist-package",
         "lodash.debounce": "^4.0.8",
-        "@statamic/cms": "file:./vendor/statamic/cms/resources/dist-package"
+        "vue": "^3.4.0",
+        "ziggy": "^2.0"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^2.0.0",

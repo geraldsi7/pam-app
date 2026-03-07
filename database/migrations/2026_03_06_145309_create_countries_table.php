@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('agents', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('referral_code')->unique();
-            $table->decimal('commission_rate', 5, 2)->default(0.00);
-            $table->boolean('is_active')->default(true);
+            $table->string('code', 2); // ISO 3166-1 alpha-2 country code
             $table->timestamps();
             $table->softDeletes();
+            
+            $table->unique(['name', 'code']);
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('agents');
+        Schema::dropIfExists('countries');
     }
 };

@@ -1,4 +1,5 @@
 <template>
+  <Head title="Bank Deposit Payment" />
   <div class="min-h-screen bg-gray-50 py-12 sm:px-6 lg:px-8">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-8">
@@ -66,86 +67,86 @@
           <div class="px-4 py-5 sm:p-6">
             <h3 class="text-lg font-medium text-gray-900 mb-4">Submit Deposit Details</h3>
 
-            <form @submit.prevent="handleSubmit" class="space-y-6">
+            <form @submit.prevent="submit" class="space-y-6">
               <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
-                  <label for="deposit_reference" class="block text-sm font-medium text-gray-700">
-                    Transaction Reference *
-                  </label>
-                  <input
+                  <InputLabel for="deposit_reference" value="Transaction Reference" required="true" />
+                  <TextInput
                     id="deposit_reference"
                     v-model="form.deposit_reference"
                     type="text"
-                    required
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    class="mt-1 block w-full"
                     placeholder="Bank transaction reference number"
+                    :class="{ 'border-red-500': form.errors.deposit_reference }"
                   />
+                  <InputError :message="form.errors.deposit_reference" />
                 </div>
 
                 <div>
-                  <label for="amount" class="block text-sm font-medium text-gray-700">
-                    Deposit Amount ($) *
-                  </label>
-                  <input
+                  <InputLabel for="amount" value="Deposit Amount ($)" required="true" />
+                  <TextInput
                     id="amount"
                     v-model.number="form.amount"
                     type="number"
                     step="0.01"
-                    required
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    class="mt-1 block w-full"
+                    :class="{ 'border-red-500': form.errors.amount }"
                   />
+                  <InputError :message="form.errors.amount" />
                 </div>
 
                 <div>
-                  <label for="deposit_date" class="block text-sm font-medium text-gray-700">
-                    Deposit Date *
-                  </label>
-                  <input
+                  <InputLabel for="deposit_date" value="Deposit Date" required="true" />
+                  <TextInput
                     id="deposit_date"
                     v-model="form.deposit_date"
                     type="date"
-                    required
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    class="mt-1 block w-full"
+                    :class="{ 'border-red-500': form.errors.deposit_date }"
                   />
+                  <InputError :message="form.errors.deposit_date" />
                 </div>
 
                 <div>
-                  <label for="bank_name" class="block text-sm font-medium text-gray-700">
-                    Your Bank Name *
-                  </label>
-                  <input
+                  <InputLabel for="bank_name" value="Your Bank Name" required="true" />
+                  <TextInput
                     id="bank_name"
                     v-model="form.bank_name"
                     type="text"
-                    required
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    class="mt-1 block w-full"
+                    :class="{ 'border-red-500': form.errors.bank_name }"
                   />
+                  <InputError :message="form.errors.bank_name" />
                 </div>
 
                 <div class="sm:col-span-2">
-                  <label for="account_holder" class="block text-sm font-medium text-gray-700">
-                    Account Holder Name *
-                  </label>
-                  <input
+                  <InputLabel for="account_holder" value="Account Holder Name" required="true" />
+                  <TextInput
                     id="account_holder"
                     v-model="form.account_holder"
                     type="text"
-                    required
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    class="mt-1 block w-full"
+                    :class="{ 'border-red-500': form.errors.account_holder }"
                   />
+                  <InputError :message="form.errors.account_holder" />
                 </div>
               </div>
 
-              <div class="flex justify-end">
-                <button
-                  type="submit"
-                  :disabled="loading"
-                  class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-                >
-                  <span v-if="loading">Submitting...</span>
-                  <span v-else>Submit Deposit Details</span>
-                </button>
-              </div>
+              <div class="mt-6 flex justify-between">
+              <SecondaryButton type="button" @click="$inertia.visit(route('registration.step4'))">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+              </SecondaryButton>
+              <PrimaryButton type="submit" :disabled="form.processing">
+                <span v-if="form.processing">Submitting...</span>
+                <span v-else>Submit</span>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </PrimaryButton>
+            </div>
             </form>
           </div>
         </div>
@@ -155,8 +156,14 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-import { router } from '@inertiajs/vue3'
+import { ref } from 'vue'
+import { Head } from '@inertiajs/vue3'
+import { router, useForm } from '@inertiajs/vue3'
+import InputError from '@/Components/InputError.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import TextInput from '@/Components/TextInput.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import SecondaryButton from '@/Components/SecondaryButton.vue'
 
 const props = defineProps({
   registration: Object,
@@ -164,9 +171,7 @@ const props = defineProps({
   bankDetails: Object,
 })
 
-const loading = ref(false)
-const form = reactive({
-  ref: props.registration?.reference_code || '',
+const form = useForm({
   deposit_reference: '',
   amount: props.pricing?.total ? (props.pricing.total / 100) : 0,
   deposit_date: '',
@@ -174,20 +179,11 @@ const form = reactive({
   account_holder: '',
 })
 
-const handleSubmit = async () => {
-  loading.value = true
-
-  try {
-    const response = await router.post(route('payment.bank.process'), form, {
-      onSuccess: (page) => {
-        // Handle success response
-      },
-      onError: (errors) => {
-        loading.value = false
-      }
-    })
-  } catch (error) {
-    loading.value = false
-  }
+const submit = () => {
+  form.post(route('payment.bank.process'), {
+    onSuccess: (page) => {
+      // Handle success response
+    }
+  })
 }
 </script>

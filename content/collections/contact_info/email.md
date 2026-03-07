@@ -6,8 +6,8 @@ location: 'Toronto, Ontario, Canada'
 email: mrican@sympatico.ca
 phone: +1-302-918-4741
 mobile: +1-416-276-2085
-featured_url: 'mailto:mrican@sympatico.ca'
+featured_url: 'mailto:sales@plusalliancemeridian.com'
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1758018212
+updated_at: 1772875815
 ---
-mrican@sympatico.ca
+sales@plusalliancemeridian.com

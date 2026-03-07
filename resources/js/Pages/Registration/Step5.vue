@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-12 sm:px-6 lg:px-8">
+  <RegistrationLayout>
+    <Head title="Review & Checkout - Registration" />
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-8">
         <h2 class="text-3xl font-extrabold text-gray-900">
@@ -9,7 +10,7 @@
           Step 5 of 5
         </p>
       </div>
-
+      
       <div class="space-y-6">
         <!-- Registration Summary -->
         <div class="bg-white shadow sm:rounded-lg">
@@ -103,16 +104,26 @@
 
             <div class="space-y-4">
               <div>
-                <label for="referral_code" class="block text-sm font-medium text-gray-700">
-                  Agent Referral Code
-                </label>
-                <input
-                  id="referral_code"
-                  v-model="form.referral_code"
-                  type="text"
-                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Enter referral code for discount"
-                />
+                <InputLabel for="referral_code" value="Agent Referral Code" />
+                <div class="flex gap-2">
+                  <TextInput
+                    id="referral_code"
+                    v-model="form.referral_code"
+                    type="text"
+                    class="mt-1 block flex-1"
+                    :class="{ 'border-red-500': form.errors.referral_code }"
+                    placeholder="Enter referral code for discount"
+                  />
+                  <PrimaryButton
+                    @click="applyReferralCode"
+                    :disabled="applyingReferral || !form.referral_code.trim()"
+                    class="mt-1 px-4 py-2"
+                  >
+                    <span v-if="applyingReferral">Applying...</span>
+                    <span v-else>Apply</span>
+                  </PrimaryButton>
+                </div>
+                <InputError :message="form.errors.referral_code" />
                 <p class="mt-1 text-sm text-gray-500">
                   If you have a referral code from an agent, enter it here for a discounted rate.
                 </p>
@@ -174,46 +185,89 @@
               </div>
             </div>
 
-            <div class="mt-6">
-              <button
-                @click="handleSubmit"
-                :disabled="loading || !form.payment_method"
-                class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-              >
-                <span v-if="loading">Processing...</span>
+            <div class="mt-6 flex justify-between">
+              <SecondaryButton type="button" @click="$inertia.visit(route('registration.step4'))">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+              </SecondaryButton>
+              <PrimaryButton @click="handleSubmit" :disabled="form.processing || !form.payment_method" class="flex-1 ml-4 justify-center">
+                <span v-if="form.processing">Processing...</span>
                 <span v-else>Complete Registration & Proceed to Payment</span>
-              </button>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </PrimaryButton>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </RegistrationLayout>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { router } from '@inertiajs/vue3'
+import { useForm, Head } from '@inertiajs/vue3'
+import RegistrationLayout from '@/Layouts/RegistrationLayout.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import InputError from '@/Components/InputError.vue'
+import TextInput from '@/Components/TextInput.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import SecondaryButton from '@/Components/SecondaryButton.vue'
 
 const props = defineProps({
   registration: Object,
   pricing: Object,
 })
 
-const loading = ref(false)
-const form = reactive({
-  ref: props.registration?.reference_code || '',
-  referral_code: '',
-  payment_method: '',
+const pricing = reactive({ ...props.pricing })
+
+const form = useForm({
+  referral_code: props.registration?.referral_code || '',
+  payment_method: props.registration?.payment_method || '',
 })
 
-const handleSubmit = async () => {
-  loading.value = true
+const applyingReferral = ref(false)
+
+const applyReferralCode = async () => {
+  if (!form.referral_code.trim()) {
+    return
+  }
+
+  applyingReferral.value = true
+  form.clearErrors()
 
   try {
-    await router.post(route('registration.storeCheckout'), form)
+    const response = await fetch(route('registration.applyReferralCode'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      },
+      body: JSON.stringify({
+        referral_code: form.referral_code.trim()
+      })
+    })
+
+    const data = await response.json()
+
+    if (response.ok) {
+      // Update pricing with new data
+      Object.assign(pricing, data.pricing)
+      form.referral_code = '' // Clear the input on success
+    } else {
+      form.setError('referral_code', data.error || 'Invalid referral code')
+    }
   } catch (error) {
-    loading.value = false
+    form.setError('referral_code', 'Failed to apply referral code. Please try again.')
+  } finally {
+    applyingReferral.value = false
   }
+}
+
+const handleSubmit = () => {
+  form.post(route('registration.storeCheckout'))
 }
 </script>

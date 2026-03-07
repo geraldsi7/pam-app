@@ -4,18 +4,22 @@ use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
 // Registration Routes
-Route::get('/register', [RegistrationController::class, 'index'])->name('registration.index');
-Route::get('/register/step1', [RegistrationController::class, 'create'])->name('registration.create');
-Route::post('/register/step1', [RegistrationController::class, 'storePersonalInfo'])->name('registration.storePersonalInfo');
+Route::prefix('register')->controller(RegistrationController::class)->name('registration.')->group(function () {   
+    Route::match(['get', 'post'], '/', 'index')->name('index');
 
-Route::get('/register/step2', [RegistrationController::class, 'step2'])->name('registration.step2');
-Route::post('/register/step2', [RegistrationController::class, 'storeBusinessInfo'])->name('registration.storeBusinessInfo');
+    Route::get('/step1', 'create')->name('step1');
+    Route::post('/step1', 'storePersonalInfo')->name('storePersonalInfo');
 
-Route::get('/register/step3', [RegistrationController::class, 'step3'])->name('registration.step3');
-Route::post('/register/step3', [RegistrationController::class, 'storeAttendees'])->name('registration.storeAttendees');
+    Route::get('/step2', 'step2')->name('step2');
+    Route::post('/step2', 'storeBusinessInfo')->name('storeBusinessInfo');
 
-Route::get('/register/step4', [RegistrationController::class, 'step4'])->name('registration.step4');
-Route::post('/register/step4', [RegistrationController::class, 'storeAddons'])->name('registration.storeAddons');
+    Route::get('/step3', 'step3')->name('step3');
+    Route::post('/step3', 'storeAttendees')->name('storeAttendees');
 
-Route::get('/register/step5', [RegistrationController::class, 'step5'])->name('registration.step5');
-Route::post('/register/step5', [RegistrationController::class, 'storeCheckout'])->name('registration.storeCheckout');
+    Route::get('/step4', 'step4')->name('step4');
+    Route::post('/step4', 'storeAddons')->name('storeAddons');
+
+    Route::get('/step5', 'step5')->name('step5');
+    Route::post('/apply-referral', 'applyReferralCode')->name('applyReferralCode');
+    Route::post('/step5', 'storeCheckout')->name('storeCheckout');
+});

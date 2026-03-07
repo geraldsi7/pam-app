@@ -34,6 +34,9 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'site' => [
+                'title' => "Africa-China Business Investment Summit 2026",
+            ],
         ];
     }
 }

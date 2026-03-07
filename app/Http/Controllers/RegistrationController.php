@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Industry;
+use App\Models\Country;
 use App\Models\Registration;
 use App\Services\RegistrationService;
+use App\Http\Requests\Registration\PersonalInfoRequest;
+use App\Http\Requests\Registration\BusinessInfoRequest;
+use App\Http\Requests\Registration\AttendeesRequest;
+use App\Http\Requests\Registration\AddonsRequest;
+use App\Http\Requests\Registration\CheckoutRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
@@ -17,25 +24,48 @@ class RegistrationController extends Controller
     /**
      * Step 0: Entry - Fresh registration or resume
      */
+    // public function index(Request $request)
+    // {
+    //     $referenceCode = $request->query('ref');
+
+    //     if ($referenceCode) {
+    //         $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+
+    //         if ($registration) {
+    //             return Inertia::render('Registration/Resume', [
+    //                 'registration' => $registration->load(['business.attendees']),
+    //             ]);
+    //         }
+
+    //         return Inertia::render('Registration/Entry', [
+    //             'error' => 'Invalid reference code. Please start a new registration.',
+    //         ]);
+    //     }
+
+    //     return Inertia::render('Registration/Entry');
+    // }
+
     public function index(Request $request)
     {
-        $referenceCode = $request->query('ref');
-
-        if ($referenceCode) {
-            $registration = $this->registrationService->getRegistrationByReference($referenceCode);
-
-            if ($registration) {
-                return Inertia::render('Registration/Resume', [
-                    'registration' => $registration->load(['business.attendees']),
-                ]);
-            }
-
-            return Inertia::render('Registration/Entry', [
-                'error' => 'Invalid reference code. Please start a new registration.',
-            ]);
+        if ($request->isMethod('get')) {
+            return Inertia::render('Registration/Entry');
         }
 
-        return Inertia::render('Registration/Entry');
+        $request->validate([
+            'reference_code' => 'nullable|string|exists:registrations,reference_code',
+        ], [
+            'reference_code.exists' => 'The reference code is invalid.',
+        ]);
+
+        $referenceCode = $request->input('reference_code');
+        $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+
+        if ($registration->status === 'completed') {
+            return redirect()->route('registration.index')->with('error', 'This registration is already completed.');
+        }
+
+        session(['registration_ref' => $registration->reference_code]);
+        return redirect()->route($this->getRegistrationStepRoute($registration));
     }
 
     /**
@@ -43,71 +73,53 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Registration/Step1');
+        $registration = $this->getValidRegistration();
+
+        return Inertia::render('Registration/Step1', compact('registration'));
     }
 
-    public function storePersonalInfo(Request $request)
+    public function storePersonalInfo(PersonalInfoRequest $request)
     {
-        $validated = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:registrations,email',
-            'phone' => 'nullable|string|max:20',
-            'designation' => 'nullable|string|max:255',
-        ]);
+        $validated = $request->validated();
+        $existingRegistration = $this->getValidRegistration();
 
-        $registration = $this->registrationService->createRegistration($validated);
+        $registration = $this->registrationService->savePersonalInfo($validated, $existingRegistration);
 
-        return redirect()->route('registration.step2', ['ref' => $registration->reference_code]);
+        session(['registration_ref' => $registration->reference_code]);
+
+        return redirect()->route('registration.step2');
     }
 
     /**
      * Step 2: Business Info
      */
-    public function step2(Request $request)
+    public function step2()
     {
-        $referenceCode = $request->query('ref');
-        $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+        $registration = $this->getValidRegistration();
 
-        if (!$registration || $registration->current_step < 1) {
+        if (!$registration || !$this->registrationService->canAccessStep($registration, 2)) {
             return redirect()->route('registration.index');
         }
 
         return Inertia::render('Registration/Step2', [
-            'registration' => $registration,
+            'registration' => $registration->load(['business.industries', 'business.country']),
+            'industries' => Industry::orderBy('name')->get(['id', 'name']),
+            'countries' => Country::orderBy('name')->get(['id', 'name']),
         ]);
     }
 
-    public function storeBusinessInfo(Request $request)
+    public function storeBusinessInfo(BusinessInfoRequest $request)
     {
-        $validated = $request->validate([
-            'ref' => 'required|string|exists:registrations,reference_code',
-            'company_name' => 'required|string|max:255',
-            'origin' => ['required', Rule::in(['China', 'Outside', 'Online'])],
-            'industry' => 'nullable|string|max:255',
-            'company_size' => 'nullable|string|max:255',
-            'website' => 'nullable|url',
-            'address' => 'nullable|string',
-        ]);
-
-        $registration = $this->registrationService->getRegistrationByReference($validated['ref']);
+        $validated = $request->validated();
+        $registration = $this->getValidRegistration();
 
         if (!$registration) {
-            return back()->withErrors(['ref' => 'Invalid reference code']);
+            return redirect()->route('registration.index')->withErrors(['error' => 'Session expired. Please start again.']);
         }
 
-        $this->registrationService->updateStep($registration, 2, [
-            'company_name' => $validated['company_name'],
-            'origin' => $validated['origin'],
-            'business_details' => array_filter([
-                'industry' => $validated['industry'] ?? null,
-                'company_size' => $validated['company_size'] ?? null,
-                'website' => $validated['website'] ?? null,
-                'address' => $validated['address'] ?? null,
-            ]),
-        ]);
+        $this->registrationService->updateStep($registration, 2, $validated);
 
-        return redirect()->route('registration.step3', ['ref' => $registration->reference_code]);
+        return redirect()->route('registration.step3');
     }
 
     /**
@@ -115,10 +127,9 @@ class RegistrationController extends Controller
      */
     public function step3(Request $request)
     {
-        $referenceCode = $request->query('ref');
-        $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+        $registration = $this->getValidRegistration();
 
-        if (!$registration || $registration->current_step < 2) {
+        if (!$registration || !$this->registrationService->canAccessStep($registration, 3)) {
             return redirect()->route('registration.index');
         }
 
@@ -126,58 +137,40 @@ class RegistrationController extends Controller
         $availableTicketTypes = $this->registrationService->getTicketTypesByOrigin($business->origin);
 
         return Inertia::render('Registration/Step3', [
-            'registration' => $registration->load('business'),
+            'registration' => $registration->load('business.attendees'),
             'availableTicketTypes' => $availableTicketTypes,
+            'countries' => Country::orderBy('name')->get(['id', 'name']),
         ]);
     }
 
-    public function storeAttendees(Request $request)
+    public function storeAttendees(AttendeesRequest $request)
     {
-        $validated = $request->validate([
-            'ref' => 'required|string|exists:registrations,reference_code',
-            'ticket_type' => ['required', Rule::in(['1*', '3*'])],
-            'attendees' => 'required|array|min:1',
-            'attendees.*.first_name' => 'required|string|max:255',
-            'attendees.*.last_name' => 'required|string|max:255',
-            'attendees.*.email' => 'required|email',
-            'attendees.*.phone' => 'nullable|string|max:20',
-            'attendees.*.designation' => 'nullable|string|max:255',
-        ]);
-
-        $registration = $this->registrationService->getRegistrationByReference($validated['ref']);
+        $validated = $request->validated();
+        $registration = $this->getValidRegistration();
 
         if (!$registration) {
-            return back()->withErrors(['ref' => 'Invalid reference code']);
-        }
-
-        $business = $registration->business;
-        $availableTicketTypes = $this->registrationService->getTicketTypesByOrigin($business->origin);
-
-        if (!in_array($validated['ticket_type'], $availableTicketTypes)) {
-            return back()->withErrors(['ticket_type' => 'Invalid ticket type for your origin']);
-        }
-
-        $maxAttendees = $validated['ticket_type'] === '1*' ? 1 : 3;
-        if (count($validated['attendees']) > $maxAttendees) {
-            return back()->withErrors(['attendees' => "Maximum {$maxAttendees} attendees allowed for this ticket type"]);
+            return redirect()->route('registration.index')->withErrors(['error' => 'Session expired. Please start again.']);
         }
 
         $this->registrationService->updateStep($registration, 3, [
             'ticket_type' => $validated['ticket_type'],
             'attendees' => array_map(function ($attendee) {
-                return array_filter([
+                return [
                     'first_name' => $attendee['first_name'],
+                    'middle_name' => $attendee['middle_name'] ?? null,
                     'last_name' => $attendee['last_name'],
                     'email' => $attendee['email'],
-                    'phone' => $attendee['phone'] ?? null,
-                    'additional_details' => array_filter([
+                    'phone' => $attendee['phone'],
+                    'id_number' => $attendee['id_number'],
+                    'nationality' => $attendee['nationality'],
+                    'additional_details' => [
                         'designation' => $attendee['designation'] ?? null,
-                    ]),
-                ]);
+                    ],
+                ];
             }, $validated['attendees']),
         ]);
 
-        return redirect()->route('registration.step4', ['ref' => $registration->reference_code]);
+        return redirect()->route('registration.step4');
     }
 
     /**
@@ -185,47 +178,41 @@ class RegistrationController extends Controller
      */
     public function step4(Request $request)
     {
-        $referenceCode = $request->query('ref');
-        $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+        $registration = $this->getValidRegistration();
 
-        if (!$registration || $registration->current_step < 3) {
+        if (!$registration || !$this->registrationService->canAccessStep($registration, 4)) {
             return redirect()->route('registration.index');
         }
 
         return Inertia::render('Registration/Step4', [
-            'registration' => $registration->load(['business.attendees']),
+            'registration' => $registration,
         ]);
     }
 
-    public function storeAddons(Request $request)
+    public function storeAddons(AddonsRequest $request)
     {
-        $validated = $request->validate([
-            'ref' => 'required|string|exists:registrations,reference_code',
-            'addon_expo' => 'boolean',
-        ]);
-
-        $registration = $this->registrationService->getRegistrationByReference($validated['ref']);
+        $validated = $request->validated();
+        $registration = $this->getValidRegistration();
 
         if (!$registration) {
-            return back()->withErrors(['ref' => 'Invalid reference code']);
+            return redirect()->route('registration.index')->withErrors(['error' => 'Session expired. Please start again.']);
         }
 
         $this->registrationService->updateStep($registration, 4, [
             'addon_expo' => $validated['addon_expo'] ?? false,
         ]);
 
-        return redirect()->route('registration.step5', ['ref' => $registration->reference_code]);
+        return redirect()->route('registration.step5');
     }
 
     /**
      * Step 5: Review & Checkout
      */
-    public function step5(Request $request)
+    public function step5()
     {
-        $referenceCode = $request->query('ref');
-        $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+        $registration = $this->getValidRegistration();
 
-        if (!$registration || $registration->current_step < 4) {
+        if (!$registration || !$this->registrationService->canAccessStep($registration, 5)) {
             return redirect()->route('registration.index');
         }
 
@@ -237,24 +224,63 @@ class RegistrationController extends Controller
         ]);
     }
 
-    public function storeCheckout(Request $request)
+    public function applyReferralCode(Request $request)
     {
-        $validated = $request->validate([
-            'ref' => 'required|string|exists:registrations,reference_code',
-            'referral_code' => 'nullable|string|exists:agents,referral_code',
-            'payment_method' => ['required', Rule::in(['paystack', 'bank_deposit'])],
+        $request->validate([
+            'referral_code' => 'required|string|exists:agents,referral_code',
         ]);
 
-        $registration = $this->registrationService->getRegistrationByReference($validated['ref']);
+        $registration = $this->getValidRegistration();
 
         if (!$registration) {
-            return back()->withErrors(['ref' => 'Invalid reference code']);
+            return response()->json(['error' => 'Session expired. Please start again.'], 400);
         }
 
+        $agent = $this->registrationService->validateReferralCode($request->referral_code);
+
+        if (!$agent) {
+            return response()->json(['error' => 'Invalid referral code.'], 422);
+        }
+
+        // Calculate pricing with the referral agent
+        $pricing = $this->registrationService->calculateTotalAmount($registration, $agent);
+
+        // Save the referral code to the registration immediately
+        $this->registrationService->updateStep($registration, 5, [
+            'referral_code' => $request->referral_code,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'pricing' => $pricing,
+            'agent' => [
+                'id' => $agent->id,
+                'name' => $agent->name,
+            ],
+        ]);
+    }
+
+    public function storeCheckout(CheckoutRequest $request)
+    {
+        $validated = $request->validated();
+        $registration = $this->getValidRegistration();
+
+        if (!$registration) {
+            return redirect()->route('registration.index')->withErrors(['error' => 'Session expired. Please start again.']);
+        }
+
+        $checkoutData = [];
+
         if ($validated['referral_code']) {
-            $this->registrationService->updateStep($registration, 5, [
-                'referral_code' => $validated['referral_code'],
-            ]);
+            $checkoutData['referral_code'] = $validated['referral_code'];
+        }
+
+        if ($validated['payment_method']) {
+            $checkoutData['payment_method'] = $validated['payment_method'];
+        }
+
+        if (!empty($checkoutData)) {
+            $this->registrationService->updateStep($registration, 5, $checkoutData);
         }
 
         // Update registration status and redirect to payment
@@ -263,7 +289,25 @@ class RegistrationController extends Controller
         if ($validated['payment_method'] === 'paystack') {
             return redirect()->route('payment.paystack', ['ref' => $registration->reference_code]);
         } else {
-            return redirect()->route('payment.bank', ['ref' => $registration->reference_code]);
+            return redirect()->route('payment.bank');
         }
+    }
+
+    private function getValidRegistration(): ?Registration
+    {
+        return $this->registrationService->getValidRegistrationFromSession();
+    }
+
+    private function getRegistrationStepRoute(Registration $registration)
+    {
+        $routes = [
+            'registration.step1',
+            'registration.step2',
+            'registration.step3',
+            'registration.step4',
+            'registration.step5',
+        ];
+
+        return $routes[$registration->current_step - 1] ?? 'registration.index';
     }
 }

@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-12 sm:px-6 lg:px-8">
+  <RegistrationLayout>
+    <Head title="Add-ons & Preferences - Registration" />
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-8">
         <h2 class="text-3xl font-extrabold text-gray-900">
@@ -21,7 +22,7 @@
                     id="addon_expo"
                     v-model="form.addon_expo"
                     type="checkbox"
-                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
                   />
                 </div>
                 <div class="ml-3 text-sm">
@@ -35,44 +36,43 @@
               </div>
             </div>
 
-            <div class="flex justify-end">
-              <button
-                type="submit"
-                :disabled="loading"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-              >
-                <span v-if="loading">Saving...</span>
+            <div class="flex justify-between">
+              <SecondaryButton type="button" @click="$inertia.visit(route('registration.step3'))">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+              </SecondaryButton>
+              <PrimaryButton type="submit" :disabled="form.processing">
+                <span v-if="form.processing">Saving...</span>
                 <span v-else>Continue to Review & Checkout</span>
-              </button>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </PrimaryButton>
             </div>
           </form>
         </div>
       </div>
     </div>
-  </div>
+  </RegistrationLayout>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-import { router } from '@inertiajs/vue3'
+import { useForm, Head } from '@inertiajs/vue3'
+import RegistrationLayout from '@/Layouts/RegistrationLayout.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import SecondaryButton from '@/Components/SecondaryButton.vue'
 
 const props = defineProps({
   registration: Object,
 })
 
-const loading = ref(false)
-const form = reactive({
-  ref: props.registration?.reference_code || '',
-  addon_expo: false,
+const form = useForm({
+  addon_expo: props.registration?.addon_expo || false,
 })
 
-const handleSubmit = async () => {
-  loading.value = true
-
-  try {
-    await router.post(route('registration.storeAddons'), form)
-  } catch (error) {
-    loading.value = false
-  }
+const handleSubmit = () => {
+  form.post(route('registration.storeAddons'))
 }
 </script>

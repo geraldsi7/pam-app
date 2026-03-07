@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('registrations', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('reference_code')->unique();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->json('personal_info')->nullable();
             $table->integer('current_step')->default(0);
-            $table->string('status')->default('pending'); // pending, completed, cancelled
-            $table->decimal('total_amount', 12, 2)->default(0.00);
+            $table->enum('status', ['pending', 'payment_pending', 'completed', 'cancelled'])->default('pending'); // pending, payment_pending, completed, cancelled
+            $table->integer('total_amount')->default(0);
             $table->string('referral_code')->nullable();
             $table->foreignUuid('agent_id')->nullable()->constrained('agents')->nullOnDelete();
             $table->boolean('addon_expo')->default(false);
+            $table->enum('payment_method', ['paystack', 'bank_deposit'])->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

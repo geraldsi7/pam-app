@@ -8,12 +8,42 @@ use App\Services\RegistrationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use App\Services\PaymentService;
 
 class PaymentController extends Controller
 {
     public function __construct(
-        private RegistrationService $registrationService
+        private RegistrationService $registrationService,
+        private PaymentService $paymentService
     ) {}
+
+
+    public function index()
+    {
+        $referenceCode = session('registration_ref');
+        $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+
+        if (!$registration || $registration->status !== 'payment_pending') {
+            return redirect()->route('registration.index');
+        }
+
+        return $this->paymentService->render($registration);
+    }
+
+    public function process(Request $request)
+    {
+        $referenceCode = session('registration_ref');
+        $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+
+        if (!$registration || $registration->status !== 'payment_pending') {
+            return redirect()->route('registration.index');
+        }
+
+        $input = $request->all();
+
+        return $this->paymentService->process($registration, $input);
+    }
+
 
     /**
      * Paystack Payment Page
@@ -81,9 +111,9 @@ class PaymentController extends Controller
     /**
      * Bank Deposit Page
      */
-    public function bankDeposit(Request $request)
+    public function bankDeposit()
     {
-        $referenceCode = $request->query('ref');
+        $referenceCode = session('registration_ref');
         $registration = $this->registrationService->getRegistrationByReference($referenceCode);
 
         if (!$registration || $registration->status !== 'payment_pending') {
@@ -93,7 +123,7 @@ class PaymentController extends Controller
         $pricing = $this->registrationService->calculateTotalAmount($registration);
 
         return Inertia::render('Payment/BankDeposit', [
-            'registration' => $registration->load(['business.attendees']),
+            'registration' => $registration,
             'pricing' => $pricing,
             'bankDetails' => [
                 'bank_name' => 'Example Bank',
@@ -109,8 +139,14 @@ class PaymentController extends Controller
      */
     public function processBankDeposit(Request $request)
     {
+        $referenceCode = session('registration_ref');
+        $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+
+        if (!$registration) {
+            return redirect()->route('registration.index');
+        }
+        
         $validated = $request->validate([
-            'ref' => 'required|string|exists:registrations,reference_code',
             'deposit_reference' => 'required|string',
             'amount' => 'required|numeric|min:0',
             'deposit_date' => 'required|date',
@@ -118,17 +154,11 @@ class PaymentController extends Controller
             'account_holder' => 'required|string',
         ]);
 
-        $registration = $this->registrationService->getRegistrationByReference($validated['ref']);
-
-        if (!$registration) {
-            return response()->json(['error' => 'Invalid registration'], 400);
-        }
-
+    
         $pricing = $this->registrationService->calculateTotalAmount($registration);
 
         // For bank deposits, we set status to 'pending' until manually verified
         $payment = Payment::create([
-            'id' => Str::uuid(),
             'registration_id' => $registration->id,
             'method' => 'bank_deposit',
             'status' => 'pending', // Requires manual verification
@@ -149,11 +179,12 @@ class PaymentController extends Controller
         // Send confirmation email
         app(\App\Services\PostPaymentService::class)->sendReferenceCodeEmail($registration);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Bank deposit details submitted. We will verify your payment within 24 hours.',
-            'redirect' => route('registration.pending', ['ref' => $registration->reference_code]),
-        ]);
+        return redirect()->route('registration.pending', ['ref' => $registration->reference_code]);
+        // return response()->json([
+        //     'success' => true,
+        //     'message' => 'Bank deposit details submitted. We will verify your payment within 24 hours.',
+        //     'redirect' => route('registration.pending', ['ref' => $registration->reference_code]),
+        // ]);
     }
 
     /**

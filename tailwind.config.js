@@ -32,6 +32,7 @@ export default {
         'bg-red-600',
         'border-red-500',
     ],
+    darkMode: 'class',
     theme: {
         extend: {
             fontFamily: {

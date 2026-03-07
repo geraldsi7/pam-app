@@ -1,5 +1,83 @@
+<script setup>
+import { ref, computed, watch } from 'vue'
+import { useForm, Head } from '@inertiajs/vue3'
+import RegistrationLayout from '@/Layouts/RegistrationLayout.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import InputError from '@/Components/InputError.vue'
+import TextInput from '@/Components/TextInput.vue'
+import SelectInput from '@/Components/SelectInput.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import SecondaryButton from '@/Components/SecondaryButton.vue'
+import { PhoneInput } from "@lbgm/phone-number-input";
+
+const props = defineProps({
+  registration: Object,
+  availableTicketTypes: Array,
+  countries: Array,
+})
+
+const form = useForm({
+  ticket_type: props.registration?.business?.ticket_type || '',
+  attendees: props.registration?.business?.attendees?.length > 0
+    ? props.registration.business.attendees.map(a => ({
+        first_name: a.first_name || '',
+        middle_name: a.middle_name || '',
+        last_name: a.last_name || '',
+        email: a.email || '',
+        phone: a.phone ? a.phone.replace(/^\+/, '') : '',
+        id_number: a.id_number || '',
+        nationality: a.nationality || '',
+        designation: a.additional_details?.designation || '',
+      }))
+    : [],
+})
+
+const maxAttendees = computed(() => form.ticket_type === '1*' ? 1 : 3)
+
+const isChinaOrigin = computed(() => props.registration?.business?.origin === 'China')
+
+watch(() => form.ticket_type, (newType) => {
+  if (newType) {
+    const count = newType === '1*' ? 1 : 3
+    
+    // Only reset if the number of attendees doesn't match the ticket type
+    if (form.attendees.length !== count) {
+      form.attendees = Array.from({ length: count }, (_, i) => {
+        // Try to preserve existing data if available
+        const existing = form.attendees[i] || {}
+        return {
+          first_name: existing.first_name || '',
+          middle_name: existing.middle_name || '',
+          last_name: existing.last_name || '',
+          email: existing.email || '',
+          phone: existing.phone || '',
+          id_number: existing.id_number || '',
+          nationality: existing.nationality || '',
+          designation: existing.designation || '',
+        }
+      })
+    }
+  }
+})
+
+const validatePhone = (index, data) => {
+  if (data.isValid) {
+    form.attendees[index].phone = data.number;
+    form.clearErrors(`attendees.${index}.phone`);
+  } else if (data.isValid === false) {
+    form.setError(`attendees.${index}.phone`, 'Invalid phone number');
+    form.attendees[index].phone = null;
+  }
+}
+
+const handleSubmit = () => {
+  form.post(route('registration.storeAttendees'))
+}
+</script>
+
 <template>
-  <div class="min-h-screen bg-gray-50 py-12 sm:px-6 lg:px-8">
+  <RegistrationLayout>
+    <Head title="Attendee Information - Registration" />
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-8">
         <h2 class="text-3xl font-extrabold text-gray-900">
@@ -9,15 +87,13 @@
           Step 3 of 5
         </p>
       </div>
-
+      
       <div class="bg-white shadow sm:rounded-lg">
         <div class="px-4 py-5 sm:p-6">
           <form @submit.prevent="handleSubmit" class="space-y-6">
             <!-- Ticket Type Selection -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-3">
-                Select Ticket Type *
-              </label>
+              <InputLabel value="Select Ticket Type *" class="mb-3" />
               <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div
                   v-for="ticketType in availableTicketTypes"
@@ -50,6 +126,7 @@
                   </label>
                 </div>
               </div>
+              <InputError :message="form.errors.ticket_type" />
             </div>
 
             <!-- Attendee Forms -->
@@ -65,130 +142,135 @@
 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label :for="`first_name_${index}`" class="block text-sm font-medium text-gray-700">
-                      First Name *
-                    </label>
-                    <input
+                    <InputLabel :for="`first_name_${index}`" value="First Name" :required="true" />
+                    <TextInput
                       :id="`first_name_${index}`"
                       v-model="attendee.first_name"
-                      type="text"
-                      required
-                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      type="text"                      
+                      class="mt-1 block w-full"
+                      :class="{ 'border-red-500': form.errors[`attendees.${index}.first_name`] }"
                     />
+                    <InputError :message="form.errors[`attendees.${index}.first_name`]" />
                   </div>
 
                   <div>
-                    <label :for="`last_name_${index}`" class="block text-sm font-medium text-gray-700">
-                      Last Name *
-                    </label>
-                    <input
+                    <InputLabel :for="`middle_name_${index}`" value="Middle Name" />
+                    <TextInput
+                      :id="`middle_name_${index}`"
+                      v-model="attendee.middle_name"
+                      type="text"                      
+                      class="mt-1 block w-full"
+                      :class="{ 'border-red-500': form.errors[`attendees.${index}.middle_name`] }"
+                    />
+                    <InputError :message="form.errors[`attendees.${index}.middle_name`]" />
+                  </div>
+
+                  <div>
+                    <InputLabel :for="`last_name_${index}`" value="Last Name" :required="true" />
+                    <TextInput
                       :id="`last_name_${index}`"
                       v-model="attendee.last_name"
                       type="text"
-                      required
-                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      class="mt-1 block w-full"
+                      :class="{ 'border-red-500': form.errors[`attendees.${index}.last_name`] }"
                     />
+                    <InputError :message="form.errors[`attendees.${index}.last_name`]" />
                   </div>
 
                   <div>
-                    <label :for="`email_${index}`" class="block text-sm font-medium text-gray-700">
-                      Email *
-                    </label>
-                    <input
+                    <InputLabel :for="`nationality_${index}`" value="Nationality" :required="true" />
+                    <SelectInput
+                      :id="`nationality_${index}`"
+                      v-model="attendee.nationality"
+                      class="mt-1 block w-full"
+                      :class="{ 'border-red-500': form.errors[`attendees.${index}.nationality`] }"
+                    >
+                      <option value="" disabled selected>-- Select nationality --</option>
+                      <option
+                        v-for="country in countries"
+                        :key="country.id"
+                        :value="country.id"
+                      >
+                        {{ country.name }}
+                      </option>
+                    </SelectInput>
+                    <InputError :message="form.errors[`attendees.${index}.nationality`]" />
+                  </div>
+
+                  <div>
+                    <InputLabel :for="`id_number_${index}`" :value="isChinaOrigin ? 'ID Number' : 'Passport ID'" :required="true" />
+                    <TextInput
+                      :id="`id_number_${index}`"
+                      v-model="attendee.id_number"
+                      type="text"
+                      class="mt-1 block w-full"
+                      :class="{ 'border-red-500': form.errors[`attendees.${index}.id_number`] }"
+                    />
+                    <InputError :message="form.errors[`attendees.${index}.id_number`]" />
+                  </div>
+
+                  <div>
+                    <InputLabel :for="`email_${index}`" value="Email" :required="true" />
+                    <TextInput
                       :id="`email_${index}`"
                       v-model="attendee.email"
-                      type="email"
-                      required
-                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      type="email"                      
+                      class="mt-1 block w-full"
+                      :class="{ 'border-red-500': form.errors[`attendees.${index}.email`] }"
                     />
+                    <InputError :message="form.errors[`attendees.${index}.email`]" />
+                  </div>
+
+                  <div class="relative z-10">
+                    <InputLabel :for="`phone_${index}`" value="Phone Number" :required="true" />
+                    <div class="relative overflow-visible">
+                      <PhoneInput
+                        :id="`phone_${index}`"
+                        v-model="attendee.phone"
+                        :value="attendee.phone"
+                        @phoneData="(data) => validatePhone(index, data)"
+                        :listHeight="200"
+                        class="mt-1 block w-full"
+                        :allowed="[]"
+                        :class="{ 'border-red-500': form.errors[`attendees.${index}.phone`] }"
+                      />
+                    </div>
+                    <InputError :message="form.errors[`attendees.${index}.phone`]" />
                   </div>
 
                   <div>
-                    <label :for="`phone_${index}`" class="block text-sm font-medium text-gray-700">
-                      Phone
-                    </label>
-                    <input
-                      :id="`phone_${index}`"
-                      v-model="attendee.phone"
-                      type="tel"
-                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-
-                  <div class="sm:col-span-2">
-                    <label :for="`designation_${index}`" class="block text-sm font-medium text-gray-700">
-                      Designation/Title
-                    </label>
-                    <input
+                    <InputLabel :for="`designation_${index}`" value="Designation/Title" />
+                    <TextInput
                       :id="`designation_${index}`"
                       v-model="attendee.designation"
                       type="text"
-                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      class="mt-1 block w-full"
+                      :class="{ 'border-red-500': form.errors[`attendees.${index}.designation`] }"
                     />
+                    <InputError :message="form.errors[`attendees.${index}.designation`]" />
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="flex justify-end">
-              <button
-                type="submit"
-                :disabled="loading || !form.ticket_type"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-              >
-                <span v-if="loading">Saving...</span>
+            <div class="flex justify-between">
+              <SecondaryButton type="button" @click="$inertia.visit(route('registration.step2'))">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back
+              </SecondaryButton>
+              <PrimaryButton type="submit" :disabled="form.processing || !form.ticket_type">
+                <span v-if="form.processing">Saving...</span>
                 <span v-else>Continue to Add-ons</span>
-              </button>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </PrimaryButton>
             </div>
           </form>
         </div>
       </div>
     </div>
-  </div>
+  </RegistrationLayout>
 </template>
-
-<script setup>
-import { ref, reactive, computed, watch } from 'vue'
-import { router } from '@inertiajs/vue3'
-
-const props = defineProps({
-  registration: Object,
-  availableTicketTypes: Array,
-})
-
-const loading = ref(false)
-const form = reactive({
-  ref: props.registration?.reference_code || '',
-  ticket_type: '',
-  attendees: [],
-})
-
-const maxAttendees = computed(() => form.ticket_type === '1*' ? 1 : 3)
-
-watch(() => form.ticket_type, (newType) => {
-  if (newType) {
-    const count = newType === '1*' ? 1 : 3
-    form.attendees = Array.from({ length: count }, () => ({
-      first_name: '',
-      last_name: '',
-      email: '',
-      phone: '',
-      designation: '',
-    }))
-  }
-})
-
-const handleSubmit = async () => {
-  loading.value = true
-
-  try {
-    await router.post(route('registration.storeAttendees'), {
-      ref: form.ref,
-      ticket_type: form.ticket_type,
-      attendees: form.attendees,
-    })
-  } catch (error) {
-    loading.value = false
-  }
-}
-</script>
