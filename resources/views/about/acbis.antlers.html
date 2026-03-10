@@ -15,10 +15,13 @@
     {{ /collection:articles }}
 
     {{ collection:articles slug:is="organized-by" limit="1" }}
-    {{ partial:image-text-section image_position="right" }}
+    {{ partial:image-text-section image_position="right" eyebrow="Organizers" }}
     {{ /collection:articles }}
     
     {{ partial:partners }}
+
+    <!-- Team Section -->
+    {{ partial:team }}
 
     <!-- Call to Action -->
     {{ collection:cta title:is="Explore Services" }}

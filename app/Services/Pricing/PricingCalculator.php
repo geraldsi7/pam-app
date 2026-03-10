@@ -23,11 +23,16 @@ class PricingCalculator
         return $this->hasReferral ? $this->strategy->getReferralPrice() : $this->strategy->getBasePrice();
     }
 
+    public function getDiscount(): int
+    {
+        return $this->strategy->getBasePrice() - $this->getTicketPrice();
+    }
+
     public function getAgentCommission(): int
     {
         return $this->hasReferral ? $this->strategy->getAgentCommission() : 0;
     }
-
+    
     public function getCompanyNet(): int
     {
         return $this->hasReferral ? $this->strategy->getCompanyNet() : $this->strategy->getBasePrice();

@@ -311,3 +311,8 @@
         height: 300px;
     }
 }
+
+.top-sponsorship-package {
+    border: 1px solid #e6a81940;
+    box-shadow: 0 0 40px -10px #e6a81940;
+}

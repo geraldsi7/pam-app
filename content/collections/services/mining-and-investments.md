@@ -1,8 +1,8 @@
 ---
 id: c88820d0-b000-4aa8-8b9a-5711a2698760
 blueprint: service
-title: 'Minerals & Mining'
-description: 'Trading and supply of iron ore, lead ore, copper ore and concentrates, fluorite, mica, gold ore, gemstones, lithium, and aluminium with mining investments.'
+title: 'State-Owned Enterprises (SOEs) & Construction Giants'
+description: 'Firms involved in the "Simandou Effect" logistics, railway, and port development.'
 featured_image: placeholder-image.jpg
 service_type: mining
 industry_focus:

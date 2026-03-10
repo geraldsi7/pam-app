@@ -1,8 +1,8 @@
 ---
 id: ce2aedd7-60d5-42a6-82d4-d4548aadfee9
 blueprint: service
-title: 'Commodities & General Goods Supply'
-description: 'Supply and trade of cocoa beans, coffee, sugar, and other general goods for domestic and international markets.'
+title: 'Real Estate & Infrastructure Developers'
+description: 'Private firms building the "New Cities" and industrial parks across West Africa'
 featured_image: placeholder-image.jpg
 service_type: commodities
 industry_focus:

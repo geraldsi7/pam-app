@@ -2,8 +2,7 @@
 id: 0240c85c-4be3-4bcc-883a-eeb71301ead6
 blueprint: hero
 title: About Us Hero
-heading: 'About Mrican Technologies.'
-description: 'Pioneering ERP solutions since 1989, we specialize in tailor-made corporate management systems that transform businesses.'
+heading: 'Africa-China Business & Investment Summit 2026'
 primary_button_text: 'Explore Our Services'
 primary_button_link: '#services'
 secondary_button_text: 'Get a Free Consultation'

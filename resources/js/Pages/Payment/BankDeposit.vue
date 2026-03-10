@@ -29,12 +29,20 @@
                 </div>
                 <div class="flex justify-between">
                   <dt class="text-sm font-medium text-gray-500">Account Number:</dt>
-                  <dd class="text-sm text-gray-900 font-mono">{{ bankDetails.account_number }}</dd>
+                  <dd class="text-sm text-gray-900">{{ bankDetails.account_number }}</dd>
+                </div>
+                <div class="flex justify-between">
+                  <dt class="text-sm font-medium text-gray-500">Branch:</dt>
+                  <dd class="text-sm text-gray-900">{{ bankDetails.branch }}</dd>
                 </div>
                 <div class="flex justify-between">
                   <dt class="text-sm font-medium text-gray-500">SWIFT Code:</dt>
-                  <dd class="text-sm text-gray-900 font-mono">{{ bankDetails.swift_code }}</dd>
+                  <dd class="text-sm text-gray-900">{{ bankDetails.swift_code }}</dd>
                 </div>
+                <div class="flex justify-between">
+                  <dt class="text-sm font-medium text-gray-500">Address:</dt>
+                  <dd class="text-sm text-gray-900">{{ bankDetails.address }}</dd>
+                </div>            
               </dl>
             </div>
 

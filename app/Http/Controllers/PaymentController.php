@@ -126,10 +126,12 @@ class PaymentController extends Controller
             'registration' => $registration,
             'pricing' => $pricing,
             'bankDetails' => [
-                'bank_name' => 'Example Bank',
-                'account_name' => 'FDI Summit Organizers',
-                'account_number' => '1234567890',
-                'swift_code' => 'EXAMUS33',
+                'bank_name' => 'STANBIC BANK GHANA',
+                'account_name' => 'PLUS ALLIANCE MERIDIAN LTD',
+                'account_number' => '9040013787543',
+                'branch' => 'ACCRA MAIN BRANCH',
+                'swift_code' => 'SBICGHAC',
+                'address' => 'Accra Main, VALCO Trust House, Castle Road, Accra',
             ],
         ]);
     }

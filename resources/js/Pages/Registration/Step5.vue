@@ -82,9 +82,9 @@
                 <span class="text-gray-900">${{ (pricing.addon_price / 100).toFixed(2) }}</span>
               </div>
 
-              <div v-if="pricing.agent_commission > 0" class="flex justify-between text-sm text-green-600">
+              <div v-if="pricing.discount > 0" class="flex justify-between text-sm text-green-600">
                 <span>Referral Discount</span>
-                <span>-${{ (pricing.agent_commission / 100).toFixed(2) }}</span>
+                <span>-${{ (pricing.discount / 100).toFixed(2) }}</span>
               </div>
 
               <div class="border-t border-gray-200 pt-3">
@@ -194,7 +194,7 @@
               </SecondaryButton>
               <PrimaryButton @click="handleSubmit" :disabled="form.processing || !form.payment_method" class="flex-1 ml-4 justify-center">
                 <span v-if="form.processing">Processing...</span>
-                <span v-else>Complete Registration & Proceed to Payment</span>
+                <span v-else>Proceed to Payment</span>
                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>

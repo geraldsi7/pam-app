@@ -1,8 +1,8 @@
 ---
 id: 9eded8be-0edf-4036-9879-ab087d4e74d6
 blueprint: service
-title: 'Minerals & Mining'
-description: 'Trading and supply of iron ore, lead ore, copper ore and concentrates, fluorite, mica, gold ore, gemstones, lithium, and aluminium with mining investments.'
+title: 'Tech & Fintech Innovators'
+description: 'Companies like Transsion (Tecno/Infinix) and payment giants (Alipay/WeChat Pay) looking to integrate with African mobile money systems.'
 featured_image: placeholder-image.jpg
 service_type: mining
 industry_focus:

@@ -1,8 +1,8 @@
 ---
 id: 3e4f5g6h-7i8j-9k0l-1m2n-3o4p5q6r7s8t9u0v
 blueprint: service
-title: 'Procurement & Trade Services'
-description: 'Procurement of industrial raw materials and engineering equipment, with cross-border trade support and financial instruments.'
+title: 'Agricultural Technology Firms'
+description: 'Producers of irrigation systems and crop-processing machinery.'
 featured_image: placeholder-image.jpg
 service_type: procurement
 industry_focus:

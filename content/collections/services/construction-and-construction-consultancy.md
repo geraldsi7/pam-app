@@ -1,8 +1,8 @@
 ---
 id: f16975b7-2173-46cf-8575-bd67bbbbf799
 blueprint: service
-title: 'Construction & Real Estate'
-description: 'Real estate development, office and public building construction, consultancy, and pre-fabricated steel structures and housing.'
+title: 'Tier 1 Manufacturers'
+description: 'Companies in solar energy, EV assembly (BYD, GWM), and affordable consumer electronics seeking to set up "Made in Africa" factories to avoid Western tariffs.'
 featured_image: placeholder-image.jpg
 service_type: construction
 industry_focus:

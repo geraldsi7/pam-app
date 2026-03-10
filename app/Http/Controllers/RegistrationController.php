@@ -134,7 +134,7 @@ class RegistrationController extends Controller
         }
 
         $business = $registration->business;
-        $availableTicketTypes = $this->registrationService->getTicketTypesByOrigin($business->origin);
+        $availableTicketTypes = $this->registrationService->getTicketTypesByOriginAndMode($business->origin, $business->attendance_mode);
 
         return Inertia::render('Registration/Step3', [
             'registration' => $registration->load('business.attendees'),
@@ -296,6 +296,27 @@ class RegistrationController extends Controller
     private function getValidRegistration(): ?Registration
     {
         return $this->registrationService->getValidRegistrationFromSession();
+    }
+
+    /**
+     * Pending Payment Verification Page
+     */
+    public function pending(Request $request)
+    {
+        $referenceCode = $request->query('ref');
+        $registration = $this->registrationService->getRegistrationByReference($referenceCode);
+
+        if (!$registration ||
+            (!in_array($registration->status, ['payment_pending', 'payment_verification_pending']))) {
+            return redirect()->route('registration.index');
+        }
+
+        $pricing = $this->registrationService->calculateTotalAmount($registration);
+
+        return Inertia::render('Registration/Pending', [
+            'registration' => $registration->load(['business.attendees']),
+            'pricing' => $pricing,
+        ]);
     }
 
     private function getRegistrationStepRoute(Registration $registration)

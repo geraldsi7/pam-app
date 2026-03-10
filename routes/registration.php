@@ -22,4 +22,6 @@ Route::prefix('register')->controller(RegistrationController::class)->name('regi
     Route::get('/step5', 'step5')->name('step5');
     Route::post('/apply-referral', 'applyReferralCode')->name('applyReferralCode');
     Route::post('/step5', 'storeCheckout')->name('storeCheckout');
+
+    Route::get('/pending', 'pending')->name('pending');
 });

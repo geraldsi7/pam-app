@@ -17,6 +17,20 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {{ collection:news sort="publish_date:desc" limit="4" }}
+            {{ if no_results }}
+            <!-- No Blog Available -->
+            <div class="col-span-full max-w-4xl mx-auto">
+                <div class="text-center">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-800">
+                        No news available at the moment
+                    </h3>
+                    <p class="opacity-80 text-gray-600">
+                        Check back soon for the latest news and insights.
+
+                    </p>
+                </div>
+            </div>
+            {{ else }}
             <article class="bg-white rounded-lg shadow-sm transition-shadow overflow-hidden">
                 <div class="aspect-w-16 aspect-h-9 bg-gray-200">
                     {{ if featured_image }}
@@ -44,20 +58,7 @@
                     </a>
                 </div>
             </article>
-            {{ no_results }}
-            <!-- No Blog Available -->
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center">
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-800">
-                        No news available at the moment
-                    </h3>
-                    <p class="opacity-80 text-gray-600">
-                        Check back soon for the latest news and insights.
-
-                    </p>
-                </div>
-            </div>
-            {{ /no_results }}
+            {{ /if }}
             {{ /collection:news }}
         </div>
     </div>

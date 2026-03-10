@@ -2,7 +2,7 @@
     <!-- Parent page with children or mounted collection - Dropdown -->
     <div class="relative group">
         <button
-            class="font-medium hover:text-blue-600 flex items-center gap-1">
+            class="font-medium hover:text-[hsl(42,80%,50%)] flex items-center gap-1">
             {{ title }}
             <i class="fas fa-chevron-down text-xs"></i>
         </button>
@@ -34,6 +34,6 @@
             {{ title }}
         </a>
     {{ else }}
-        <a href="{{ url }}" class="font-medium hover:text-blue-600">{{ title }}</a>
+        <a href="{{ url }}" class="font-medium hover:text-[hsl(42,80%,50%)]">{{ title }}</a>
     {{ /if }}
 {{ /if }}

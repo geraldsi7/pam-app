@@ -1,4 +1,4 @@
-<footer id="contact" class="bg-gray-900 text-white">
+<footer id="contact" class="bg-white text-blue-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <!-- Logo and Mission -->
@@ -14,59 +14,62 @@
             </div>
             <!-- Company Profile -->
             <div class="lg:col-span-2" id="about">
-                <div class="text-2xl font-bold mb-4">Plus Alliance Meridian</div>
-                {{ collection:about_us title:is="Company Profile" }}
-                <p class="text-opacity-90 mb-6 max-w-md">{{ description }}</p>
-                {{ /collection:about_us title:is="Company Profile" }}
-
-                <div class="space-y-2">
-                    {{ collection:contact_info title:is="Location" }}
-                    <p><strong>Headquarters:</strong> {{ content }}</p>
-                    {{ /collection:contact_info }}
-
-                    {{ collection:contact_info title:in="Email|Phone|Mobile" }}
-                    <p class="text-opacity-80">
-                        <strong>{{ title }}:</strong>
-                        {{ if featured_url }}
-                        <a href="{{ featured_url }}">
-                            <span class="hover:text-white transition-colors">{{ content }}</span></a>
-                        {{ else }}
-                    <p>{{ content }}</p>
-                    {{ /if }}
-                    </p>
-                    {{ /collection:contact_info }}
-                </div>
-            </div>
-
-            <!-- Services -->
-            <div>
-                <h3 class="font-bold mb-4">Services</h3>
-                <nav class="space-y-2">
-                    <a href="/services" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">All Services</a>
-                    {{ collection:services limit="4" }}
-                    <a href="{{ url }}" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">{{ title }}</a>
-                    {{ /collection:services }}
-                </nav>
+                <p class="font-bold">ACBIS 2026</p>
+                <p class="text-xs text-gray-600 uppercase tracking-[0.18em] mb-4">Africa-China Business & Investment
+                    Summit</p>
+                <p class="text-sm text-gray-700 mb-6 max-w-md">Plus Alliance Meridian Ltd is an international investment
+                    facilitation and business matchmaking firm specializing in Africa-China economic partnerships. The
+                    company designs structured platforms that connect Chinese industrial capacity with African market
+                    opportunities.</p>
             </div>
 
             <!-- Quick Links -->
             <div>
                 <h3 class="font-bold mb-4">Quick Links</h3>
                 <nav class="space-y-2">
-                    <a href="/about-us" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">About PAM</a>
-                    <a href="/team" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Our Team</a>
-                    <a href="/news" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">News & Insights</a>
-                    <a href="/partners" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Partners</a>
-                    <a href="/downloads" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Downloads</a>
-                    <a href="/contact" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Contact Us</a>
+                    {{ nav:footer_nav }}
+                    <a href="{{ url }}" class="block text-sm text-gray-700 hover:text-blue-900 transition-colors">{{
+                        title }}</a>
+                    {{ /nav:footer_nav }}
                 </nav>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="font-bold mb-4">Contact Us</h3>
+                <div class="space-y-2">
+                    {{ collection:contact_info title:in="Email|Phone|Mobile" }}
+                    <div class="flex items-start space-x-3">
+                        {{ if title == "Email" }}
+                        <i class="fas fa-envelope text-[hsl(42,80%,50%)] mt-0.5"></i>
+                        {{ elseif title == "Phone" }}
+                        <i class="fas fa-phone text-[hsl(42,80%,50%)] mt-0.5"></i>
+                        {{ elseif title == "Mobile" }}
+                        <i class="fas fa-mobile-alt text-[hsl(42,80%,50%)] mt-0.5"></i>
+                        {{ else }}
+                        <i class="fas fa-info-circle text-[hsl(42,80%,50%)] mt-0.5"></i>
+                        {{ /if }}
+
+                        <div>
+                            {{ if featured_url }}
+                            <a href="{{ featured_url }}">
+                                <span class="text-gray-700 hover:text-gray-900 transition-colors text-sm">{{ content
+                                    }}</span>
+                            </a>
+                            {{ else }}
+                            <span class="text-sm text-gray-700">{{ content }}</span>
+                            {{ /if }}
+                        </div>
+                    </div>
+                    {{ /collection:contact_info }}
+                </div>
             </div>
         </div>
 
         <!-- Copyright -->
-        <div class="py-6 border-t border-white border-opacity-20">
+        <div class="py-6 border-t border-gray-200">
             <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
-                <p class="text-sm text-white text-opacity-80">&copy; {{ now format="Y" }} {{ site:site_name }}.
+                <p class="text-sm text-gray-700">&copy; {{ now format="Y" }} {{ site:site_name }}.
                     All rights reserved.</p>
             </div>
         </div>

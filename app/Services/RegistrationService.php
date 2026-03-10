@@ -5,8 +5,11 @@ namespace App\Services;
 use App\Models\Agent;
 use App\Models\Registration;
 use App\Services\Pricing\PricingCalculator;
-use App\Services\Pricing\SingleTicketStrategy;
-use App\Services\Pricing\GroupTicketStrategy;
+use App\Services\Pricing\TicketPricingStrategy;
+use App\Services\Pricing\OutsideChinaThreeStarStrategy;
+use App\Services\Pricing\OutsideChinaOneStarStrategy;
+use App\Services\Pricing\ChinaThreeStarStrategy;
+use App\Services\Pricing\OnlineStrategy;
 use Illuminate\Support\Str;
 
 class RegistrationService
@@ -167,13 +170,40 @@ class RegistrationService
         }
     }
 
-    public function getTicketTypesByOrigin(string $origin): array
+    public function getTicketTypesByOriginAndMode(string $origin, string $attendanceMode): array
     {
+        // For online attendance, only 1* is available regardless of origin
+        if ($attendanceMode === 'online') {
+            return ['1*'];
+        }
+
+        // For in-person attendance, availability depends on origin
         return match ($origin) {
             'China' => ['3*'],
             'Outside' => ['1*', '3*'],
-            'Online' => ['1*'],
             default => [],
+        };
+    }
+
+    public function getTicketTypesByOrigin(string $origin): array
+    {
+        // Keep backward compatibility - assume in_person for origin-based calls
+        return $this->getTicketTypesByOriginAndMode($origin, 'in_person');
+    }
+
+    protected function getPricingStrategy(string $origin, string $attendanceMode, string $ticketType): TicketPricingStrategy
+    {
+        // Handle online attendance mode first
+        if ($attendanceMode === 'online') {
+            return new OnlineStrategy();
+        }
+
+        // Handle in-person attendance based on origin and ticket type
+        return match ([$origin, $ticketType]) {
+            ['Outside', '3*'] => new OutsideChinaThreeStarStrategy(),
+            ['Outside', '1*'] => new OutsideChinaOneStarStrategy(),
+            ['China', '3*'] => new ChinaThreeStarStrategy(),
+            default => throw new \InvalidArgumentException("Invalid combination: origin={$origin}, attendance_mode={$attendanceMode}, ticket_type={$ticketType}"),
         };
     }
 
@@ -210,11 +240,7 @@ class RegistrationService
             ];
         }
 
-        $strategy = match ($business->ticket_type) {
-            '1*' => new SingleTicketStrategy(),
-            '3*' => new GroupTicketStrategy(),
-            default => throw new \InvalidArgumentException('Invalid ticket type'),
-        };
+        $strategy = $this->getPricingStrategy($business->origin, $business->attendance_mode, $business->ticket_type);
 
         $calculator = new PricingCalculator($strategy);
         $hasReferral = $agent !== null || $registration->agent_id !== null;
@@ -224,11 +250,13 @@ class RegistrationService
         $addonPrice = $registration->addon_expo ? $calculator->addExpoAddon() : 0;
         $agentCommission = $calculator->getAgentCommission();
         $companyNet = $calculator->getCompanyNet() + $addonPrice;
+        $discount = $calculator->getDiscount();
 
         return [
             'ticket_price' => $ticketPrice,
             'addon_price' => $addonPrice,
             'agent_commission' => $agentCommission,
+            'discount' => $discount,
             'company_net' => $companyNet,
             'total' => $ticketPrice + $addonPrice,
         ];

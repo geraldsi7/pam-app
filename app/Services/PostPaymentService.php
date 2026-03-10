@@ -19,7 +19,7 @@ class PostPaymentService
      */
     public function handleSuccessfulPayment(Registration $registration, Payment $payment): void
     {
-        // Create user account
+        // Create user account (or get existing if already created)
         $user = $this->createUserAccount($registration);
 
         // Send completion email with login credentials
@@ -32,6 +32,25 @@ class PostPaymentService
 
         // Update registration status
         $registration->update(['status' => 'completed']);
+    }
+
+    /**
+     * Handle bank deposit submission - create account and send credentials immediately
+     */
+    public function handleBankDepositSubmission(Registration $registration, Payment $payment): void
+    {
+        // Create user account
+        $user = $this->createUserAccount($registration);
+
+        // Send completion email with login credentials (with pending verification note)
+        $this->sendBankDepositCompletionEmail($registration, $user);
+
+        // Process agent commission if applicable (for bank deposits, commission might be paid after verification)
+        if ($registration->agent_id) {
+            $this->processPendingAgentCommission($registration, $payment);
+        }
+
+        // Registration status remains 'payment_verification_pending'
     }
 
     /**
@@ -60,6 +79,14 @@ class PostPaymentService
     private function sendCompletionEmail(Registration $registration, User $user): void
     {
         Mail::to($registration->email)->send(new RegistrationCompleteMail($registration, $user));
+    }
+
+    /**
+     * Send completion email for bank deposits (pending verification)
+     */
+    private function sendBankDepositCompletionEmail(Registration $registration, User $user): void
+    {
+        Mail::to($registration->email)->send(new RegistrationCompleteMail($registration, $user, true));
     }
 
     /**
@@ -102,6 +129,28 @@ class PostPaymentService
 
         // You could also send notification to agent
         // Mail::to($agent->email)->send(new AgentCommissionNotification($agent, $commissionAmount));
+    }
+
+    /**
+     * Process agent commission for pending bank deposits (deferred until verification)
+     */
+    private function processPendingAgentCommission(Registration $registration, Payment $payment): void
+    {
+        $agent = $registration->agent;
+
+        if (!$agent) {
+            return;
+        }
+
+        // For bank deposits, we log the pending commission but don't process it yet
+        // It will be processed when the payment is verified
+        \Log::info('Agent commission pending - bank deposit verification required', [
+            'agent_id' => $agent->id,
+            'registration_id' => $registration->id,
+            'payment_id' => $payment->id,
+            'ticket_type' => $registration->business->ticket_type,
+            'status' => 'pending_verification',
+        ]);
     }
 
     /**

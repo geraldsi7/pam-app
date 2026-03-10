@@ -5,15 +5,18 @@
     {{ /collection:hero }}
 
     <!-- Company Overview -->
-    {{ collection:articles slug:is="initiative" limit="1" }}
-    {{ partial:image-text-section image_position="right" eyebrow="{{ title }}" }}
+    {{ collection:articles slug:is="a-transactional-platform-for-africa-china-industrial-partnership" limit="1" }}
+    {{ partial:image-text-section image_position="right" eyebrow="about the summit" }}
     {{ /collection:articles }}
+
+    {{ partial:summit-experience }}
 
     <!-- History & Growth -->
     {{ collection:articles slug:is="organized-by" limit="1" }}
-    {{ partial:image-text-section image_position="left" bg_color="bg-gray-50" }}
+    {{ partial:image-text-section image_position="left" bg_color="bg-gray-50" eyebrow="Organizers" }}
     {{ /collection:articles }}
 
+    {{ partial:summit-highlight }}
     <!-- Our Global Partners -->
     {{ partial:partners }}
 
@@ -24,6 +27,4 @@
     {{ collection:cta title:is="Explore Services" }}
     {{ partial:cta }}
     {{ /collection:cta }}
-
-    {{ partial:contact/contact-form }}
 </main>
