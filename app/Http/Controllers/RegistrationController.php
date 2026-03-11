@@ -48,6 +48,10 @@ class RegistrationController extends Controller
     public function index(Request $request)
     {
         if ($request->isMethod('get')) {
+            // Clear session if explicitly starting fresh
+            if ($request->has('new')) {
+                $this->registrationService->clearRegistrationSession();
+            }
             return Inertia::render('Registration/Entry');
         }
 
@@ -71,8 +75,13 @@ class RegistrationController extends Controller
     /**
      * Step 1: Personal Info
      */
-    public function create()
+    public function create(Request $request)
     {
+        // Clear session if user explicitly wants a fresh registration
+        if ($request->has('new')) {
+            $this->registrationService->clearRegistrationSession();
+        }
+
         $registration = $this->getValidRegistration();
 
         return Inertia::render('Registration/Step1', compact('registration'));

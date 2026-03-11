@@ -9,6 +9,7 @@ import SelectInput from '@/Components/SelectInput.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import SecondaryButton from '@/Components/SecondaryButton.vue'
 import { PhoneInput } from "@lbgm/phone-number-input";
+import ProgressTracker from '@/Components/ProgressTracker.vue';
 
 const props = defineProps({
   registration: Object,
@@ -79,14 +80,11 @@ const handleSubmit = () => {
   <RegistrationLayout>
     <Head title="Attendee Information - Registration" />
     <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-extrabold text-gray-900">
-          Attendee Information
-        </h2>
-        <p class="mt-2 text-sm text-gray-600">
-          Step 3 of 5
-        </p>
-      </div>
+      <!-- Progress Tracker -->
+      <ProgressTracker
+        title="Attendee Information"
+        :current-step="3"
+      />
       
       <div class="bg-white shadow sm:rounded-lg">
         <div class="px-4 py-5 sm:p-6">

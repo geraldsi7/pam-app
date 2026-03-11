@@ -2,14 +2,11 @@
   <RegistrationLayout>
     <Head title="Add-ons & Preferences - Registration" />
     <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-extrabold text-gray-900">
-          Add-ons & Preferences
-        </h2>
-        <p class="mt-2 text-sm text-gray-600">
-          Step 4 of 5
-        </p>
-      </div>
+      <!-- Progress Tracker -->
+      <ProgressTracker
+        title="Add-ons & Preferences"
+        :current-step="4"
+      />
 
       <div class="bg-white shadow sm:rounded-lg">
         <div class="px-4 py-5 sm:p-6">
@@ -63,6 +60,7 @@ import { useForm, Head } from '@inertiajs/vue3'
 import RegistrationLayout from '@/Layouts/RegistrationLayout.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import SecondaryButton from '@/Components/SecondaryButton.vue'
+import ProgressTracker from '@/Components/ProgressTracker.vue';
 
 const props = defineProps({
   registration: Object,

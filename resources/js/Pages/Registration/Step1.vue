@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import InputError from '@/Components/InputError.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import ProgressTracker from '@/Components/ProgressTracker.vue';
 import { PhoneInput } from "@lbgm/phone-number-input";
 import { ref } from 'vue';
 
@@ -45,14 +46,12 @@ const handleSubmit = () => {
 
     <Head title="Personal Information - Registration" />
     <div class="mx-auto">
-      <div class="text-center">
-        <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
-          Personal Information
-        </h2>
-        <p class="mt-2 text-sm text-gray-600">
-          Step 1 of 5
-        </p>
-      </div>
+      <!-- Progress Tracker -->
+      <ProgressTracker
+        title="Personal Information"
+        :current-step="1"
+      />
+
     </div>
 
     <div class="mt-8 mx-auto w-full max-w-md">

@@ -2,6 +2,7 @@
 id: 279c2a3e-a95e-4dbc-8d0e-8fddab69552b
 blueprint: article
 title: 'Flagship Initative'
+featured_image: 'initiative.png'
 author: a741ee50-bd31-4221-9866-0662ad5e23f1
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
 updated_at: 1772282542

@@ -293,6 +293,11 @@ class RegistrationService
         return $registration;
     }
 
+    public function clearRegistrationSession(): void
+    {
+        session()->forget('registration_ref');
+    }
+
     public function completeRegistration(Registration $registration): void
     {
         $registration->update(['status' => 'completed']);

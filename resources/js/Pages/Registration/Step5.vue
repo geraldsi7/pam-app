@@ -2,14 +2,11 @@
   <RegistrationLayout>
     <Head title="Review & Checkout - Registration" />
     <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-extrabold text-gray-900">
-          Review & Checkout
-        </h2>
-        <p class="mt-2 text-sm text-gray-600">
-          Step 5 of 5
-        </p>
-      </div>
+      <!-- Progress Tracker -->
+      <ProgressTracker
+        title="Review & Checkout"
+        :current-step="5"
+      />
       
       <div class="space-y-6">
         <!-- Registration Summary -->
@@ -216,6 +213,7 @@ import InputError from '@/Components/InputError.vue'
 import TextInput from '@/Components/TextInput.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import SecondaryButton from '@/Components/SecondaryButton.vue'
+import ProgressTracker from '@/Components/ProgressTracker.vue';
 
 const props = defineProps({
   registration: Object,

@@ -10,6 +10,7 @@ import MultiSelectInput from '@/Components/MultiSelectInput.vue'
 import { computed, ref } from 'vue'
 import SelectInput from '@/Components/SelectInput.vue'
 import { PhoneInput } from "@lbgm/phone-number-input";
+import ProgressTracker from '@/Components/ProgressTracker.vue';
 
 const props = defineProps({
   registration: Object,
@@ -81,14 +82,11 @@ const handleSubmit = () => {
   <RegistrationLayout>
     <Head title="Business Information - Registration" />
     <div class="mx-auto">
-      <div class="text-center">
-        <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
-          Business Information
-        </h2>
-        <p class="mt-2 text-sm text-gray-600">
-          Step 2 of 5
-        </p>
-      </div>
+      <!-- Progress Tracker -->
+      <ProgressTracker
+        title="Business Information"
+        :current-step="2"
+      />
     </div>
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">

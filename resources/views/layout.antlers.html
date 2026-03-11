@@ -78,10 +78,12 @@
             // Define header states for different scenarios
             const headerStates = {
                 scrolled: {
-                    headerClasses: ['bg-white', 'shadow-sm', 'text-blue-900'],
+                    headerClasses: ['bg-white', 'backdrop-blur-md', 'shadow-sm', 'text-blue-900'],
                     headerRemove: ['bg-transparent', 'text-white'],
                     mobileButtonClasses: ['text-blue-900'],
                     mobileButtonRemove: ['text-white'],
+                    mobileMenuClasses: ['bg-white', 'text-blue-900', 'border-t', 'border-gray-200'],
+                    mobileMenuRemove: ['bg-transparent', 'backdrop-blur-md', 'text-white'],
                     ctaClasses: ['bg-blue-900', 'text-white', 'hover:bg-blue-700'],
                     ctaRemove: ['bg-white', 'text-blue-900', 'hover:bg-gray-100']
                 },
@@ -90,6 +92,8 @@
                     headerRemove: ['bg-transparent', 'text-white'],
                     mobileButtonClasses: ['text-blue-900'],
                     mobileButtonRemove: ['text-white'],
+                    mobileMenuClasses: ['bg-white', 'text-blue-900', 'border-t', 'border-gray-200'],
+                    mobileMenuRemove: ['bg-transparent', 'backdrop-blur-md', 'text-white'],
                     ctaClasses: ['bg-blue-900', 'text-white', 'hover:bg-blue-700'],
                     ctaRemove: ['bg-white', 'text-blue-900', 'hover:bg-gray-100']
                 },
@@ -98,6 +102,8 @@
                     headerRemove: ['bg-white', 'shadow-sm', 'text-blue-900'],
                     mobileButtonClasses: ['text-white'],
                     mobileButtonRemove: ['text-blue-900'],
+                    mobileMenuClasses: ['bg-transparent', 'backdrop-blur-md', 'text-white'],
+                    mobileMenuRemove: ['bg-white', 'text-blue-900', 'border-t', 'border-gray-200'],
                     ctaClasses: ['bg-white', 'text-blue-900', 'hover:bg-gray-100'],
                     ctaRemove: ['bg-blue-900', 'text-white', 'hover:bg-blue-700']
                 }
@@ -113,6 +119,12 @@
                 if (mobileMenuButton) {
                     state.mobileButtonRemove.forEach(cls => mobileMenuButton.classList.remove(cls));
                     state.mobileButtonClasses.forEach(cls => mobileMenuButton.classList.add(cls));
+                }
+
+                // Handle mobile menu classes
+                if (mobileMenu) {
+                    state.mobileMenuRemove.forEach(cls => mobileMenu.classList.remove(cls));
+                    state.mobileMenuClasses.forEach(cls => mobileMenu.classList.add(cls));
                 }
 
                 // Keep Register CTA contrasting with the header state.
@@ -148,7 +160,99 @@
             window.addEventListener('scroll', handleScroll);
 
             mobileMenuButton.addEventListener('click', function () {
+                const isOpen = mobileMenu.classList.contains('hidden');
                 mobileMenu.classList.toggle('hidden');
+
+                // Toggle menu button icons
+                const hamburgerIcon = this.querySelector('.hamburger-icon');
+                const closeIcon = this.querySelector('.close-icon');
+
+                if (hamburgerIcon && closeIcon) {
+                    if (isOpen) {
+                        // Menu is opening - show close icon, hide hamburger
+                        hamburgerIcon.style.opacity = '0';
+                        closeIcon.style.opacity = '1';
+                        this.setAttribute('aria-expanded', 'true');
+                    } else {
+                        // Menu is closing - show hamburger icon, hide close
+                        hamburgerIcon.style.opacity = '1';
+                        closeIcon.style.opacity = '0';
+                        this.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+
+            // --- Mobile Navigation Scroll Behavior ---
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+
+                    // Close mobile menu and reset button icon
+                    if (mobileMenu) {
+                        mobileMenu.classList.add('hidden');
+
+                        // Reset menu button to hamburger icon
+                        const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
+                        const closeIcon = mobileMenuButton.querySelector('.close-icon');
+                        if (hamburgerIcon && closeIcon) {
+                            hamburgerIcon.style.opacity = '1';
+                            closeIcon.style.opacity = '0';
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+
+                    // Handle anchor links with smooth scrolling
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) {
+                            // Calculate offset for fixed header
+                            const headerHeight = 80; // Approximate header height
+                            const offsetTop = targetElement.offsetTop - headerHeight;
+
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+
+                            // Update URL without triggering scroll
+                            history.pushState(null, null, href);
+                        }
+                    }
+                    // For regular links, let them navigate normally but close menu first
+                });
+            });
+
+            // --- Mobile Submenu Toggle Behavior ---
+            const mobileSubmenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
+
+            mobileSubmenuToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const submenu = this.parentElement.querySelector('.mobile-submenu');
+                    const chevron = this.querySelector('.fa-chevron-down');
+
+                    if (submenu && chevron) {
+                        // Toggle submenu visibility
+                        const isExpanded = submenu.classList.contains('max-h-96');
+
+                        if (isExpanded) {
+                            submenu.classList.remove('max-h-96');
+                            submenu.classList.add('max-h-0');
+                            chevron.classList.remove('rotate-180');
+                        } else {
+                            submenu.classList.remove('max-h-0');
+                            submenu.classList.add('max-h-96');
+                            chevron.classList.add('rotate-180');
+                        }
+
+                        // Toggle aria-expanded for accessibility
+                        this.setAttribute('aria-expanded', !isExpanded);
+                    }
+                });
             });
 
             // --- 2. Fade-in Animation on Scroll ---
