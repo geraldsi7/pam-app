@@ -27,16 +27,8 @@ tabs:
               display: Content
               instructions: 'Detailed partnership information'
               container: assets
-              save_html: false
               toolbar_mode: floating
-              link_noopener: false
-              link_noreferrer: false
-              target_blank: false
-              reading_time: false
-              word_count: false
-              fullscreen: true
               allow_source: true
-              always_show_set_button: false
           -
             handle: partners
             field:
@@ -50,22 +42,8 @@ tabs:
                     type: text
                     display: 'Company Name'
                     instructions: 'The company name'
-                    required: true
-                -
-                  handle: logo
-                  field:
-                    container: assets
-                    type: assets
-                    display: Logo
-                    max_files: 1
-                    mode: grid
-                    instructions: 'Company logo (PNG/SVG preferred)'
-                -
-                  handle: description
-                  field:
-                    type: textarea
-                    display: Description
-                    instructions: 'Brief description of partnership or company'
+                    validate:
+                      - required
                 -
                   handle: partnership_type
                   field:
@@ -76,44 +54,22 @@ tabs:
                       supplier: Supplier
                       client: Client
                       certification: Certification
-                      association: Industry Association
+                      association: 'Industry Association'
                     clearable: true
-                    searchable: true
-                -
-                  handle: industry
-                  field:
-                    type: select
-                    display: Industry
-                    options:
-                      mining: Mining
-                      commodities: Commodities
-                      construction: Construction
-                      renewable: Renewable Energy
-                      government: Government
-                      manufacturing: Manufacturing
-                      logistics: Logistics
-                    clearable: true
-                    searchable: true
-                -
-                  handle: country
-                  field:
-                    type: text
-                    display: Country
-                    instructions: 'Country of operation'
-                -
-                  handle: website
-                  field:
-                    type: text
-                    display: 'Website URL'
-                    input_type: url
-                    instructions: 'Partner website URL'
                 -
                   handle: featured
                   field:
                     type: toggle
                     display: Featured
                     instructions: 'Highlight this partner prominently'
-                    default: false
+                -
+                  handle: featured_image
+                  field:
+                    container: assets
+                    max_files: 1
+                    min_files: 1
+                    type: assets
+                    display: 'Featured Image'
   seo:
     display: SEO
     sections:

@@ -2,8 +2,8 @@ title: 'Contact Us'
 email:
   -
     id: l00c3pnO
-    to: geraldowusuansah2@gmail.com
-    from: noreply@mrican.com
+    to: sales@plusalliancemeridian.com
+    from: noreply@plusalliancemeridian.com
     subject: 'New Contact Form Submission'
     html: emails.contact_form
     text: emails.contact_form_text

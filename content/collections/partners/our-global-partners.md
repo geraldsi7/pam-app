@@ -4,6 +4,7 @@ blueprint: partner
 title: 'Strategic Global Partnerships'
 partners:
   -
+    id: tIArgwY8
     title: 'CIECC Overseas Consulting Co., Ltd.'
     description: 'Leading global gold mining company with extensive operations in Africa. Strategic partner in sustainable mining practices and mineral resource development.'
     partnership_type: strategic
@@ -11,8 +12,15 @@ partners:
     country: 'South Africa'
     website: 'https://www.anglogoldashanti.com'
     featured: true
-    logo: ciecc.png
+    featured_image: ciecc-1773248670.png
   -
+    id: iSW1Tywhen7TS1VCTFQCH
+    title: GIPC
+    partnership_type: strategic
+    featured: true
+    featured_image: gipc.jpg
+  -
+    id: ihD7oT5s
     title: 'MeatMasters Ghana'
     description: 'Global leader in commodity trading and agricultural supply chains. Key partner in cocoa, coffee, and sugar trading operations.'
     partnership_type: strategic
@@ -20,17 +28,19 @@ partners:
     country: USA
     website: 'https://www.cargill.com'
     featured: true
-    logo: meatmaster.jpeg
+    featured_image: meatmaster-1773248712.jpeg
   -
-    title: 'IDTG'
+    id: a2FFMWHC
+    title: IDTG
     description: 'Government agency promoting foreign investment in Ghana. Official partner for mining and industrial development projects.'
     partnership_type: certification
     industry: government
     country: Ghana
     website: 'https://www.gipcghana.com'
     featured: true
-    logo: idtg.png
+    featured_image: idtg-1773248725.png
   -
+    id: As3r74MF
     title: 'OVET Olive View'
     description: 'Global energy technology company. Partner in renewable energy projects and solar farm development across West Africa.'
     partnership_type: supplier
@@ -38,8 +48,9 @@ partners:
     country: Germany
     website: 'https://www.siemens-energy.com'
     featured: true
-    logo: ovet.png
+    featured_image: ovet-1773248735.png
   -
+    id: WztKUhqB
     title: 'Lamount New Energy'
     description: 'Multilateral development finance institution. Partner in infrastructure and renewable energy financing for sustainable development.'
     partnership_type: association
@@ -47,8 +58,9 @@ partners:
     country: "Côte d'Ivoire"
     website: 'https://www.afdb.org'
     featured: true
-    logo: lamount.png
+    featured_image: lamount-1773257260.png
   -
+    id: 5GLUPOJK
     title: 'Chuanrun New Energy'
     description: 'Multilateral development finance institution. Partner in infrastructure and renewable energy financing for sustainable development.'
     partnership_type: association
@@ -56,26 +68,28 @@ partners:
     country: "Côte d'Ivoire"
     website: 'https://www.afdb.org'
     featured: true
-    logo: chuanrun.png
+    featured_image: chuanrun-1773249461.png
   -
-    title: 'NBFAN'
+    id: Er8qle1c
+    title: NBFAN
     description: 'Multilateral development finance institution. Partner in infrastructure and renewable energy financing for sustainable development.'
     partnership_type: association
     industry: government
     country: "Côte d'Ivoire"
     website: 'https://www.afdb.org'
     featured: true
-    logo: nbfan.png
+    featured_image: nbfan-1773249512.png
   -
-    title: 'Fabuni'
+    id: tv1Biykq
+    title: Fabuni
     description: 'Multilateral development finance institution. Partner in infrastructure and renewable energy financing for sustainable development.'
     partnership_type: association
     industry: government
     country: "Côte d'Ivoire"
     website: 'https://www.afdb.org'
     featured: true
-    logo: fabuni.png
+    featured_image: fabuni-1773206176.png
 description: 'PAM collaborates with world-class partners across mining, commodities, construction, and renewable energy sectors to deliver exceptional results.'
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1771284458
+updated_at: 1773257563
 ---

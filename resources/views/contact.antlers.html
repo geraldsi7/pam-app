@@ -2,11 +2,8 @@
     {{ collection:hero title:is="Contact Hero" limit="1" }}
     {{ partial:hero }}
     {{ /collection:hero }}
-    {{ partial:contact/faq }}
+    {{# partial:contact/faq #}}
     {{ partial:contact/contact-form }}
-    {{ collection:cta title:is="Explore Services" }}
-    {{ partial:cta }}
-    {{ /collection:cta }}
 </main>
 
 <style>

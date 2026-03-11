@@ -26,16 +26,18 @@
 
         <!-- Partners Slider -->
         <div class="relative overflow-hidden">
-            <div class="partners-slider flex">
-
+            <div class="partners-slider flex w-max">
                 {{ loop :times="2" }}
-                <!-- First set of partners -->
-                {{ partners | where('featured', true) }}
-                <div
-                    class="flex-shrink-0 duration-300 fade-in-up w-32 sm:w-40 md:w-48 mx-4 sm:mx-6 md:mx-8 flex items-center justify-center">
-                    <img src="{{ logo:url }}" alt="{{ title }} logo" class="w-auto h-8 sm:h-10 md:h-16 object-contain" loading="eager">
+                <div class="partners-group flex items-center flex-shrink-0 gap-4 sm:gap-6 md:gap-8 pr-4 sm:pr-6 md:pr-8">
+                    {{ partners }}
+                    {{ if featured && featured_image }}
+                    <div
+                        class="flex-shrink-0 duration-300 w-32 sm:w-40 md:w-48 flex items-center justify-center">
+                        <img src="{{ glide:featured_image }}" alt="{{ title }} logo" class="w-auto h-16 sm:h-10 md:h-20 object-contain" loading="eager">
+                    </div>
+                    {{ /if }}
+                    {{ /partners }}
                 </div>
-                {{ /partners }}
                 {{ /loop }}
             </div>
         </div>

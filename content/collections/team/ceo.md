@@ -1,8 +1,8 @@
 ---
-id: pam-ceo-001
+id: 0301529b-5077-446f-a6bc-0109a68d26bc
 blueprint: team
 title: 'Chief Executive Officer'
-name: 'Dr. Emmanuel Kofi Mensah'
+name: 'Samuel Kafui Kpordze'
 description: 'Visionary leader with 25+ years in international trade and industrial development across Africa and Europe.'
 bio:
   -
@@ -20,7 +20,7 @@ bio:
           - MBA from INSEAD, France
           - Recipient of African Business Leadership Award (2022)
           - Board member of several international trade associations### Leadership PhilosophyDr. Mensah believes in creating lasting partnerships that benefit all stakeholders - from local communities to international investors. His leadership emphasizes ethical business practices, innovation, and sustainable development.
-photo: 6685.png
+photo: ceo.png
 department: executive
 level: ceo
 email: emmanuel.mensah@pam-group.com

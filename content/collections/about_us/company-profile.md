@@ -9,5 +9,4 @@ description: |-
   Since 1989, we have been dedicated to creating complete, tailor-made ERP solutions for a wide range of industries and business sectors.
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
 updated_at: 1758019835
-featured_image: undraw_team-spirit_18vw.png
 ---

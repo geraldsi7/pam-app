@@ -4,15 +4,154 @@
     {{ partial:hero }}
     {{ /collection:hero }}
 
-    <!-- About Us Collection Items -->
-    {{ collection:about_us }}
-    {{ partial:image-text-section image_position="{{ index % 2 == 0 ? 'right' : 'left' }}" }}
-    {{ /collection:about_us }}
+    <section class="py-16 lg:py-24">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center"><span
+                    class="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(42,80%,50%)] mb-3">Company
+                    Overview</span>
+                <h2 class="text-3xl lg:text-5xl font-bold text-blue-900">Who We Are</h2>
+                <p class="text-lg text-gray-600 leading-relaxed">Plus Alliance Meridian Ltd is an international trading
+                    and industrial development company providing services in mining, renewable energy, infrastructure
+                    development, commodities trading, and procurement. Headquartered in Accra, Ghana, the company
+                    operates across multiple international markets and connects global industries with strategic
+                    resources.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 lg:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center"><span
+                    class="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(42,80%,50%)] mb-3">Our
+                    Journey</span>
+                <h2 class="text-3xl lg:text-5xl font-bold text-blue-900">Our History</h2>
+                <p class="text-lg text-gray-600 leading-relaxed">From humble beginnings to a diversified international
+                    enterprise.</p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="flex gap-6 mb-8 last:mb-0">
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 rounded-full bg-blue-900 flex items-center justify-center shrink-0">
+                            <span class="text-white font-display font-bold text-sm">2021</span>
+                        </div>
+                        <div class="w-px flex-1 bg-gray-200 mt-2"></div>
+                    </div>
+                    <div class="pb-8">
+                        <h3 class="font-display text-xl font-semibold text-foreground">Founded in China</h3>
+                        <p class="mt-2 text-muted-foreground">Originally established as Hubei, focusing on energy
+                            solutions and general goods supply.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 mb-8 last:mb-0">
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 rounded-full bg-blue-900 flex items-center justify-center shrink-0">
+                            <span class="text-white font-display font-bold text-sm">2022</span>
+                        </div>
+                        <div class="w-px flex-1 bg-gray-200 mt-2"></div>
+                    </div>
+                    <div class="pb-8">
+                        <h3 class="font-display text-xl font-semibold text-foreground">African Expansion</h3>
+                        <p class="mt-2 text-muted-foreground">Expanded operations across Africa, establishing key trade
+                            routes and partnerships.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 mb-8 last:mb-0" style="opacity: 1; transform: none;">
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 rounded-full bg-blue-900 flex items-center justify-center shrink-0">
+                            <span class="text-white font-display font-bold text-sm">2023</span>
+                        </div>
+                        <div class="w-px flex-1 bg-gray-200 mt-2"></div>
+                    </div>
+                    <div class="pb-8">
+                        <h3 class="font-display text-xl font-semibold text-foreground">PAM Established</h3>
+                        <p class="mt-2 text-muted-foreground">Plus Alliance Meridian Ltd was established as the parent
+                            company overseeing growing operations.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 mb-8 last:mb-0" style="opacity: 1; transform: none;">
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 rounded-full bg-blue-900 flex items-center justify-center shrink-0">
+                            <span class="text-white font-display font-bold text-sm">Present</span>
+                        </div>
+                    </div>
+                    <div class="pb-8">
+                        <h3 class="font-display text-xl font-semibold text-foreground">Global Enterprise</h3>
+                        <p class="mt-2 text-muted-foreground">A diversified international enterprise operating in
+                            mining, construction, renewable energy, and global trade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-16 lg:py-24 bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-12 px-4 sm:px-6 lg:px-8">
+            <div class="p-8 rounded-lg border border-white/10 bg-white/5">
+                <div class="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center mb-5"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-eye text-navy">
+                        <path
+                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                        </path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg></div>
+                <h3 class="font-display text-2xl font-bold text-primary-foreground mb-4">Our Vision</h3>
+                <p class="text-primary-foreground/70 leading-relaxed">To become a leading global player in international trade, connecting diverse 
+                    markets and providing seamless access to a wide range of products while 
+                    maintaining high ethical standards, customer focus, and innovative practices to 
+                    consistently deliver value to all stakeholders; essentially, aiming to be a trusted 
+                    and efficient facilitator of global commerce with a strong reputation for reliability 
+                    and quality.</p>
+            </div>
+            <div class="p-8 rounded-lg border border-primary-foreground/10 bg-primary-foreground/5"
+                style="opacity: 1; transform: none;">
+                <div class="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center mb-5"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-compass text-navy">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                    </svg></div>
+                <h3 class="font-display text-2xl font-bold text-primary-foreground mb-4">Our Mission</h3>
+                <p class="text-primary-foreground/70 leading-relaxed">Engage in trade with focus on quality services to customers and professional 
+                    competences. 
+                    Develop new markets and products and expand business in Industrial Raw 
+                    Materials, Commodities and Engineering Equipment and Projects. 
+                    To Serve as effective instrument of public policy and social responsibility.</p>
+            </div>
+
+            <div class="p-8 rounded-lg border border-white/10 bg-white/5"
+                style="opacity: 1; transform: none;">
+                <div class="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center mb-5"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-target text-navy">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg></div>
+                <h3 class="font-display text-2xl font-bold text-primary-foreground mb-4">Our Philosophy</h3>
+                <p class="text-primary-foreground/70 leading-relaxed">Our focus is creating a culture of inclusiveness and belonging where all are welcome.
+                    Exceeding customer expectations in everything we do and holding ourselves accountable at every step.
+                    Embracing change and innovation and looking for new ways to grow our organization and ourselves.
+                    Providing exceptional results in the shortest amount of time possible, embracing trends and sustainability, 
+                    practices and changing the world.</p>
+            </div>
+        </div>
+    </section>
+
+    {{# About Us Collection Items #}}
+    {{# Company Overview #}}
+    {{# {{ collection:articles slug:is="company-overview" limit="1" }} #}}
+    {{# {{ partial:image-text-section image_position="right" eyebrow="Company Overview" }} #}}
+    {{# {{ /collection:articles }} #}}
 
     {{ partial:partners }}
 
-    <!-- Call to Action -->
-    {{ collection:cta title:is="Explore Services" }}
-    {{ partial:cta }}
-    {{ /collection:cta }}
+    {{# Call to Action #}}
+    {{# {{ collection:cta title:is="Explore Services" }} #}}
+    {{# {{ partial:cta }} #}}
+    {{# {{ /collection:cta }} #}}
 </main>

@@ -2,35 +2,33 @@
 id: 0b2f81e6-6c86-469d-b537-e453c5e85772
 blueprint: service
 title: 'Investment Consultancy'
-description: 'Procurement of industrial raw materials and engineering equipment, with cross-border trade support and financial instruments.'
-featured_image: investment.jpeg
-service_type: commodities
-industry_focus:
-  - agriculture
-  - manufacturing
+description: 'Plus Alliance Meridian Ltd offers comprehensive investment consultancy services, empowering African businesses, governments, and SMEs to secure strategic investments and drive sustainable growth.'
+featured_image: investment-1773246175.jpeg
 seo:
   meta_title: 'Commodity Trading Services | PAM'
   meta_description: 'Global commodity trading specializing in cocoa, coffee, sugar, and cotton. Connecting West African producers with international markets.'
+updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
+updated_at: 1773256272
+content: |
+  ## Our Expertise
+
+  - **Transaction Advisory**: We provide expert guidance on structuring and negotiating complex transactions, including PPPs, BOT, and privatizations.
+  - **Project Preparation**: Our team assists with feasibility studies, financial modeling, and project structuring to ensure bankability and attract investment.
+  - **Risk Management**: We identify and mitigate investment risks, ensuring robust risk allocation and optimized returns.
+  - **Policy and Research**: Our insights on regulatory frameworks and market trends inform investment decisions and drive strategic growth.
+
+  ## Sectors of Focus
+
+  - Infrastructure Development
+  - Energy and Natural Resources
+  - Private Sector Development
+  - Public-Private Partnerships (PPPs)
+
+  ## Our Approach
+
+  Leveraging our extensive network and partnerships with governments, development finance institutions, and private sector entities, we source investments and deliver tailored solutions to meet the unique needs of our clients.
+
+  ## Unlocking Africa's Potential
+
+  Our investment consultancy services are designed to drive economic growth, create jobs, and foster sustainable development across Africa.
 ---
-## Commodities & General Goods Supply
-
-PAM serves as a strategic partner in global commodity markets, specializing in the trade and distribution of high-quality agricultural commodities. Our extensive network connects West African producers with international buyers worldwide.
-
-### Commodity Specializations
-
-- **Cocoa**: Premium West African cocoa beans for global chocolate and confectionery industries
-- **Coffee**: Specialty coffees from sustainable farming cooperatives
-- **Sugar**: Raw and refined sugar from regional production facilities
-- **Cotton**: High-grade cotton for textile and manufacturing sectors
-
-### Trading Services
-
-- **Market Intelligence**: Real-time pricing, trend analysis, and market forecasting
-- **Quality Assurance**: Rigorous testing and certification processes
-- **Logistics & Distribution**: End-to-end supply chain management from farm to market
-- **Risk Management**: Hedging strategies and trade finance solutions
-- **Regulatory Compliance**: International trade regulations and documentation
-
-### Global Reach
-
-Our trading operations span Europe, North America, Asia, and the Middle East, ensuring reliable supply chains and competitive pricing for our partners.

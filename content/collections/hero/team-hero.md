@@ -3,6 +3,7 @@ id: 509f4837-a07e-4d54-90dd-f7582b748f80
 blueprint: hero
 title: Team Hero
 heading: 'Meet the Team'
+description: "Meet the experienced team driving PAM's global vision and operations."
 primary_button_text: 'Explore Our Services'
 primary_button_link: '#services'
 secondary_button_text: 'Get a Free Consultation'

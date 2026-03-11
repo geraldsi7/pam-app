@@ -1,74 +1,96 @@
-<footer id="contact" class="bg-gray-900 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-            <!-- Logo and Mission -->
-            <div class="lg:col-span-1">
-                {{ collection:pages title:is="Home" }}
-                <a href="{{ url }}">
-                    {{ collection:logos limit="1" }}
-                    <img src="{{ featured_image }}" alt="Plus Alliance Meridian Logo"
-                        class="h-20 lg:h-28 object-contain">
-                </a>
-                {{ /collection:logos }}
-                {{ /collection:pages }}
+<footer class="border-t border-border bg-card">
+    <div class="max-w-7xl mx-auto px-8 py-16">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div
+                        class="h-24 w-auto lg:h-32 flex items-center justify-center font-heading font-bold text-primary-foreground text-lg">
+                        {{ collection:logos limit="1" }}
+                        <img src="{{ featured_image }}" alt="Plus Alliance Meridian Logo"
+                            class="h-full w-full object-contain">
+                    {{ /collection:logos }}    
+                    </div>
+                    <div><span class="font-heading font-bold text-sm text-blue-900 block">Plus Alliance Meridian Ltd</span></div>
+                </div>
+                <p class="text-muted-foreground text-sm leading-relaxed">Plus Alliance Meridian Ltd is an international investment
+                    facilitation and business matchmaking firm specializing in Africa-China economic partnerships. The
+                    company designs structured platforms that connect Chinese industrial capacity with African market
+                    opportunities.</p>
             </div>
-            <!-- Company Profile -->
-            <div class="lg:col-span-2" id="about">
-                <div class="text-2xl font-bold mb-4">Plus Alliance Meridian</div>
-                {{ collection:about_us title:is="Company Profile" }}
-                <p class="text-opacity-90 mb-6 max-w-md">{{ description }}</p>
-                {{ /collection:about_us title:is="Company Profile" }}
-
+            <div>
+                <h4 class="font-heading font-bold text-blue-900 mb-4">Quick Links
+                </h4>
                 <div class="space-y-2">
-                    {{ collection:contact_info title:is="Location" }}
-                    <p><strong>Headquarters:</strong> {{ content }}</p>
-                    {{ /collection:contact_info }}
-
-                    {{ collection:contact_info title:in="Email|Phone|Mobile" }}
-                    <p class="text-opacity-80">
-                        <strong>{{ title }}:</strong>
-                        {{ if featured_url }}
-                        <a href="{{ featured_url }}">
-                            <span class="hover:text-white transition-colors">{{ content }}</span></a>
-                        {{ else }}
-                    <p>{{ content }}</p>
-                    {{ /if }}
-                    </p>
+                    {{ nav:footer_nav }}
+                    <a href="{{ url }}" class="block text-sm text-gray-700 hover:text-[hsl(42,80%,50%)] transition-colors">{{
+                        title }}</a>
+                    {{ /nav:footer_nav }}
+                </div>
+            </div>
+            <div>
+                <h4 class="font-heading font-bold text-blue-900 mb-4">Services
+                </h4>
+                <div class="space-y-2">
+                    {{ collection:services }}
+                    <a href="{{ url }}" class="block text-sm text-gray-700 hover:text-[hsl(42,80%,50%)] transition-colors">{{
+                        title }}</a>
+                    {{ /collection:services }}
+                </div>
+            </div>
+            <div>
+                <h4 class="font-heading font-bold text-blue-900 mb-4">Contact
+                </h4>
+                <div class="space-y-3">
+                    {{ collection:contact_info title:in="Location|Email|Phone|Mobile" }}
+                    {{ if title == "Location" }}
+                    <div class="flex items-start gap-2 md:gap-3 text-sm text-muted-foreground">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-map-pin text-[hsl(42,80%,50%)] flex-shrink-0 mt-0.5">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>{{ content }}</span>
+                    </div>
+                    {{ elseif title == "Email" }}
+                    <a href="{{ featured_url }}"
+                        class="flex items-center gap-2 md:gap-3 text-sm text-muted-foreground hover:text-[hsl(42,80%,50%)] transition-colors">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-mail text-[hsl(42,80%,50%)] flex-shrink-0">
+                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>{{ content }}</a>
+                        {{ elseif title == "Phone" }}
+                        <a href="{{ featured_url }}"
+                        class="flex items-center gap-2 md:gap-3 text-sm text-muted-foreground hover:text-[hsl(42,80%,50%)] transition-colors">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-phone text-[hsl(42,80%,50%)] flex-shrink-0">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>{{ content }}</a>
+                        {{ elseif title == "Mobile" }}
+                        <a href="{{ featured_url }}"
+                        class="flex items-center gap-2 md:gap-3 text-sm text-muted-foreground hover:text-[hsl(42,80%,50%)] transition-colors">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-smartphone text-[hsl(42,80%,50%)] flex-shrink-0">
+                            <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                            <path d="M12 18h.01"></path>
+                        </svg>{{ content }}</a>
+                        {{ /if }}
                     {{ /collection:contact_info }}
                 </div>
             </div>
-
-            <!-- Services -->
-            <div>
-                <h3 class="font-bold mb-4">Services</h3>
-                <nav class="space-y-2">
-                    <a href="/services" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">All Services</a>
-                    {{ collection:services limit="4" }}
-                    <a href="{{ url }}" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">{{ title }}</a>
-                    {{ /collection:services }}
-                </nav>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h3 class="font-bold mb-4">Quick Links</h3>
-                <nav class="space-y-2">
-                    <a href="/about-us" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">About PAM</a>
-                    <a href="/team" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Our Team</a>
-                    <a href="/news" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">News & Insights</a>
-                    <a href="/partners" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Partners</a>
-                    <a href="/downloads" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Downloads</a>
-                    <a href="/contact" class="block text-sm text-white text-opacity-80 hover:text-white transition-colors">Contact Us</a>
-                </nav>
-            </div>
         </div>
-
-        <!-- Copyright -->
-        <div class="py-6 border-t border-white border-opacity-20">
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
-                <p class="text-sm text-white text-opacity-80">&copy; {{ now format="Y" }} {{ site:site_name }}.
-                    All rights reserved.</p>
-            </div>
+        <div class="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-center items-center gap-4">
+            <p class="text-sm text-gray-700">&copy; {{ now format="Y" }} {{ site:site_name }}. All rights reserved.</p>
         </div>
     </div>
 
@@ -86,11 +108,11 @@
 
         window.addEventListener('scroll', function () {
             if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-                scrollToTopBtn.classList.add('opacity-100');
+                scrollToTopBtn.classList.remove(['opacity-0', 'pointer-events-none']);
+                scrollToTopBtn.classList.add(['opacity-100']);
             } else {
-                scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
-                scrollToTopBtn.classList.remove('opacity-100');
+                scrollToTopBtn.classList.add(['opacity-0', 'pointer-events-none']);
+                scrollToTopBtn.classList.remove(['opacity-100']);
             }
         });
 

@@ -9,5 +9,4 @@ description: |-
   We believe that the Accounting System for any organization is always the same, while other routine business operations keep differing from business to business (even if they are in the same trade).
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
 updated_at: 1757097970
-featured_image: undraw_key-points_mnrr.png
 ---

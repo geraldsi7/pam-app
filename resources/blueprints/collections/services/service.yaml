@@ -22,144 +22,17 @@ tabs:
           -
             handle: content
             field:
-              type: bard
+              type: markdown
               display: Content
-              instructions: 'Rich content for the service detail page'
-              container: assets
-              save_html: false
-              toolbar_mode: floating
-              link_noopener: false
-              link_noreferrer: false
-              target_blank: false
-              reading_time: false
-              word_count: false
-              fullscreen: true
-              allow_source: true
-              always_show_set_button: false
-              sets:
-                specifications:
-                  display: Specifications
-                  fields:
-                    -
-                      handle: title
-                      field:
-                        type: text
-                        display: Title
-                        instructions: 'e.g., Technical Specifications, Scope of Work'
-                    -
-                      handle: items
-                      field:
-                        type: grid
-                        display: Items
-                        fields:
-                          -
-                            handle: label
-                            field:
-                              type: text
-                              display: Label
-                          -
-                            handle: value
-                            field:
-                              type: text
-                              display: Value
-                features:
-                  display: Features
-                  fields:
-                    -
-                      handle: title
-                      field:
-                        type: text
-                        display: Title
-                    -
-                      handle: items
-                      field:
-                        type: grid
-                        display: Items
-                        fields:
-                          -
-                            handle: feature
-                            field:
-                              type: text
-                              display: Feature
-                          -
-                            handle: description
-                            field:
-                              type: text
-                              display: Description
-                case_studies:
-                  display: Case Studies
-                  fields:
-                    -
-                      handle: title
-                      field:
-                        type: text
-                        display: Title
-                    -
-                      handle: studies
-                      field:
-                        type: grid
-                        display: Studies
-                        fields:
-                          -
-                            handle: title
-                            field:
-                              type: text
-                              display: Title
-                          -
-                            handle: description
-                            field:
-                              type: textarea
-                              display: Description
-                          -
-                            handle: link
-                            field:
-                              type: link
-                              display: Link
+              instructions: 'Markdown content for the service detail page'
           -
             handle: featured_image
             field:
               container: assets
+              max_files: 1
+              min_files: 1
               type: assets
               display: 'Featured Image'
-              max_files: 1
-              mode: grid
-              validate:
-                - required
-          -
-            handle: gallery
-            field:
-              container: assets
-              type: assets
-              display: Gallery
-              mode: grid
-          -
-            handle: service_type
-            field:
-              type: select
-              display: 'Service Type'
-              options:
-                mining: 'Minerals & Mining'
-                commodities: 'Commodity Trading'
-                construction: 'Construction & Development'
-                renewable: 'Renewable Energy'
-                procurement: 'International Procurement'
-              clearable: true
-              searchable: true
-          -
-            handle: industry_focus
-            field:
-              type: select
-              display: 'Industry Focus'
-              options:
-                mining: Mining
-                agriculture: Agriculture
-                energy: Energy
-                construction: Construction
-                manufacturing: Manufacturing
-                government: Government
-              multiple: true
-              clearable: true
-              searchable: true
   seo:
     display: SEO
     sections:
