@@ -61,7 +61,7 @@
 
 </head>
 
-<body class="bg-white font-sans text-gray-800 antialiased" data-template="{{ template }}">
+<body class="bg-white font-sans text-gray-600 antialiased" data-template="{{ template }}">
     {{ partial:header }}
     {{ template_content }}
     {{ partial:footer }}
@@ -78,34 +78,34 @@
             // Define header states for different scenarios
             const headerStates = {
                 scrolled: {
-                    headerClasses: ['bg-white', 'backdrop-blur-md', 'shadow-sm', 'text-blue-900'],
+                    headerClasses: ['bg-white', 'backdrop-blur-md', 'shadow-sm', 'text-gray-600'],
                     headerRemove: ['bg-transparent', 'text-white'],
-                    mobileButtonClasses: ['text-blue-900'],
+                    mobileButtonClasses: ['text-gray-600'],
                     mobileButtonRemove: ['text-white'],
-                    mobileMenuClasses: ['bg-white', 'text-blue-900', 'border-t', 'border-gray-200'],
+                    mobileMenuClasses: ['bg-white', 'text-gray-600', 'border-t', 'border-gray-200'],
                     mobileMenuRemove: ['bg-transparent', 'backdrop-blur-md', 'text-white'],
-                    ctaClasses: ['bg-blue-900', 'text-white', 'hover:bg-blue-700'],
-                    ctaRemove: ['bg-white', 'text-blue-900', 'hover:bg-gray-100']
+                    ctaClasses: ['bg-[hsl(42,80%,50%)]', 'text-white', 'hover:bg-[hsl(42,80%,43%)]'],
+                    ctaRemove: ['bg-white', 'text-gray-600', 'hover:bg-gray-100']
                 },
                 newsPage: {
-                    headerClasses: ['bg-white', 'text-blue-900'],
+                    headerClasses: ['bg-white', 'text-gray-600'],
                     headerRemove: ['bg-transparent', 'text-white'],
-                    mobileButtonClasses: ['text-blue-900'],
+                    mobileButtonClasses: ['text-gray-600'],
                     mobileButtonRemove: ['text-white'],
-                    mobileMenuClasses: ['bg-white', 'text-blue-900', 'border-t', 'border-gray-200'],
+                    mobileMenuClasses: ['bg-white', 'text-gray-600', 'border-t', 'border-gray-200'],
                     mobileMenuRemove: ['bg-transparent', 'backdrop-blur-md', 'text-white'],
-                    ctaClasses: ['bg-blue-900', 'text-white', 'hover:bg-blue-700'],
-                    ctaRemove: ['bg-white', 'text-blue-900', 'hover:bg-gray-100']
+                    ctaClasses: ['bg-[hsl(42,80%,50%)]', 'text-white', 'hover:bg-[hsl(42,80%,43%)]'],
+                    ctaRemove: ['bg-white', 'text-gray-600', 'hover:bg-gray-100']
                 },
                 default: {
                     headerClasses: ['bg-transparent', 'text-white'],
-                    headerRemove: ['bg-white', 'shadow-sm', 'text-blue-900'],
+                    headerRemove: ['bg-white', 'shadow-sm', 'text-gray-600'],
                     mobileButtonClasses: ['text-white'],
-                    mobileButtonRemove: ['text-blue-900'],
+                    mobileButtonRemove: ['text-gray-600'],
                     mobileMenuClasses: ['bg-transparent', 'backdrop-blur-md', 'text-white'],
-                    mobileMenuRemove: ['bg-white', 'text-blue-900', 'border-t', 'border-gray-200'],
-                    ctaClasses: ['bg-white', 'text-blue-900', 'hover:bg-gray-100'],
-                    ctaRemove: ['bg-blue-900', 'text-white', 'hover:bg-blue-700']
+                    mobileMenuRemove: ['bg-white', 'text-gray-600', 'border-t', 'border-gray-200'],
+                    ctaClasses: ['bg-white', 'text-gray-600', 'hover:bg-gray-100'],
+                    ctaRemove: ['bg-[hsl(42,80%,50%)]', 'text-white', 'hover:bg-[hsl(42,80%,43%)]']
                 }
             };
 
