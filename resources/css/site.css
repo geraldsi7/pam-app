@@ -2,6 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global ambient pattern system */
+:root {
+    --site-pattern-image: url('../../public/assets/bg-solid.jpeg');
+    --site-pattern-overlay-opacity: 0.93;
+    --site-pattern-size: 1000px auto;
+    --site-pattern-position: center top;
+}
+
+.site-pattern {
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, var(--site-pattern-overlay-opacity)),
+            rgba(255, 255, 255, var(--site-pattern-overlay-opacity))
+        ),
+        var(--site-pattern-image);
+    background-repeat: repeat, repeat;
+    background-size: auto, var(--site-pattern-size);
+    background-position: 0 0, var(--site-pattern-position);
+    background-attachment: scroll, fixed;
+}
+
+.site-pattern.pattern-soft {
+    --site-pattern-overlay-opacity: 0.95;
+}
+
+.site-pattern.pattern-off {
+    --site-pattern-overlay-opacity: 1;
+    background-image: none;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --site-pattern-size: 820px auto;
+    }
+
+    .site-pattern {
+        background-attachment: scroll, scroll;
+    }
+}
+
+@media (max-width: 640px) {
+    :root {
+        --site-pattern-size: 640px auto;
+    }
+}
+
 /* Custom styles for animations */
 
 .main-hero {
