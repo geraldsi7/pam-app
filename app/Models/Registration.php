@@ -13,7 +13,12 @@ class Registration extends Model
 {
     use SoftDeletes, HasUuids;
 
-        protected $fillable = [
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_PAYMENT_PENDING = 'payment_pending';
+    public const STATUS_COMPLETED = 'completed';
+    public const STATUS_CANCELLED = 'cancelled';
+
+    protected $fillable = [
         'reference_code',
         'email',
         'personal_info',
@@ -24,11 +29,16 @@ class Registration extends Model
         'agent_id',
         'addon_expo',
         'payment_method',
+        'admin_review_status',
+        'admin_review_notes',
+        'admin_reviewed_at',
+        'admin_reviewed_by',
     ];
 
     protected $casts = [
         'personal_info' => 'array',
         'addon_expo' => 'boolean',
+        'admin_reviewed_at' => 'datetime',
     ];
 
     public function business(): HasOne
@@ -44,5 +54,10 @@ class Registration extends Model
     public function agent(): BelongsTo
     {
         return $this->belongsTo(Agent::class);
+    }
+
+    public function adminReviewer(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'admin_reviewed_by');
     }
 }

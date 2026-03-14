@@ -23,13 +23,13 @@
           </div>
 
           <h3 class="mt-2 text-sm font-medium text-gray-900">
-            {{ registration.status === 'payment_verification_pending' ? 'Payment Verification Pending' : 'Payment Required' }}
+            {{ registration.payment_method === 'bank_deposit' ? 'Payment Verification Pending' : 'Payment Required' }}
           </h3>
 
           <div class="mt-4 text-sm text-gray-500">
             <p>Reference Code: <span class="font-mono font-medium">{{ registration.reference_code }}</span></p>
 
-            <div v-if="registration.status === 'payment_verification_pending'" class="mt-2">
+            <div v-if="registration.payment_method === 'bank_deposit'" class="mt-2">
               <p>We will verify your bank deposit within 72 hours. You will receive an email confirmation once verified.</p>
               <p class="mt-2">Your login credentials will be sent after payment verification.</p>
             </div>
@@ -67,7 +67,6 @@
 import { Link, Head } from '@inertiajs/vue3'
 import RegistrationLayout from '@/Layouts/RegistrationLayout.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
-import SecondaryButton from '@/Components/SecondaryButton.vue'
 
 const props = defineProps({
   registration: Object,

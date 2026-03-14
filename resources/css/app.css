@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-slate-50 text-slate-900 antialiased;
+    }
+}
+
+@layer components {
+    .admin-surface {
+        @apply rounded-2xl border border-slate-200/80 bg-white shadow-sm;
+    }
+
+    .admin-card {
+        @apply admin-surface p-5 lg:p-6;
+    }
+
+    .admin-label {
+        @apply text-xs font-semibold uppercase tracking-wider text-slate-500;
+    }
+
+    .admin-input {
+        @apply rounded-xl border-slate-300 bg-white text-sm shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+    }
+}

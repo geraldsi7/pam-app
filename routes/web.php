@@ -9,6 +9,7 @@ require __DIR__.'/payment.php';
 require __DIR__.'/auth.php';
 require __DIR__.'/system.php';
 require __DIR__.'/matchmaking.php';
+require __DIR__.'/admin.php';
 
 Route::get('/', function () {
     return redirect()->route('registration.index');

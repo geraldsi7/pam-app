@@ -15,6 +15,7 @@ class Agent extends Model
         'name',
         'referral_code',
         'commission_rate',
+        'is_active',
     ];
 
     public function registrations(): HasMany

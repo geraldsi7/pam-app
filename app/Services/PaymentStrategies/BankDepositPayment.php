@@ -82,8 +82,8 @@ class BankDepositPayment implements PaymentInterface
             ],
         ]);
 
-        // Update registration status to pending verification
-        $registration->update(['status' => 'payment_verification_pending']);
+        // Keep registration in payment_pending while verification is outstanding.
+        $registration->update(['status' => 'payment_pending']);
 
         // Redirect to pending verification page
         return Inertia::render('Payment/Pending', [

@@ -51,7 +51,7 @@ class PostPaymentService
             $this->processPendingAgentCommission($registration, $payment);
         }
 
-        // Registration status remains 'payment_verification_pending'
+        // Registration status remains payment_pending until verification.
     }
 
     /**
@@ -59,12 +59,26 @@ class PostPaymentService
      */
     private function createUserAccount(Registration $registration): User
     {
+        $existingUser = User::where('email', $registration->email)->first();
+
+        if ($existingUser) {
+            if (!$existingUser->registration_id) {
+                $existingUser->update(['registration_id' => $registration->id]);
+            }
+            $existingUser->temporary_password = null;
+
+            return $existingUser;
+        }
+
         $password = Str::random(12);
 
         $user = User::create([
             'name' => $registration->personal_info['first_name'] . ' ' . $registration->personal_info['last_name'],
             'email' => $registration->email,
             'password' => Hash::make($password),
+            'registration_id' => $registration->id,
+            'user_type' => 'member',
+            'is_active' => true,
             'email_verified_at' => now(),
         ]);
 
@@ -172,6 +186,6 @@ class PostPaymentService
     public function handleFailedPayment(Registration $registration, Payment $payment): void
     {
         $payment->update(['status' => 'failed']);
-        $registration->update(['status' => 'payment_failed']);
+        $registration->update(['status' => 'cancelled']);
     }
 }

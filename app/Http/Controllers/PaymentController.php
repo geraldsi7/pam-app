@@ -175,8 +175,8 @@ class PaymentController extends Controller
             ],
         ]);
 
-        // Update registration status to pending verification
-        $registration->update(['status' => 'payment_verification_pending']);
+        // Keep registration in payment_pending until admin verification completes.
+        $registration->update(['status' => 'payment_pending']);
 
         return redirect()->route('registration.pending', ['ref' => $registration->reference_code]);
         // return response()->json([
@@ -211,7 +211,7 @@ class PaymentController extends Controller
         $referenceCode = $request->query('ref');
         $registration = $this->registrationService->getRegistrationByReference($referenceCode);
 
-        if (!$registration || $registration->status !== 'payment_verification_pending') {
+        if (!$registration || $registration->status !== 'payment_pending') {
             return redirect()->route('registration.index');
         }
 

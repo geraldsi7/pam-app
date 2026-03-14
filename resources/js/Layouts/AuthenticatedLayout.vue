@@ -39,6 +39,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Matchmaking
                                 </NavLink>
+                                <NavLink
+                                    :href="route('admin.dashboard')"
+                                    :active="route().current('admin.*')"
+                                >
+                                    Admin
+                                </NavLink>
                             </div>
                         </div>
 
@@ -145,6 +151,12 @@ const showingNavigationDropdown = ref(false);
                             :active="route().current('matchmaking.*')"
                         >
                             Matchmaking
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('admin.dashboard')"
+                            :active="route().current('admin.*')"
+                        >
+                            Admin
                         </ResponsiveNavLink>
                     </div>
 

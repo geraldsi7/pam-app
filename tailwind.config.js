@@ -38,6 +38,18 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                admin: {
+                    ink: '#0F172A',
+                    muted: '#64748B',
+                    line: '#E2E8F0',
+                    surface: '#FFFFFF',
+                    accent: '#4F46E5',
+                },
+            },
+            boxShadow: {
+                panel: '0 12px 40px -24px rgba(15, 23, 42, 0.45)',
+            },
         },
     },
 

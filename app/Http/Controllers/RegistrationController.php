@@ -63,6 +63,12 @@ class RegistrationController extends Controller
         ]);
 
         $referenceCode = $request->input('reference_code');
+        if (!$referenceCode) {
+            return redirect()->route('registration.index')->withErrors([
+                'reference_code' => 'Please provide a valid reference code to resume.',
+            ]);
+        }
+
         $registration = $this->registrationService->getRegistrationByReference($referenceCode);
 
         if ($registration->status === 'completed') {
@@ -321,8 +327,7 @@ class RegistrationController extends Controller
         $referenceCode = $request->query('ref');
         $registration = $this->registrationService->getRegistrationByReference($referenceCode);
 
-        if (!$registration ||
-            (!in_array($registration->status, ['payment_pending', 'payment_verification_pending']))) {
+        if (!$registration || $registration->status !== 'payment_pending') {
             return redirect()->route('registration.index');
         }
 
