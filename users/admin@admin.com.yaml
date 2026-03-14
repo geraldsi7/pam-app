@@ -45,3 +45,5 @@ preferences:
       view: tree
     logos:
       view: list
+    highlights:
+      view: list
