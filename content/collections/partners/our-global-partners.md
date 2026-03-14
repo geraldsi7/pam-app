@@ -14,12 +14,6 @@ partners:
     featured: true
     featured_image: ciecc-1773248670.png
   -
-    id: iSW1Tywhen7TS1VCTFQCH
-    title: GIPC
-    partnership_type: strategic
-    featured: true
-    featured_image: gipc.jpg
-  -
     id: ihD7oT5s
     title: 'MeatMasters Ghana'
     description: 'Global leader in commodity trading and agricultural supply chains. Key partner in cocoa, coffee, and sugar trading operations.'
@@ -69,27 +63,7 @@ partners:
     website: 'https://www.afdb.org'
     featured: true
     featured_image: chuanrun-1773249461.png
-  -
-    id: Er8qle1c
-    title: NBFAN
-    description: 'Multilateral development finance institution. Partner in infrastructure and renewable energy financing for sustainable development.'
-    partnership_type: association
-    industry: government
-    country: "Côte d'Ivoire"
-    website: 'https://www.afdb.org'
-    featured: true
-    featured_image: nbfan-1773249512.png
-  -
-    id: tv1Biykq
-    title: Fabuni
-    description: 'Multilateral development finance institution. Partner in infrastructure and renewable energy financing for sustainable development.'
-    partnership_type: association
-    industry: government
-    country: "Côte d'Ivoire"
-    website: 'https://www.afdb.org'
-    featured: true
-    featured_image: fabuni-1773206176.png
 description: 'PAM collaborates with world-class partners across mining, commodities, construction, and renewable energy sectors to deliver exceptional results.'
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1773257563
+updated_at: 1773491381
 ---

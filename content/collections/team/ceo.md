@@ -20,7 +20,7 @@ bio:
           - MBA from INSEAD, France
           - Recipient of African Business Leadership Award (2022)
           - Board member of several international trade associations### Leadership PhilosophyDr. Mensah believes in creating lasting partnerships that benefit all stakeholders - from local communities to international investors. His leadership emphasizes ethical business practices, innovation, and sustainable development.
-photo: ceo.png
+photo: gemini_generated_image_32vp2d32vp2d32vp.png
 department: executive
 level: ceo
 email: emmanuel.mensah@pam-group.com
@@ -31,5 +31,5 @@ seo:
   meta_title: 'Dr. Emmanuel Kofi Mensah - CEO | PAM'
   meta_description: 'Meet Dr. Emmanuel Kofi Mensah, CEO of Plus Alliance Meridian Ltd. 25+ years in international trade and industrial development.'
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1771326493
+updated_at: 1773495911
 ---

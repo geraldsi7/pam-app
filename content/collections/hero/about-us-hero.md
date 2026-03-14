@@ -2,7 +2,7 @@
 id: 0240c85c-4be3-4bcc-883a-eeb71301ead6
 blueprint: hero
 title: About Us Hero
-heading: 'About Plus Alliance Meridian Ltd.'
+heading: 'About Plus Alliance Meridian LTD'
 description: 'An international trading and industrial development company connecting industries, resources, and markets worldwide.'
 primary_button_text: 'Explore Our Services'
 primary_button_link: '#services'
