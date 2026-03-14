@@ -10,6 +10,5 @@ description: |-
 
   PAM positions itself as a multi-sector solutions provider, supplying minerals, commodities, engineering services, and infrastructure development, while expanding its reach across Africa, China, and other global markets.
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
-updated_at: 1772876079
-featured_image: undraw_team-spirit_18vw.png
+updated_at: 1758019835
 ---

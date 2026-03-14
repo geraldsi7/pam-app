@@ -7,7 +7,7 @@
             <!-- Left Column - Visual -->
             <div class="relative fade-in-up {{ order == 'image-first' ? 'order-1' : 'order-2' }}">
                 <div class="h-72 lg:h-96">
-                    <img src="{{ glide:featured_image width='900' height='620' fit='crop' }}" class="w-full h-full object-cover rounded-sm" loading="lazy">
+                    <img src="{{ glide:featured_image width='900' height='620' fit='crop_focal' }}" class="w-full h-full object-cover rounded-sm" loading="lazy">
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
                 <!-- Call to Action -->
                 {{ if button_url }}
                 <div>
-                    {{ partial:link-button url="{{ button_url }}" text="{{ button_text }}" }}
+                    {{ partial:link-button url="{{ button_url }}" text="{{ button_text }}" downloadable="{{ downloadable }}" }}
                 </div>
                 {{ /if }}
             </div>

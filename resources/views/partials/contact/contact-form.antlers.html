@@ -6,7 +6,7 @@
                 <!-- Contact Information -->
                 <div class="space-y-8 fade-in-up order-2 md:order-1">
                     <div>
-                        <h2 class="text-3xl font-bold text-blue-900 mb-4">Get in Touch</h2>
+                        <h2 class="text-3xl font-bold text-gray-700 mb-4">Get in Touch</h2>
                         <p class="text-lg text-gray-600 leading-relaxed">
                             We're here to help you every step
                             of the way.
@@ -15,56 +15,66 @@
 
                     <!-- Contact Cards -->
                     <div class="space-y-6">
-                        <!-- Phone -->
-                        <div
+                            {{ collection:contact_info title:in="Location|Email|Phone|Mobile" }}
+                            <div
                             class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg border border-gray-200 transition-all duration-300">
                             <div
-                                class="flex-shrink-0 w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-phone text-white"></i>
+                                class="flex-shrink-0 w-12 h-12 bg-[hsl(42,80%,50%)] rounded-lg flex items-center justify-center">
+                            {{ if title == "Location" }}
+                            <div class="flex items-start gap-2 md:gap-3 text-sm text-muted-foreground">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-map-pin text-white flex-shrink-0 mt-0.5">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
                             </div>
-                            <div>
-                                <h3 class="font-semibold text-blue-900 mb-1">Phone</h3>
-                                {{ collection:contact_info title:in="Phone|Mobile" }}
-                                    <p class="text-gray-600">{{ content }}</p>
-                                {{ /collection:contact_info }}
+                            {{ elseif title == "Email" }}
+                            <a href="{{ featured_url }}"
+                                class="flex items-center gap-2 md:gap-3 text-sm text-muted-foreground hover:text-white transition-colors">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-mail text-white flex-shrink-0">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                </svg></a>
+                                {{ elseif title == "Phone" }}
+                                <a href="{{ featured_url }}"
+                                class="flex items-center gap-2 md:gap-3 text-sm text-muted-foreground hover:text-white transition-colors">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-phone text-white flex-shrink-0">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg></a>
+                                {{ elseif title == "Mobile" }}
+                                <a href="{{ featured_url }}"
+                                class="flex items-center gap-2 md:gap-3 text-sm text-muted-foreground hover:text-white transition-colors">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-smartphone text-white flex-shrink-0">
+                                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                                    <path d="M12 18h.01"></path>
+                                </svg></a>
+                                {{ /if }}
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-700 mb-1">{{ title }}</h3>
+                                    <p class="text-gray-600 text-sm">{{ content }}</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Email -->
-                        <div
-                            class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg border border-gray-200 transition-all duration-300">
-                            <div
-                                class="flex-shrink-0 w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-envelope text-white"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-blue-900 mb-1">Email</h3>
-                                {{ collection:contact_info title:is="Email" }}
-                                    <p class="text-gray-600">{{ content }}</p>
-                                {{ /collection:contact_info }}
-                            </div>
-                        </div>
-
-                        <!-- Address -->
-                        <div
-                            class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg border border-gray-200 transition-all duration-300">
-                            <div
-                                class="flex-shrink-0 w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-map-marker-alt text-white"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-blue-900 mb-1">Location</h3>
-                                {{ collection:contact_info title:is="Location" }}
-                                    <p class="text-gray-600">{{ content }}</p>
-                                {{ /collection:contact_info }}
-                            </div>
-                        </div>
+                            {{ /collection:contact_info }}
                     </div>
 
                     <!-- Business Hours -->
                     <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
                         <h3 class="font-semibold text-gray-900 mb-3 flex items-center">
-                            <i class="fas fa-clock mr-2 text-blue-900"></i>
+                            <i class="fas fa-clock mr-2 text-[hsl(42,80%,50%)]"></i>
                             Business Hours
                         </h3>
                         <div class="space-y-2 text-sm text-gray-600">
@@ -81,7 +91,7 @@
                 <!-- Contact Form -->
                 <div class="fade-in-up order-1 md:order-2" style="transition-delay: 150ms;">
                     <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
-                        <h3 class="text-2xl font-bold text-blue-900 mb-6">Send us a Message</h3>
+                        <h3 class="text-2xl font-bold text-gray-700 mb-6">Send us a Message</h3>
 
                         {{ form:contact_us class="space-y-6" id="contact_us_form" }}
 
@@ -126,7 +136,7 @@
 
 
                         <button type="submit"
-                                class="inline-block bg-blue-900 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-sm transition-all duration-300 capitalize disabled:opacity-50 disabled:cursor-not-allowed">
+                                class="inline-block bg-[hsl(42,80%,50%)] hover:bg-[hsl(42,80%,43%)] text-white font-semibold px-6 py-3 rounded-sm transition-all duration-300 capitalize disabled:opacity-50 disabled:cursor-not-allowed">
                                 <i class="fas fa-paper-plane mr-2"></i>
                                 Send Message
                             </button>

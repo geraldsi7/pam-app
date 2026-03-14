@@ -5,7 +5,7 @@ title: 'Company Overview'
 heading: 'A Diversified Multi-Sector Solutions Provider'
 eyebrow: 'Company Overview'
 excerpt: 'Plus Alliance Meridian Ltd (PAM) is a Ghana-based company delivering minerals, commodities, infrastructure, renewable energy, and procurement solutions.'
-featured_image: cctv.jpg
+featured_image: bg-about.jpg
 button_url: /about
 button_text: 'Contact Us'
 updated_by: 4fdb1efb-df45-4412-ac15-91bcc1bd2dd1

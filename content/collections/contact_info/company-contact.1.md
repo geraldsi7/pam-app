@@ -10,4 +10,4 @@ description: 'We specialize in developing and implementing new techniques for ma
 updated_by: a741ee50-bd31-4221-9866-0662ad5e23f1
 updated_at: 1772875752
 ---
-Ofankor Barrier, Ghana
+Damax 1 Estate, Kutunse, Accra, Ghana

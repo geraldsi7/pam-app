@@ -1,11 +1,4 @@
-<section class="py-16 lg:py-24 bg-white relative overflow-hidden fade-in-up">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0"
-            style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 20px 20px;">
-        </div>
-    </div>
-
+<section class="py-16 lg:py-24 relative overflow-hidden fade-in-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
         <!-- Left Column - Content -->
@@ -20,7 +13,7 @@
             <article class="bg-transparent rounded-lg transition-shadow overflow-hidden">
                 <div class="aspect-square bg-gray-200">
                     {{ if photo }}
-                    <img src="{{ glide:photo width='400' height='400' fit='crop' }}" alt="{{ title }}"
+                    <img src="{{ glide:photo width='400' height='400' fit='crop_focal' }}" alt="{{ title }}"
                         class="w-full h-full object-cover" loading="eager">
                     {{ else }}
                     <div 

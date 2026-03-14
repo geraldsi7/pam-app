@@ -22,7 +22,7 @@ tabs:
           -
             handle: content
             field:
-              type: bard
+              type: markdown
               display: Content
               instructions: 'Rich content for the service detail page'
               container: assets

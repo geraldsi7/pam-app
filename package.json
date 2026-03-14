@@ -13,6 +13,7 @@
         "@lbgm/phone-number-input": "^1.1.6",
         "@statamic/cms": "file:./vendor/statamic/cms/resources/dist-package",
         "lodash.debounce": "^4.0.8",
+        "tiny-slider": "^2.9.4",
         "ziggy": "^2.0"
     },
     "devDependencies": {
