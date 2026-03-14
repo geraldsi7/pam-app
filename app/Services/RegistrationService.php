@@ -77,11 +77,6 @@ class RegistrationService
         }
 
         $registration->update($updateData);
-
-        // Send reference code email after step 1
-        if ($step === 1) {
-            app(PostPaymentService::class)->sendReferenceCodeEmail($registration);
-        }
     }
 
     protected function validateStepTransition(Registration $registration, int $step): void

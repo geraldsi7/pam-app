@@ -178,9 +178,6 @@ class PaymentController extends Controller
         // Update registration status to pending verification
         $registration->update(['status' => 'payment_verification_pending']);
 
-        // Send confirmation email
-        app(\App\Services\PostPaymentService::class)->sendReferenceCodeEmail($registration);
-
         return redirect()->route('registration.pending', ['ref' => $registration->reference_code]);
         // return response()->json([
         //     'success' => true,

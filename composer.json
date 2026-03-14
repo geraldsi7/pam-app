@@ -14,7 +14,6 @@
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
-        "statamic/cms": "^6.2",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
@@ -56,13 +55,9 @@
             "@php artisan config:clear --ansi",
             "@php artisan test"
         ],
-        "pre-update-cmd": [ 
-            "Statamic\\Console\\Composer\\Scripts::preUpdateCmd" 
-        ], 
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@php artisan statamic:install --ansi"
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -90,8 +85,7 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true,
-            "pixelfear/composer-dist-plugin": true
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "stable",

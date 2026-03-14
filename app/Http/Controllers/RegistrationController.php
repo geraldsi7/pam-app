@@ -6,6 +6,7 @@ use App\Models\Industry;
 use App\Models\Country;
 use App\Models\Registration;
 use App\Services\RegistrationService;
+use App\Services\PostPaymentService;
 use App\Http\Requests\Registration\PersonalInfoRequest;
 use App\Http\Requests\Registration\BusinessInfoRequest;
 use App\Http\Requests\Registration\AttendeesRequest;
@@ -93,6 +94,11 @@ class RegistrationController extends Controller
         $existingRegistration = $this->getValidRegistration();
 
         $registration = $this->registrationService->savePersonalInfo($validated, $existingRegistration);
+
+        // Send reference code only when this is a brand-new registration.
+        if (!$existingRegistration) {
+            app(PostPaymentService::class)->sendReferenceCodeEmail($registration);
+        }
 
         session(['registration_ref' => $registration->reference_code]);
 

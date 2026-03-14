@@ -85,9 +85,6 @@ class BankDepositPayment implements PaymentInterface
         // Update registration status to pending verification
         $registration->update(['status' => 'payment_verification_pending']);
 
-        // Send confirmation email
-        app(\App\Services\PostPaymentService::class)->sendReferenceCodeEmail($registration);
-
         // Redirect to pending verification page
         return Inertia::render('Payment/Pending', [
             'registration' => $registration->load(['business.attendees']),

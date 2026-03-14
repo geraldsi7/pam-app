@@ -1,6 +1,0 @@
-title: Core Strengths
-route: /core-strengths/{slug}
-blueprint: core_strengths
-searchable: true
-sort_dir: asc
-sort_by: order

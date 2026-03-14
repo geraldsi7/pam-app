@@ -1,14 +1,13 @@
-Subject: Your FDI Summit Registration Reference Code
+Dear {{ $registration->personal_info['first_name'] }},
 
-Dear {{ $registration->personal_info['first_name'] }} {{ $registration->personal_info['last_name'] }},
+thank you for starting your registration for the Africa China Business Investment Summit.
 
-Thank you for starting your registration for the FDI B2B Government Summit.
+Your registration reference code is: {{ $registration->reference_code }}
 
-Your registration reference code is: **{{ $registration->reference_code }}**
-
+<br>
 You can use this code to resume your registration at any time by visiting our registration page and entering this code.
 
 Please complete your registration within 30 days to secure your spot.
-
+<br>
 Best regards,
-FDI Summit Organizers
+Plus Alliance Meridian Ltd

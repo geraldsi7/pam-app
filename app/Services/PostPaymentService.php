@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\Registration;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -78,7 +79,7 @@ class PostPaymentService
      */
     private function sendCompletionEmail(Registration $registration, User $user): void
     {
-        Mail::to($registration->email)->send(new RegistrationCompleteMail($registration, $user));
+        Mail::to($registration->email)->queue(new RegistrationCompleteMail($registration, $user));
     }
 
     /**
@@ -86,7 +87,7 @@ class PostPaymentService
      */
     private function sendBankDepositCompletionEmail(Registration $registration, User $user): void
     {
-        Mail::to($registration->email)->send(new RegistrationCompleteMail($registration, $user, true));
+        Mail::to($registration->email)->queue(new RegistrationCompleteMail($registration, $user));
     }
 
     /**
@@ -94,7 +95,7 @@ class PostPaymentService
      */
     public function sendReferenceCodeEmail(Registration $registration): void
     {
-        Mail::to($registration->email)->send(new RegistrationReferenceMail($registration));
+        Mail::to($registration->email)->queue(new RegistrationReferenceMail($registration));
     }
 
     /**
@@ -120,7 +121,7 @@ class PostPaymentService
 
         // Here you would typically create a commission record or update agent's balance
         // For now, we'll just log it
-        \Log::info('Agent commission processed', [
+        Log::info('Agent commission processed', [
             'agent_id' => $agent->id,
             'registration_id' => $registration->id,
             'commission_amount' => $commissionAmount,
@@ -144,7 +145,7 @@ class PostPaymentService
 
         // For bank deposits, we log the pending commission but don't process it yet
         // It will be processed when the payment is verified
-        \Log::info('Agent commission pending - bank deposit verification required', [
+        Log::info('Agent commission pending - bank deposit verification required', [
             'agent_id' => $agent->id,
             'registration_id' => $registration->id,
             'payment_id' => $payment->id,

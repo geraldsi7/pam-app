@@ -24,7 +24,7 @@ const submit = () => {
         onFinish: () => form.reset('reference_code'),
       })
     } else {
-      router.visit(route('registration.step1'))
+      router.visit(route('registration.step1', { new: 1 }))
     }
   } catch (error) {
     console.error(error)
@@ -67,7 +67,7 @@ const submit = () => {
               </div>
 
               <div class="flex justify-between space-x-4">
-                <SecondaryButton type="button" @click="router.visit(route('registration.step1'))" :disabled="form.processing">
+                <SecondaryButton type="button" @click="router.visit(route('registration.step1', { new: 1 }))" :disabled="form.processing">
                   New Registration
                 </SecondaryButton>
 

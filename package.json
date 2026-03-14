@@ -5,14 +5,11 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "watch": "vite",
-        "cp:dev": "vite build --config vite-cp.config.js --watch",
-        "cp:build": "vite build --config vite-cp.config.js"
+        "watch": "vite"
     },
     "dependencies": {
         "@inertiajs/vue3": "^1.0.0",
         "@lbgm/phone-number-input": "^1.1.6",
-        "@statamic/cms": "file:./vendor/statamic/cms/resources/dist-package",
         "lodash.debounce": "^4.0.8",
         "vue": "^3.4.0",
         "ziggy": "^2.0"
